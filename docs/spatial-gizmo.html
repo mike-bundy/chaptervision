@@ -19,15 +19,21 @@
   <article class="doc-article" data-page="spatial-gizmo">
     <h1>The gizmo &amp; direct editing</h1>
     <p class="doc-lede">
-      Look at an entity, pinch to select it, and a transform gizmo appears around it in space.
-      Everything you'd do with a mouse on the Mac, you do here with your eyes and hands.
+      Look at an entity, pinch to select it, and it's yours — grab it directly, or summon a
+      transform gizmo for precision. Everything you'd do with a mouse on the Mac, you do here
+      with your eyes and hands.
     </p>
 
     <h2>Selecting in space</h2>
-    <p>With <b>Edit mode</b> on, every entity in your scene is gaze-pickable. Look at one — it
-    highlights — and pinch to select it. The selection routes everywhere at once: the inspector
-    shows the entity's transform, the timeline scrolls to its clips, and the gizmo materializes
-    around the entity itself.</p>
+    <p>Every entity in your scene is gaze-pickable — there's no edit mode to switch on; the
+    workspace is always an editing surface. Look at an entity — it highlights — and pinch to
+    select it. The selection routes everywhere at once: the inspector shows the entity's
+    transform, and the timeline scrolls to its clips.</p>
+    <p>What happens in space is up to you. By default your hands own the selection directly —
+    grab and move it, no gizmo in the way. When one axis matters, the <b>mode picker</b> in the
+    transport bar (<b>Move</b> / <b>Rotate</b> / <b>Scale</b>) summons that handle family around
+    the selected entity. One family shows at a time; tap the active mode again to put the gizmo
+    away and go back to direct manipulation.</p>
     <p>The gizmo sizes itself to encompass whatever you select, so it hugs a small prop and wraps a
     large one. It's also capped at roughly 0.3&nbsp;meters across — selecting a room-sized backdrop
     won't summon a gizmo that dwarfs you. The handles stay a comfortable arm's-length tool no
@@ -35,23 +41,26 @@
 
     <h2>Reading the handles</h2>
     <table>
-      <thead><tr><th>Handle</th><th>What it does</th></tr></thead>
+      <thead><tr><th>Mode</th><th>Handles</th><th>What they do</th></tr></thead>
       <tbody>
-        <tr><td><b>Three arrow arms</b></td><td>Translate along the x, y, or z axis. The arms are aligned to world axes — "up" is always the room's up, no matter how the entity is rotated.</td></tr>
-        <tr><td><b>Three dashed rings</b></td><td>Rotate around one axis each. Drag along a ring to spin the entity around that axis.</td></tr>
-        <tr><td><b>Center cube</b></td><td>Uniform scale. Drag it outward to grow the entity, inward to shrink it, proportions locked.</td></tr>
+        <tr><td><b>Move</b></td><td>Three arrow arms</td><td>Translate along the x, y, or z axis. The arms are aligned to world axes — "up" is always the room's up, no matter how the entity is rotated.</td></tr>
+        <tr><td><b>Rotate</b></td><td>Three dashed rings</td><td>Rotate around one axis each. Drag along a ring to spin the entity around that axis.</td></tr>
+        <tr><td><b>Scale</b></td><td>Center cube</td><td>Uniform scale. Drag it outward to grow the entity, inward to shrink it, proportions locked.</td></tr>
       </tbody>
     </table>
+    <p>Whichever mode is up, a <b>grab bar</b> rides beneath the handles: pinch-drag it to
+    free-move the entity without leaving the gizmo. You never have to drop back to direct
+    manipulation just to reposition.</p>
     <p>Each drag is frozen-frame stable: the moment you pinch a handle, the gizmo locks its axis
     frame for the duration of the gesture. Walking around the entity mid-drag, or the entity
     animating underneath you, never bends the axis you're pulling along — the drag tracks exactly
     the line or ring you grabbed.</p>
 
-    <h2>Direct drags, no gizmo needed</h2>
-    <p>The gizmo is for precision; for speed, just grab the entity itself. A one-handed pinch-drag
-    moves it through space, with wrist rotation turning it as you go. Bring in your second hand and
-    pinch with both to scale. These direct manipulations write the same transform edits as the
-    gizmo — pick whichever feels right for the moment.</p>
+    <h2>Direct drags: the default</h2>
+    <p>With no gizmo mode active, manipulation is direct — and it's always on. A one-handed
+    pinch-drag moves the entity through space, with wrist rotation turning it as you go. Bring in
+    your second hand and pinch with both to scale. These direct manipulations write the same
+    transform edits as the gizmo — the gizmo is for precision, direct drags are for speed.</p>
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> Use direct drags for blocking — "the lantern goes about here" — and the

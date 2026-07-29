@@ -28,12 +28,16 @@
     libraries, timeline, transport, inspector — in a single three-column layout, so there's never a
     hunt for a lost floating palette. The <b>immersive space</b> is your chapter itself: the same
     scene the player renders, live around you at real scale.</p>
-    <p>That second point is worth underlining. When you turn on <b>Edit mode</b>, Chapter Vision doesn't
-    switch to a separate "editor scene." The scene stays the player's scene — the exact entities,
-    videos, particles, and backdrops your audience will see — and editing is layered on top of it:
-    entities become gaze-selectable, the <a href="/docs/spatial-gizmo.html">gizmo</a> appears on
-    selection, and animated entities draw motion trails. Turn Edit mode off and you're simply
-    watching the experience. What you preview is what ships.</p>
+    <p>That second point is worth underlining. Chapter Vision doesn't keep a separate "editor
+    scene" — the scene stays the player's scene, the exact entities, videos, particles, and
+    backdrops your audience will see, with editing layered permanently on top of it. There's no
+    edit mode to switch on: the workspace is always an editing surface, just like the viewport on
+    the Mac. Every entity is gaze-selectable, the <a href="/docs/spatial-gizmo.html">gizmo</a> is
+    a mode-pick away, and animated entities draw motion trails.</p>
+    <p>Playing is previewing. Press play and the editing layer stands aside on its own — entities
+    and video panels appear at their authored times, exactly as the player will show them. Pause,
+    and the editing surface returns right where you are; stop, and it parks at the segment's first
+    frame with everything visible and grabbable again. What you preview is what ships.</p>
 
     <h2>The left rail: session and libraries</h2>
     <p>The left column opens with the <b>session</b> area. Macs running Chapter Studio on
@@ -68,8 +72,8 @@
 
     <h2>The center: transport, timeline, graph</h2>
     <p>The center column stacks three surfaces. The <b>transport bar</b> runs along the top with
-    play/pause and stepping, the Edit mode toggle, the auto-key record button, pose keyframing, the
-    current segment and step readout, and undo/redo. Below it, the
+    play/pause and stepping, the gizmo mode picker, the auto-key record button, pose keyframing,
+    the current segment and step readout, and undo/redo. Below it, the
     <a href="/docs/spatial-timeline.html">spatial timeline</a> shows the selected segment's tracks
     and clips using the same projection Studio draws on the Mac — same lanes, same grouping, same
     colors. When you're working on animation, the <b>graph dock</b> opens beneath the timeline with
