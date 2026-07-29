@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAGE TITLE — Chapter Vision Handbook</title>
+<meta name="description" content="ONE-SENTENCE DESCRIPTION.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="PAGE-ID">
+    <h1>Page title</h1>
+    <p class="doc-lede">
+      One- or two-sentence lede summarizing the page. Shown large under the title.
+    </p>
+
+    <h2>A section heading</h2>
+    <p>Body copy. Use <b>bold</b> for UI names, <code>code</code> for filenames/values/channels,
+    <kbd>⌘S</kbd> for keys.</p>
+
+    <!-- Callout variants (copy exactly; change class tip|note|warn and the text): -->
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Helpful shortcut or best practice.</p></div>
+    </div>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Extra context worth knowing.</p></div>
+    </div>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> Something destructive or surprising.</p></div>
+    </div>
+
+    <!-- Numbered walkthrough: -->
+    <ol class="steps">
+      <li><p><b>Do the first thing.</b> Explanation of it.</p></li>
+      <li><p><b>Do the next thing.</b> More detail.</p></li>
+    </ol>
+
+    <h2>Another section</h2>
+    <table>
+      <thead><tr><th>Column</th><th>Column</th></tr></thead>
+      <tbody><tr><td>Cell</td><td>Cell</td></tr></tbody>
+    </table>
+
+    <pre><code>code block if needed</code></pre>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

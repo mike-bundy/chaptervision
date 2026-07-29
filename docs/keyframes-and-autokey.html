@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyframes &amp; auto-key — Chapter Vision Handbook</title>
+<meta name="description" content="Setting, moving, and deleting keyframes in Chapter Vision, and how the auto-key record mode protects channels you never meant to animate.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="keyframes-and-autokey">
+    <h1>Keyframes &amp; auto-key</h1>
+    <p class="doc-lede">
+      Set Key captures a whole pose in one press. Auto-key records your adjustments as you
+      make them — and only on channels you've already chosen to animate.
+    </p>
+
+    <h2>Set Key: capture the whole pose</h2>
+    <p><b>Set Key</b> writes the selected entity's full pose — all ten channels: position,
+    rotation, scale, and opacity — as keys at the playhead's current time. It doesn't matter
+    whether the entity already has a track; Set Key creates one on the first press.</p>
+    <ol class="steps">
+      <li><p><b>Park the playhead</b> where you want the pose to land — scrub the timeline ruler or the graph editor's ruler band.</p></li>
+      <li><p><b>Pose the entity</b> using the inspector's transform fields in Studio, or by grabbing it with <a href="/docs/spatial-gizmo.html">the gizmo</a> in Chapter Vision.</p></li>
+      <li><p><b>Press Set Key.</b> A diamond appears in the entity's keyframe lane at that time.</p></li>
+    </ol>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> If the entity has never been shown in the segment, your first Set Key
+      also adds a reveal for it. Keyframing something implies you want to see it — you'll never
+      animate an entity the audience can't watch.</p></div>
+    </div>
+
+    <h2>Auto-key: record as you adjust</h2>
+    <p>Both apps have an auto-key toggle — the round <b>record</b> button near the transport.
+    With auto-key on, every transform change you make writes a key at the playhead
+    automatically: nudge a position field, drag the gizmo, dial opacity, and the adjustment
+    becomes animation.</p>
+    <p>There's one deliberate rule: <b>auto-key only re-keys channels that already have
+    keys</b>, and only the ones that actually changed. A channel you've never animated is
+    never keyed by accident.</p>
+
+    <h2>Why that rule protects you</h2>
+    <p>In most animation tools, leaving record mode on turns every stray adjustment into
+    animation. Reframe a prop two centimeters to the left and you've silently keyed its
+    position; now it lerps back toward some old value at playback and you spend ten minutes
+    finding out why. Chapter Vision's rule means the <b>first</b> key on any channel is always
+    a deliberate act — Set Key, or an insert in the graph editor. After that, auto-key knows
+    the channel is part of the performance and keeps it up to date. Before that, your tweaks
+    are just tweaks: they move the rest pose and nothing else.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> This makes it safe to leave auto-key on for a whole session: animated
+      entities record; everything else stays still. Use Set Key when you want to promote a new
+      channel — or a whole entity — into the animation.</p></div>
+    </div>
+
+    <h2>Moving and deleting keys</h2>
+    <p>You can rework timing in two places:</p>
+    <table>
+      <thead><tr><th>Where</th><th>What you can do</th></tr></thead>
+      <tbody>
+        <tr><td>Keyframe lane (timeline)</td><td>Drag a diamond to retime a whole pose — every channel keyed at that time slides together. Double-click a diamond in Studio to delete the pose.</td></tr>
+        <tr><td><a href="/docs/graph-editor.html">Graph editor</a></td><td>Drag individual keys per channel in time and value, multi-select groups, insert keys on a curve, and delete the current selection.</td></tr>
+      </tbody>
+    </table>
+    <p>The lane is your dope sheet — fast, pose-level timing. The graph editor is your fine
+    brush — per-channel value and curve shaping.</p>
+
+    <h2>Keying from the gizmo on Vision Pro</h2>
+    <p>In Chapter Vision, the gizmo is auto-key aware. With record on, finish a drag —
+    move, rotate, or scale — and the changed channels are keyed at the playhead the moment you
+    let go. Combined with the in-room preview, this is the fastest way to block spatial motion:
+    stand where your audience will stand, grab the entity, and put it where it should be at
+    that moment. See <a href="/docs/spatial-gizmo.html">the gizmo</a> for the handle layout.</p>
+
+    <h2>A workflow that works</h2>
+    <ol class="steps">
+      <li><p><b>Block with Set Key.</b> Step through the segment and capture full poses at the story beats — start, arrival, rest. Don't fuss over easing yet.</p></li>
+      <li><p><b>Turn on auto-key and refine.</b> Scrub to a beat, adjust what's wrong, and let record mode write the corrections into the already-animated channels.</p></li>
+      <li><p><b>Polish in the graph editor.</b> Shape tangents, fix overshoot, and offset channels against each other for natural motion.</p></li>
+    </ol>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> Deleting a pose diamond removes the keys on every channel at that
+      time. If you only want to drop one channel's key, do it in the graph editor instead.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

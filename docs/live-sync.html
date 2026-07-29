@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live sync — Chapter Vision Handbook</title>
+<meta name="description" content="How Chapter Vision's sub-second live sync works: Bonjour discovery, HTTP document and asset serving, Server-Sent Events, and revision-checked bidirectional edits.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="live-sync">
+    <h1>Live sync</h1>
+    <p class="doc-lede">
+      Save on the Mac, see it in the headset in under a second — and edit back the other way.
+      Here's exactly how the wire works.
+    </p>
+
+    <h2>Discovery: a server inside Studio</h2>
+    <p>Chapter Studio embeds a small HTTP server that starts with the app and announces
+    itself on your local network over Bonjour as <b>"Chapter Vision on
+    &lt;hostname&gt;"</b>. Chapter Vision browses for that service continuously, so every Mac
+    running Studio on the same network simply appears in the headset's session list — no IP
+    addresses, no pairing codes.</p>
+    <p>The server is plain HTTP, which has a nice side effect: point any browser on the network at
+    <code>http://&lt;mac&gt;:&lt;port&gt;/</code> and you get a human-readable status page showing
+    the served document and connection details.</p>
+
+    <h2>Connecting: document, assets, events</h2>
+    <p>When the headset connects, it does three things:</p>
+    <ol class="steps">
+      <li><p><b>Fetch the document.</b> <code>GET /chapter.json</code> returns the current chapter
+      exactly as it would be saved to disk — same JSON, same schema (see
+      <a href="/docs/chapterscript-format.html">the ChapterScript format</a>).</p></li>
+      <li><p><b>Stream the assets.</b> Each file in the manifest is fetched from
+      <code>GET /assets/&lt;path&gt;</code>. The server supports HTTP Range requests, so video
+      streams straight into the player and seeks land mid-file without downloading the whole
+      master first.</p></li>
+      <li><p><b>Subscribe to events.</b> The headset opens a long-lived
+      <code>GET /events</code> connection — a standard Server-Sent Events stream — and holds it for
+      the whole session.</p></li>
+    </ol>
+    <p>From then on, every <kbd>⌘S</kbd> in Studio pushes a change event down that stream, and the
+    headset refreshes the document and re-applies playback in place — typically in well under a
+    second. You keep watching the same segment; only the changes move.</p>
+
+    <h2>Edited videos are never stale</h2>
+    <p>Asset URLs carry a content-hash query string derived from each file's fingerprint in the
+    manifest — something like <code>/assets/intro.mp4?v=9f31ab…</code>. Replace or consolidate a
+    video on the Mac and its hash changes, so the URL changes, so every cache between the bundle
+    and the headset's video player treats it as a brand-new file. An unchanged file keeps its URL
+    and stays cached. You never see yesterday's frames.</p>
+
+    <h2>Editing back: batched, revision-checked ops</h2>
+    <p>Sync is bidirectional. Edits made in the headset don't upload whole documents — Chapter Vision
+    sends small, semantic <b>edit operations</b> ("retime this clip", "set this entity's
+    transform", "upsert this animation track") batched into a <code>POST /ops</code> request. Each
+    batch declares the document revision it was based on.</p>
+    <p>Studio is the arbiter. It applies a valid batch through the same mutation path as local
+    edits — so the entire batch lands as <b>one entry in the Mac's undo stack</b> — and rebroadcasts
+    the applied ops over the event stream to every connected peer. The document revision bumps on
+    every save and every applied batch.</p>
+    <p>If a batch arrives based on a stale revision — someone else changed the document since the
+    sender last synced — the server rejects it rather than guessing. The sender refetches the
+    current document, and the author re-applies their change against fresh state. Two editors can
+    work simultaneously without silently clobbering each other; the worst case is redoing one edit,
+    never corrupting the document.</p>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> This also means Mac-side edits reach the headset live between saves —
+      applied edits rebroadcast to all peers, not just saved ones.</p></div>
+    </div>
+
+    <h2>Media and saves over the same pipe</h2>
+    <p>Two more routes round out the protocol:</p>
+    <table>
+      <thead><tr><th>Route</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>POST /assets/&lt;name&gt;</code></td><td>Media uploaded from the headset. Studio writes the bytes into the project bundle's <code>assets/</code> folder and auto-registers the file. This is the receiving end of <a href="/docs/media-import.html">on-device import</a>'s background uploader.</td></tr>
+        <tr><td><code>POST /save</code></td><td>"Save on Mac" from the headset — asks Studio to write the current document to disk, exactly as if you'd pressed <kbd>⌘S</kbd> on the Mac.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Requirements and scope</h2>
+    <p>Both devices need to be on the same local network (and able to reach each other — see
+    <a href="/docs/troubleshooting.html">troubleshooting</a> for firewall notes). Everything is
+    LAN-only: nothing about live sync touches the internet, no account is involved, and your media
+    never leaves your network. The protocol is plain HTTP + SSE + JSON on purpose — it's
+    inspectable with a browser and <code>curl</code>, and any conforming player can implement the
+    read-only half.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

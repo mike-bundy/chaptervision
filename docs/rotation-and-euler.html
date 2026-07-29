@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotation &amp; Euler angles — Chapter Vision Handbook</title>
+<meta name="description" content="How Chapter Vision stores rotation as continuous Euler degrees with an explicit rotate order, so spins accumulate and curves never snap the short way around.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="rotation-and-euler">
+    <h1>Rotation &amp; Euler angles</h1>
+    <p class="doc-lede">
+      Rotations in Chapter Vision are plain, continuous degrees on three channels —
+      720° means two full turns, and your curves never take a shortcut you didn't ask for.
+    </p>
+
+    <h2>Degrees that keep counting</h2>
+    <p>Each entity's rotation is animated on three channels — <code>rx</code>, <code>ry</code>,
+    <code>rz</code> — stored as <b>continuous Euler degrees</b>, not quaternions. That single
+    choice decides how rotation behaves everywhere in the suite:</p>
+    <table>
+      <thead><tr><th>Because rotations are continuous degrees…</th><th>You get</th></tr></thead>
+      <tbody>
+        <tr><td>Values aren't wrapped into ±180°</td><td>A key at 720° really means two full turns, not "back where you started."</td></tr>
+        <tr><td>Curves interpolate the numbers you keyed</td><td>Motion never snaps "the short way around" between poses — 350° to 10° travels forward through 360°, unless you keyed it otherwise.</td></tr>
+        <tr><td>Each axis is an ordinary curve</td><td>You shape rotation eases in <a href="/docs/graph-editor.html">the graph editor</a> exactly like position or scale.</td></tr>
+      </tbody>
+    </table>
+    <p>Quaternion systems always take the shortest arc between two orientations and can never
+    represent more than half a turn per pair of keys. Degrees just count — up, down, past 360,
+    past 3600 — which is exactly what you want for turntables, wheels, and wind-ups.</p>
+
+    <h2>Live filtering keeps values continuous</h2>
+    <p>When you rotate an entity by hand — the gizmo in Chapter Vision, or the inspector in Studio —
+    the captured angles could in principle land anywhere ("−170°" and "190°" describe the same
+    pose). Chapter Vision runs a <b>live Euler filter</b> on every capture: it unwinds the
+    incoming angles toward the value the track already evaluates to at that time, choosing the
+    representation nearest your existing curve. Keep dragging past a full turn and the value
+    keeps climbing — 350, 360, 370 — instead of flipping sign. You never have to fix a curve
+    that suddenly jumped 360°.</p>
+
+    <h2>What rotate order means</h2>
+    <p>Every rotation track carries an explicit <b>rotate order</b> — the sequence in which the
+    three axis rotations are applied, such as XYZ or ZXY. All six orders are supported. The
+    same three numbers produce different final orientations under different orders, because
+    each rotation turns the axes the next one uses.</p>
+    <p>Practically: the <b>last</b> axis in the order behaves most like a world-aligned turn,
+    and the first behaves most like a turn in the object's own tilted frame. You feel it the
+    moment more than one axis is animated at once — a tilted spinning top reads differently
+    depending on whether tilt or spin is applied first.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Change the rotate order <em>before</em> you start keying, and pick one that
+      puts your main spin axis where it turns cleanly on its own. For most single-axis work the
+      default order is fine and you never need to think about it.</p></div>
+    </div>
+
+    <h2>Multi-turn wind-ups</h2>
+    <p>Because degrees accumulate, multi-revolution moves are just arithmetic:</p>
+    <ol class="steps">
+      <li><p><b>Key the start.</b> Say <code>ry</code> = 0° at the moment the spin begins.</p></li>
+      <li><p><b>Key the total travel.</b> Three full clockwise turns later means <code>ry</code> = 1080° (or −1080° for the other direction) at the end time.</p></li>
+      <li><p><b>Shape the ease.</b> In the graph editor, ease out of the first key slowly and into the last key gently for a wind-up-and-settle; keep it linear for a constant-speed turntable.</p></li>
+    </ol>
+    <p>Want a fast spin that brakes into a precise landing? Put the landing orientation at your
+    final key and add whole turns (multiples of 360°) to taste — the pose is identical, the
+    journey isn't.</p>
+
+    <h2>Why rotations won't flip on you</h2>
+    <p>Two classic rotation headaches largely disappear here. <b>Flipping</b> — a curve that
+    suddenly leaps 360° because two captures picked different representations of the same pose —
+    is prevented at the source by the live Euler filter. And <b>gimbal trouble</b> — where axes
+    align and a clean-looking edit produces a wobble — only becomes a practical concern when
+    you animate large swings on all three axes at once through the middle axis's ±90° region.
+    In normal authoring, spins, tilts, and turns on one or two axes are completely stable.</p>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> If you do choreograph aggressive three-axis tumbling and see a
+      wobble, don't fight it with more keys — pick a rotate order that keeps your busiest axis
+      away from the middle slot, and re-key the move.</p></div>
+    </div>
+
+    <h2>Recipes for spinning things</h2>
+    <ul>
+      <li><b>Turntable product spin:</b> two keys on <code>ry</code>, 0° → 360° (or a multiple), linear interpolation, done. Loop the segment or repeat keys for longer holds.</li>
+      <li><b>Coin flip:</b> big travel on one axis (say <code>rx</code> 0° → 1440°) with a strong ease-out, plus a small settle on <code>rz</code> near the end.</li>
+      <li><b>Slow ambient rotation:</b> one long linear <code>ry</code> curve across the whole segment — remember the animation clock pauses at <a href="/docs/gates.html">gates</a>, so the drift never runs ahead of the story.</li>
+    </ul>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

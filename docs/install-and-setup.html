@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install &amp; set up — Chapter Vision Handbook</title>
+<meta name="description" content="System requirements and first-launch setup for Chapter Studio on Mac and Chapter Vision on Apple Vision Pro, plus where your projects live on disk.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="install-and-setup">
+    <h1>Install &amp; set up</h1>
+    <p class="doc-lede">
+      Get Chapter Studio running on your Mac and Chapter Vision on your Vision Pro,
+      and open your first project.
+    </p>
+
+    <h2>Requirements</h2>
+    <table>
+      <thead><tr><th>App</th><th>Runs on</th><th>Requires</th></tr></thead>
+      <tbody>
+        <tr><td><b>Chapter Studio</b></td><td>Mac</td><td>macOS 15 or later</td></tr>
+        <tr><td><b>Chapter Vision</b> (includes the player)</td><td>Apple Vision Pro</td><td>visionOS 26</td></tr>
+      </tbody>
+    </table>
+    <p>For live sync between the two, both devices must be on the <b>same Wi-Fi network</b>. Studio
+    advertises itself on the local network only — nothing leaves your LAN, and no account or cloud
+    service is involved. If you only have a headset, Chapter Vision works entirely on its own; see
+    <a href="/docs/solo-mode.html">solo mode</a>.</p>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Corporate and hotel networks often block device-to-device discovery. If
+      you plan to sync on the road, a personal hotspot or travel router that both devices join works
+      well.</p></div>
+    </div>
+
+    <h2>First launch: Studio on the Mac</h2>
+    <ol class="steps">
+      <li><p><b>Open Chapter Studio.</b> The first time you launch, macOS may ask permission
+      for Studio to find and communicate with devices on your local network. Allow it — this is what
+      lets a Vision Pro discover your Mac for live sync.</p></li>
+      <li><p><b>Meet the welcome window.</b> Studio greets you with a welcome window listing recent
+      projects and options to create a new project or open an existing one.</p></li>
+      <li><p><b>Create or open a project.</b> Choose <b>File → Open…</b> (<kbd>⌘O</kbd>) to open an
+      existing <code>.chapterscript</code> bundle, or create a new project from the welcome window.
+      Recent projects also appear under the File menu, so reopening yesterday's work is one
+      click.</p></li>
+    </ol>
+    <p>Once a project is open you'll see the three-column editor — asset sidebar on the left,
+    3D viewport in the center, inspector on the right — with the full-width timeline below. The
+    <b>Live</b> menu in the status bar shows a green dot when the built-in live server is running,
+    ready for a headset to connect.</p>
+
+    <h2>First launch: Chapter Vision on the Vision Pro</h2>
+    <ol class="steps">
+      <li><p><b>Open Chapter Vision.</b> The studio window appears in your space: a session
+      rail on the left, the timeline and transport in the center, and an inspector on the
+      right.</p></li>
+      <li><p><b>Allow local network access.</b> visionOS asks once whether Chapter Vision may look for
+      devices on your network. Allow it so the app can find Macs running Studio.</p></li>
+      <li><p><b>Choose how to work.</b> If a Mac on the same Wi-Fi is running Studio with a project
+      open, it appears in the session rail — select it to
+      <a href="/docs/connecting-vision-pro.html">connect</a>. No Mac? Open or create a
+      <code>.chapterscript</code> bundle directly from Files or iCloud Drive in
+      <a href="/docs/solo-mode.html">solo mode</a>; Chapter Vision keeps its own recents list too.</p></li>
+    </ol>
+
+    <h2>Where projects live</h2>
+    <p>A Chapter Vision project is a <code>.chapterscript</code> bundle. Despite the fancy
+    extension, it is just a folder:</p>
+    <pre><code>MyShow.chapterscript/
+├── chapter.json     ← the document: segments, steps, actions, animation
+└── assets/          ← your media, copied in on import</code></pre>
+    <p>Keep bundles anywhere you like — a Projects folder, an external drive, iCloud Drive. Because
+    a bundle is self-contained (all imported media is copied into <code>assets/</code>), moving or
+    copying the folder moves the whole experience. Renaming the folder renames the project.</p>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> Don't hand-edit or delete files inside <code>assets/</code> while a
+      project is open. Studio tracks every asset with a checksum on save, and files removed behind
+      its back will show up as missing media.</p></div>
+    </div>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Because a bundle is an ordinary folder of plain files, it plays nicely
+      with backup tools and version control. Duplicate the bundle before a big restructuring session
+      and you have an instant safety copy.</p></div>
+    </div>
+
+    <h2>Next steps</h2>
+    <p>With both apps installed, work through <a href="/docs/your-first-chapter.html">Your first
+    chapter</a> — it walks you from an empty project to a live immersive scene. If you're pairing a
+    headset now, jump straight to <a href="/docs/connecting-vision-pro.html">Connecting a Vision
+    Pro</a>.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

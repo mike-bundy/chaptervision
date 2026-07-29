@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particles overview — Chapter Vision Handbook</title>
+<meta name="description" content="Particle effects in Chapter Vision: document presets, burst versus looping emitters, the live preset editor, and secondary spawned emitters.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="particles-overview">
+    <h1>Particles overview</h1>
+    <p class="doc-lede">
+      Snow, embers, sparkles, fireworks — particle effects in Chapter Vision are presets that
+      live inside your chapter and play back identically on every device.
+    </p>
+
+    <h2>Presets travel with the chapter</h2>
+    <p>A particle effect is a <b>preset</b>: a complete recipe covering emission, physics,
+    color, look, force fields, and optional secondary spawning — every knob described in the
+    <a href="/docs/particle-reference.html">particle parameter reference</a>. Presets are part
+    of the chapter document itself, so they save with the bundle, sync live between Studio and
+    Chapter Vision, and play back in the player without any separate export.</p>
+    <p>You don't have to start from a blank slate. A <b>built-in catalog</b> of presets ships
+    with both apps — pick one that's close, then tweak it into your own in the preset editor.</p>
+
+    <h2>Attached or standalone</h2>
+    <p>An emitter can live in two ways:</p>
+    <ul>
+      <li><b>Attached to an entity.</b> The emitter rides its entity — move the entity, and the effect moves with it. Perfect for a smoldering torch, a sparkling crown, engine exhaust.</li>
+      <li><b>Standalone.</b> Add a free-floating emitter from the <b>add menu</b>, position it like any other entity, and it becomes a scene element of its own — a snowfall region, a wall of rising embers.</li>
+    </ul>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> On Vision Pro, a standalone emitter has no mesh to grab — so the editor
+      gives it a small <b>pick-proxy sphere</b>. Look at the little sphere to select the emitter,
+      then move it with the gizmo like anything else. The proxy is editor-only; your audience
+      never sees it.</p></div>
+    </div>
+
+    <h2>Burst vs. loop</h2>
+    <p>Every preset is either looping or one-shot, and the difference decides how it behaves
+    in your segment:</p>
+    <table>
+      <thead><tr><th>Mode</th><th>Behavior</th><th>Use it for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Loop</b></td><td>Emits continuously for as long as its entity is visible.</td><td>Ambience — falling snow, drifting embers, dust motes, steam.</td></tr>
+        <tr><td><b>Burst</b></td><td>Fires a single burst of particles at the moment its entity is revealed, then goes quiet.</td><td>Punctuation — reveals, impacts, confetti pops, fireworks.</td></tr>
+      </tbody>
+    </table>
+    <p>Because a burst triggers on reveal, timing one is just timing a reveal: place the reveal
+    where you want the pop, and the particles arrive on cue. You can also fire particles as an
+    explicit timeline event with the <b>Add Particle</b> action — see the
+    <a href="/docs/actions-reference.html">actions reference</a> — which is handy when you want
+    several bursts from the same emitter across a segment.</p>
+
+    <h2>The preset editor, live</h2>
+    <p>Open a preset and every parameter sits alongside a <b>live preview</b>. The preview
+    updates <b>in place</b>: existing particles keep flying while new ones adopt your changes,
+    so the simulation never restarts under you. Drag the birth-rate slider and watch the
+    density shift mid-fall; nudge a color and see new particles blend in among the old. That
+    continuity matters most when tuning slow, ambient effects — a snowfall that reset on every
+    tweak would be impossible to judge.</p>
+    <p>One-shot effects get their own control: the <b>Burst Preview</b> button replays the
+    burst from the top, so you can watch your firework explode as many times as it takes to
+    get the shape right.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Tune ambience with the live preview and let it run — judge loops over
+      at least one full particle lifetime. Tune bursts with repeated Burst Previews, changing one
+      parameter between presses.</p></div>
+    </div>
+
+    <h2>Secondary spawned emitters</h2>
+    <p>A preset can carry a second, child emitter that spawns from the particles of the first —
+    on each particle's birth, death, or continuously along its flight. This is how layered
+    effects are built: a firework whose shell streaks upward and then <em>crackles</em>, a
+    comet that sheds glitter along its path, raindrops that splash where they die. The child
+    emitter has its own full parameter set, and can inherit its parent's color and a share of
+    its velocity so the layers read as one effect. Details live in the
+    <a href="/docs/particle-reference.html">parameter reference</a>.</p>
+
+    <h2>Where to go next</h2>
+    <ul>
+      <li><a href="/docs/particle-reference.html">Particle parameter reference</a> — every parameter, grouped and explained, with recipes.</li>
+      <li><a href="/docs/actions-reference.html">Actions reference</a> — the Add Particle action and its timeline behavior.</li>
+      <li><a href="/docs/animation-overview.html">Animation overview</a> — animate the emitter's entity and the whole effect travels with it.</li>
+    </ul>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The graph editor — Chapter Vision Handbook</title>
+<meta name="description" content="Chapter Vision's shared curve editor: channel chips, key drags with axis lock and snapping, multi-select, tangent handles, and per-key interpolation.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="graph-editor">
+    <h1>The graph editor</h1>
+    <p class="doc-lede">
+      One curve editor, everywhere you animate: shape a channel's keys and tangents in
+      Studio's inspector or Chapter Vision's graph dock, and the result is identical.
+    </p>
+
+    <h2>Where it lives</h2>
+    <p>The graph editor is the same tool in both apps. In Chapter Studio it sits in the
+    <b>Animation</b> card of the inspector when an animated entity is selected. In Chapter
+    Vision it's the <b>graph dock</b> beneath the timeline. Either way it shows one
+    entity's animation track plotted in segment time — seconds along the bottom, channel
+    values up the side — with the playhead drawn as a vertical line. For how tracks and
+    channels work, start with the <a href="/docs/animation-overview.html">animation overview</a>.</p>
+
+    <h2>Channel chips and the ruler</h2>
+    <p>Across the top, one <b>chip per animated channel</b>, tinted to match its curve. Chips
+    are an additive filter: tap chips to light just the channels you want to see; with no chip
+    lit, every animated channel is shown. Isolating one or two channels keeps a busy track
+    readable while you work.</p>
+    <p>The <b>ruler band</b> along the top edge always scrubs the playhead — zoomed in, zoomed
+    out, mid-edit, it doesn't matter. Drag through it and the viewport (or the room, in
+    Chapter Vision) follows.</p>
+
+    <h2>Dragging keys</h2>
+    <p>Grab any key and move it in time (horizontal) and value (vertical). Three behaviors
+    make this precise rather than twitchy:</p>
+    <ol class="steps">
+      <li><p><b>A small dead zone.</b> Your drag has to travel a few points before anything moves, so a plain tap selects a key without nudging its value.</p></li>
+      <li><p><b>Axis lock.</b> If your drag starts clearly horizontal, the key moves only in time; clearly vertical, only in value. Start diagonally and the key moves freely in both. Great for retiming a key without disturbing a carefully set value — or the reverse.</p></li>
+      <li><p><b>Frame-grid snapping.</b> With snapping on, key times round to the frame grid as you drag, so beats land exactly where you aim.</p></li>
+    </ol>
+
+    <h2>Multi-select with the ⊕ latch</h2>
+    <p>To move several keys together, tap the <b>⊕ latch</b> to enter multi-select, then tap
+    keys to add them to the selection — no modifier keys needed, which matters when your
+    pointer is your gaze. Drag any selected key and the whole group moves as one; group moves
+    are processed from the leading edge, so keys never trip over each other mid-drag. The
+    <b>⌫</b> chip deletes the current selection. Tap empty space (with the latch off) to
+    clear the selection.</p>
+
+    <h2>Tangents and interpolation</h2>
+    <p>Select a single key and its <b>tangent handles</b> appear — one shaping the curve into
+    the key, one shaping it out. Drag a handle to sculpt the ease:</p>
+    <table>
+      <thead><tr><th>Tangent mode</th><th>Behavior</th></tr></thead>
+      <tbody>
+        <tr><td><b>Unified</b></td><td>The two handles mirror each other — adjust one and the other follows, keeping the curve smooth through the key.</td></tr>
+        <tr><td><b>Broken</b></td><td>Each handle moves independently, so the curve can change direction sharply at the key — perfect for impacts and bounces.</td></tr>
+      </tbody>
+    </table>
+    <p>Each key also has its own <b>interpolation</b> setting, chosen from the picker:</p>
+    <table>
+      <thead><tr><th>Interpolation</th><th>What it does</th><th>Reach for it when…</th></tr></thead>
+      <tbody>
+        <tr><td><b>Bézier</b></td><td>Smooth curve shaped by the tangent handles.</td><td>Organic motion — almost everything that moves like a physical thing.</td></tr>
+        <tr><td><b>Linear</b></td><td>Straight line to the next key, constant speed.</td><td>Mechanical motion — conveyor belts, scanners, steady drifts.</td></tr>
+        <tr><td><b>Stepped</b></td><td>Holds the value, then jumps at the next key.</td><td>Hard cuts — teleports, pose-to-pose holds, blinking states.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Until you shape a handle by hand, keys carry <b>auto tangents</b> that
+      ease naturally — and flatten at local peaks and valleys, so a rise-and-fall never overshoots
+      its apex. Once you touch a handle, the editor keeps its hands off that key.</p></div>
+    </div>
+
+    <h2>Navigating the view</h2>
+    <p><b>Pinch</b> to zoom (on Mac, use scroll-wheel magnify); when zoomed in, drag empty
+    space to <b>pan</b>. The <b>frame-all</b> button refits the view around everything in the
+    track. To add a key mid-curve, <b>double-tap</b> an empty spot (<b>double-click</b> on
+    Mac): a key is inserted on the nearest visible curve at that time, preserving the curve's
+    existing shape so you can start adjusting from where the motion already was.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> A fast polish loop: isolate one channel with its chip, frame-all,
+      scrub the ruler to feel the timing, then shape tangents at the keys that read wrong.
+      Rotation channels have their own habits — see
+      <a href="/docs/rotation-and-euler.html">Rotation &amp; Euler angles</a>.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

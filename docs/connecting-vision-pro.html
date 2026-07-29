@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting a Vision Pro — Chapter Vision Handbook</title>
+<meta name="description" content="Pair Chapter Vision with Chapter Studio over your local network for sub-second live sync in both directions.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="connecting-vision-pro">
+    <h1>Connecting a Vision Pro</h1>
+    <p class="doc-lede">
+      Pair a headset with your Mac in three taps. Once connected, every save crosses the room in
+      under a second — in both directions.
+    </p>
+
+    <h2>Before you pair</h2>
+    <p>Pairing uses Bonjour, Apple's zero-configuration discovery, so there is nothing to type — no
+    IP addresses, no pairing codes. You just need:</p>
+    <ul>
+      <li>A Mac running <b>Chapter Studio</b> with a project open.</li>
+      <li>A Vision Pro running <b>Chapter Vision</b>.</li>
+      <li>Both devices on the <b>same Wi-Fi network</b>, with local network permission granted to
+      each app.</li>
+    </ul>
+
+    <h2>Pair the headset</h2>
+    <ol class="steps">
+      <li><p><b>Check the Live menu on the Mac.</b> With a project open, Studio's status bar shows
+      a <b>Live</b> menu with a green dot when the built-in server is running. Click it to see the
+      service name — <b>Chapter Vision on <i>&lt;your Mac's name&gt;</i></b> — along with the port
+      and the current subscriber count. Green dot means you're discoverable.</p></li>
+      <li><p><b>Open the session rail in Chapter Vision.</b> On the headset, Chapter Vision's left-hand session
+      rail lists every Mac on the network that's currently serving a project. Your Mac appears by
+      its service name.</p></li>
+      <li><p><b>Select the Mac and connect.</b> Tap it, and the session begins.</p></li>
+    </ol>
+
+    <h2>What happens when you connect</h2>
+    <p>The first moments of a session do three things:</p>
+    <ul>
+      <li><b>Document fetch.</b> Chapter Vision downloads the current chapter document — the same
+      <code>chapter.json</code> Studio has open.</li>
+      <li><b>Asset prefetch.</b> The headset pulls the media the chapter references, using the
+      chapter's checksummed asset manifest so it never re-downloads files it already has, and never
+      keeps a stale copy of one that changed. Large videos stream on demand from the Mac.</li>
+      <li><b>Live subscription.</b> Chapter Vision opens a persistent update channel to Studio. From here
+      on, every <kbd>⌘S</kbd> on the Mac pushes the new document to the headset in under a second,
+      and playback re-applies in place — you keep standing exactly where you were in the scene while
+      the content updates around you.</li>
+    </ul>
+
+    <h2>Edits flow both ways</h2>
+    <p>A live session is not a one-way broadcast. Changes you make in Chapter Vision — nudging an entity,
+    retiming a clip, setting a keyframe, importing a photo — are sent back to the Mac and applied to
+    the Studio document immediately, then rebroadcast to any other connected headset. Each batch of
+    remote edits lands as a <b>single undo entry</b> in Studio, so if a change from the headset
+    isn't right, one <kbd>⌘Z</kbd> at the Mac takes back the whole batch cleanly.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> This makes a great two-person rhythm: one author at the Mac timing beats
+      on the timeline, one in the headset placing and scaling set pieces at true scale. Both see the
+      other's work land in real time.</p></div>
+    </div>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Media imported on the headset from Photos or Files is usable in the
+      scene instantly and uploads to the Mac's project bundle in the background — your flow never
+      waits on the transfer.</p></div>
+    </div>
+
+    <h2>If the Mac doesn't appear</h2>
+    <p>Discovery problems are almost always network problems. Run down this list:</p>
+    <ul>
+      <li><b>Same network, really?</b> Check that both devices are on the same Wi-Fi name — a Mac on
+      Ethernet and a headset on a guest network won't see each other on many routers.</li>
+      <li><b>Is the green dot on?</b> Studio's Live menu must show a running server; it starts when
+      a project is open.</li>
+      <li><b>Local network permission.</b> On the Mac, check System Settings → Privacy &amp;
+      Security → Local Network; on the headset, Settings → Privacy &amp; Security → Local Network.
+      Both apps need it granted.</li>
+      <li><b>Network isolation.</b> Corporate, campus, and hotel Wi-Fi often block device-to-device
+      discovery entirely. A personal hotspot or a small travel router that both devices join is the
+      reliable workaround.</li>
+      <li><b>Nudge it.</b> Toggling Wi-Fi on the headset, or closing and reopening the project on
+      the Mac, restarts discovery on both ends.</li>
+    </ul>
+    <p>For deeper connection and sync diagnostics, see
+    <a href="/docs/troubleshooting.html">Troubleshooting</a>. For a full explanation of what
+    travels over the wire and when, see <a href="/docs/live-sync.html">Live sync</a>.</p>
+
+    <h2>Working without a Mac</h2>
+    <p>A connection is optional. Chapter Vision can open, edit, and save <code>.chapterscript</code>
+    bundles entirely on the headset — see <a href="/docs/solo-mode.html">solo mode</a>. You can
+    start solo on a flight and reconnect to your Mac later; it's the same document format
+    everywhere.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation overview — Chapter Vision Handbook</title>
+<meta name="description" content="How keyframe animation works in Chapter Vision: segment-level tracks, ten channels per entity, one evaluation engine across Studio, Chapter Vision, and the player.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="animation-overview">
+    <h1>Animation overview</h1>
+    <p class="doc-lede">
+      Keyframe animation in Chapter Vision lives on the segment, not inside steps —
+      so your curves stay put no matter how you rearrange the events around them.
+    </p>
+
+    <h2>Animation is a segment-level layer</h2>
+    <p>A chapter is built from segments, and each segment carries two independent layers.
+    Steps and their actions are the <b>event</b> layer — reveals, hides, video, audio, gates.
+    Keyframe animation is a separate <b>motion</b> layer that belongs to the segment itself:
+    every animated entity gets its own animation track, and keys sit at absolute segment time,
+    measured in seconds from the start of the segment.</p>
+    <p>Because keys are timed against the segment rather than any step, curves cross step
+    boundaries freely. Retiming a step, splitting one, or reordering actions never bends or
+    breaks a curve — a key at 4.5 seconds stays at 4.5 seconds. Motion and events only meet
+    where you want them to.</p>
+
+    <h2>Ten channels per entity</h2>
+    <p>An entity's track holds up to ten scalar channels:</p>
+    <table>
+      <thead><tr><th>Group</th><th>Channels</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Position</td><td><code>tx</code> <code>ty</code> <code>tz</code></td><td>Meters, along the entity's world axes.</td></tr>
+        <tr><td>Rotation</td><td><code>rx</code> <code>ry</code> <code>rz</code></td><td>Continuous Euler degrees — see <a href="/docs/rotation-and-euler.html">Rotation &amp; Euler angles</a>.</td></tr>
+        <tr><td>Scale</td><td><code>sx</code> <code>sy</code> <code>sz</code></td><td>Multipliers; 1.0 is authored size.</td></tr>
+        <tr><td>Opacity</td><td><code>opacity</code></td><td>0–1; only takes over visibility once you key it.</td></tr>
+      </tbody>
+    </table>
+    <p>Each channel is its own curve with its own keys, so you can key a rise on <code>ty</code>
+    without touching rotation, or fade with <code>opacity</code> while position coasts.
+    Entities with no track simply sit at their rest pose — the transform you gave them in the
+    inspector — and any channel you never key falls back to that rest value.</p>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> The first key you set on a hidden, never-shown entity automatically adds a
+      reveal for it — keyframing something implies you want to see it, so you never animate a ghost.</p></div>
+    </div>
+
+    <h2>One engine everywhere</h2>
+    <p>A single evaluation engine samples your curves in every context: the viewport in
+    Chapter Studio, the in-room preview in Chapter Vision, and the player on
+    Apple Vision Pro. There is no "editor approximation" — scrubbing the timeline, previewing
+    in the room, and final playback all sample identical curves and land on identical poses.
+    What you scrub is what plays.</p>
+    <p>The engine holds flat outside the keyed range, and its automatic ease tangents flatten
+    at peaks and valleys so a bounce apex never overshoots. Even entities that are currently
+    hidden are still posed along their curves, so a mid-curve reveal finds them exactly where
+    they should be.</p>
+
+    <h2>The clock is the authored clock</h2>
+    <p>Animation runs on the segment's authored time, not the wall clock. When playback stops
+    at a <a href="/docs/gates.html">gate</a> or a pause, the authored clock stops too — every
+    curve holds its pose at the boundary instead of running ahead, and when the audience
+    proceeds, motion resumes from exactly that frame. A ninety-second segment behaves the same
+    whether the audience lingers at a gate for two seconds or two minutes.</p>
+
+    <h2>Keyframe lanes on the timeline</h2>
+    <p>On the timeline, each animated asset's track group shows a <b>keyframe lane</b>: a slim
+    row of diamonds, one per keyed pose, at their absolute times. The lane gives you dope-sheet
+    control without leaving the timeline:</p>
+    <ol class="steps">
+      <li><p><b>Drag a diamond</b> to retime that pose — every channel keyed at that moment slides together.</p></li>
+      <li><p><b>Double-click a diamond</b> in Studio to delete the pose at that time.</p></li>
+    </ol>
+    <p>Keyframe lanes appear in both Studio's timeline and Chapter Vision's floating timeline, and
+    they always agree.</p>
+
+    <h2>Where you edit animation</h2>
+    <p>In Studio, select an entity within a segment and open the <b>Animation</b> card in the
+    inspector — it hosts <a href="/docs/graph-editor.html">the graph editor</a> for shaping
+    curves, alongside Set Key and auto-key controls (see
+    <a href="/docs/keyframes-and-autokey.html">Keyframes &amp; auto-key</a>). In Chapter Vision, the
+    same graph editor lives in the <b>graph dock</b> beneath the timeline, and you can pose
+    entities directly with your hands using
+    <a href="/docs/spatial-gizmo.html">the gizmo</a>. On Vision Pro, animated entities also
+    draw <b>motion trails</b> in the room, so you can see a path through space before you play a frame.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> The older parametric motions — orbit, spiral, oscillate, and friends —
+      still exist as step actions. They're procedural effects, not keyframes: reach for them when
+      you want endless looping motion, and for everything hand-crafted, use tracks.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentation modes &amp; backdrops — Chapter Vision Handbook</title>
+<meta name="description" content="Choose how each segment meets the viewer — Immersive, Mixed, or Windowed — and wrap immersive scenes in 360° video or USDZ backdrops.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="presentation-modes">
+    <h1>Presentation modes &amp; backdrops</h1>
+    <p class="doc-lede">
+      Every segment chooses how it meets the viewer: fully immersive, mixed into the real room, or
+      in a plain window — and immersive scenes can wrap themselves in a backdrop.
+    </p>
+
+    <h2>The three modes</h2>
+    <p>Set a segment's presentation mode with the three-way picker in the segment inspector:</p>
+    <table>
+      <thead><tr><th>Mode</th><th>What the viewer experiences</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Immersive</b></td><td>The full space opens and passthrough is hidden — your
+        content is the entire world.</td><td>Fully authored environments: 360° video worlds, staged
+        theater, transportive finales</td></tr>
+        <tr><td><b>Mixed</b></td><td>Your content places into the viewer's real room; passthrough
+        stays visible.</td><td>Guided tours, exhibits, anything anchored to a real space</td></tr>
+        <tr><td><b>Windowed</b></td><td>The experience appears in a plain window — no immersive
+        space at all.</td><td>Intros, menus, epilogues, calm framing beats</td></tr>
+      </tbody>
+    </table>
+    <p>Because the mode is per-<a href="/docs/chapters-and-segments.html">segment</a>, a chapter can
+    arc from a window, into the room, into another world, and back — the player handles every
+    transition as playback moves from segment to segment.</p>
+
+    <h2>Switching rules</h2>
+    <p>Some mode switches adjust your backdrop, because not every backdrop makes sense in every
+    mode:</p>
+    <ul>
+      <li><b>→ Windowed</b> clears the segment's backdrop. There's no immersive space around a
+      window, so there's nothing for a backdrop to wrap.</li>
+      <li><b>→ Mixed</b> drops a <em>video</em> backdrop but keeps a USDZ one. A video skybox is a
+      sphere around the viewer — in mixed mode it would obscure the passthrough view of the real
+      room, defeating the point. USDZ scenery coexists with passthrough, so it stays.</li>
+      <li><b>→ Immersive</b> leaves the backdrop untouched.</li>
+    </ul>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> Switching to Windowed clears the backdrop <em>binding</em>. Your
+      backdrop asset is safe in the sidebar, but if you switch back to Immersive you'll need to
+      re-pick it. Undo (<kbd>⌘Z</kbd>) restores it if you switched by accident.</p></div>
+    </div>
+
+    <h2>The backdrop picker</h2>
+    <p>When a segment is Immersive or Mixed, the inspector shows a backdrop picker below the mode
+    control. Backdrops come from the sidebar's Backdrops section — mark a video or USDZ with
+    <b>Mark as Backdrop</b> first (see <a href="/docs/assets-and-folders.html">Assets &amp;
+    folders</a>). The choices:</p>
+    <ul>
+      <li><b>None</b> — no backdrop; the segment plays against the empty space (Immersive) or the
+      real room (Mixed).</li>
+      <li><b>Video skybox</b> — an interior-facing sphere that plays a video around the viewer, with
+      three sub-controls:
+        <ul>
+          <li><b>Layout</b> — how the source frame carries stereo: <b>mono</b> (flat), <b>side by
+          side</b> or <b>over-under</b> (packed stereo pairs), or <b>MV-HEVC</b> (Apple's
+          multiview format for true spatial video).</li>
+          <li><b>Field</b> — <b>360°</b> fully surrounds the viewer; <b>180°</b> fills the front
+          hemisphere, right for VR180 footage.</li>
+          <li><b>Loop</b> — repeat the video for as long as the segment runs.</li>
+        </ul>
+      </li>
+      <li><b>USDZ scene</b> — a 3D environment loaded around the viewer: a room, a landscape, a
+      stage set.</li>
+    </ul>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> In Mixed mode the picker offers only None and USDZ — the video skybox
+      option is hidden for the same reason a switch to Mixed drops it: a skybox would blot out
+      passthrough.</p></div>
+    </div>
+
+    <h2>Previewing backdrops in Studio</h2>
+    <p>You don't need a headset to check a backdrop. Click the <b>globe</b> toggle in the top-right
+    corner of Studio's viewport and the selected segment's backdrop renders right in the editor —
+    a playing interior video sphere or the loaded USDZ scene, seen from the viewer's position. Orbit
+    the viewport camera to inspect seams, horizon height, and framing. The toggle remembers its
+    state between launches, so leave it on if you're deep in backdrop work.</p>
+
+    <h2>Choosing modes for a story</h2>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Treat full immersion as a spend, not a default. A chapter that begins
+      Windowed, moves to Mixed as the viewer engages, and goes Immersive only at its emotional peak
+      lands far harder than one that opens at maximum. Contrast is the instrument.</p></div>
+    </div>
+    <p>A few practical pairings: 360° looping video plus spatial ambience makes a strong ambient
+    installation; Mixed mode with USDZ props suits guided tours where the real room matters;
+    Immersive with an MV-HEVC skybox is the showcase setting for spatial-video storytelling. Gate
+    the transition into your most immersive segment on a <a href="/docs/gates.html">tap</a> so the
+    viewer chooses the moment they cross over.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

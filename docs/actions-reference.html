@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All actions — Chapter Vision Handbook</title>
+<meta name="description" content="Complete reference for the 18 library actions in Chapter Vision — parameters, timeline behavior, and tips for every Scene, Add, Video, Audio, and Effects action.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="actions-reference">
+    <h1>All actions</h1>
+    <p class="doc-lede">
+      Every chip in the action library, in one place — what each action does, the parameters
+      it exposes, and how it appears once it lands on the timeline.
+    </p>
+
+    <h2>How to read this reference</h2>
+    <p>The library holds 18 actions in five categories: <b>Scene</b>, <b>Add</b>,
+    <b>Video</b>, <b>Audio</b>, and <b>Effects</b>. An action's category decides which
+    timeline section accepts it (Scene, Add, and Video chips all land on Scene tracks), and
+    its role decides what it draws there:</p>
+    <ul>
+      <li><b>Opens a clip</b> — starts a span (an asset appearing, media starting).</li>
+      <li><b>Closes a clip</b> — ends the matching span.</li>
+      <li><b>Modifier bar</b> — a duration bar on an attached lane nested under the target
+      asset's track.</li>
+      <li><b>Instant</b> — a one-shot event drawn as a short marker.</li>
+    </ul>
+    <p>Durations are in seconds, distances in meters, volumes and opacities from 0 to 1.
+    Animated actions (Move, Scale, Rotate, fades) also take an <b>easing</b> choice that
+    shapes the motion — ease-in-out by default. For placing actions, see
+    <a href="/docs/adding-actions.html">adding actions</a>; for retiming them, see
+    <a href="/docs/editing-clips.html">editing clips</a>.</p>
+
+    <h2>Scene</h2>
+    <p>Scene actions control the assets on stage: visibility, position, size, and
+    orientation. All of them target one asset — the track you drop them on.</p>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th><th>Key parameters</th><th>Timeline</th></tr></thead>
+      <tbody>
+        <tr><td><b>Show</b></td>
+            <td>Makes the asset appear instantly, with no transition.</td>
+            <td>Target asset</td>
+            <td>Opens a visual clip</td></tr>
+        <tr><td><b>Hide</b></td>
+            <td>Removes the asset from the stage instantly.</td>
+            <td>Target asset</td>
+            <td>Closes the visual clip</td></tr>
+        <tr><td><b>Reveal</b></td>
+            <td>Brings the asset on stage with placement and a fade — the workhorse
+            entrance.</td>
+            <td>Position (relative to the viewer by default) · scale · fade-in duration ·
+            manipulable toggle (lets viewers grab, move, rotate, and scale it by hand)</td>
+            <td>Opens a visual clip</td></tr>
+        <tr><td><b>Fade In</b></td>
+            <td>Fades the asset in from invisible — a Reveal with the emphasis on the fade
+            (0.5&nbsp;s by default).</td>
+            <td>Same as Reveal</td>
+            <td>Opens a visual clip</td></tr>
+        <tr><td><b>Fade Out</b></td>
+            <td>Fades the asset's opacity toward a target — all the way to zero by
+            default.</td>
+            <td>Opacity · duration · easing</td>
+            <td>Fading to zero closes the clip; a partial fade is a modifier bar</td></tr>
+        <tr><td><b>Move</b></td>
+            <td>Animates the asset to a new position, optionally rotating and scaling along
+            the way.</td>
+            <td>Target mode (offset / absolute / relative to the viewer) · rotation (none /
+            to an orientation / by an amount, in degrees of pitch, yaw, roll) · optional
+            scale multiplier · duration · easing</td>
+            <td>Modifier bar</td></tr>
+        <tr><td><b>Scale</b></td>
+            <td>Animates the asset's size by a multiplier (1.5× by default).</td>
+            <td>Multiplier · duration · easing</td>
+            <td>Modifier bar</td></tr>
+        <tr><td><b>Rotate</b></td>
+            <td>Animates orientation only — a turn in place. Defaults to a 90° turn so you
+            see motion immediately.</td>
+            <td>Rotation mode and angles (degrees) · duration · easing</td>
+            <td>Modifier bar</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Prefer <b>Reveal</b> over <b>Show</b> for entrances — even a short
+      fade reads far more naturally in a headset than an instant pop. Save Show for
+      deliberately abrupt beats.</p></div>
+    </div>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> For continuous, multi-key motion — arcs, drifts, choreography —
+      use segment animation tracks instead of chains of Move actions. See the
+      <a href="/docs/animation-overview.html">animation overview</a>.</p></div>
+    </div>
+
+    <h2>Add</h2>
+    <p>Add actions bring something <em>new</em> into the scene. Unlike every other chip, they
+    don't create an action directly — dropping one opens a picker, and the item you choose is
+    then revealed at the drop time, creating its track group in the same gesture. They land
+    on the Scene section.</p>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th><th>On drop</th></tr></thead>
+      <tbody>
+        <tr><td><b>Add Asset</b></td>
+            <td>Brings a 3D asset from your library on stage.</td>
+            <td>Opens an asset picker, then reveals the chosen asset</td></tr>
+        <tr><td><b>Add Image</b></td>
+            <td>Places an image in the scene.</td>
+            <td>Opens an image picker, then reveals the chosen image</td></tr>
+        <tr><td><b>Add Particle</b></td>
+            <td>Places a particle emitter built in the particle editor.</td>
+            <td>Opens a particle picker, then reveals the chosen emitter</td></tr>
+      </tbody>
+    </table>
+    <p>Once placed, the new asset behaves like any other Scene track — Hide it, Move it, fade
+    it, animate it. Particle presets themselves are authored in the particle editor; see the
+    <a href="/docs/particles-overview.html">particles overview</a>.</p>
+
+    <h2>Video</h2>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th><th>Key parameters</th><th>Timeline</th></tr></thead>
+      <tbody>
+        <tr><td><b>Play Video</b></td>
+            <td>Starts a video playing on a channel, presented on a panel in the scene
+            (a 16:9 panel about 1.6&nbsp;m wide by default).</td>
+            <td>File · channel · volume · loop · presentation (panel size / placement) ·
+            layout (flat, side-by-side, or over-under stereo)</td>
+            <td>Opens a video clip — and surfaces the panel on the Scene section
+            automatically</td></tr>
+        <tr><td><b>Stop Video</b></td>
+            <td>Stops the channel's video and takes the panel down.</td>
+            <td>Channel</td>
+            <td>Closes the video clip</td></tr>
+      </tbody>
+    </table>
+    <p>Video channels are named automatically from the file, so a Play and Stop on the same
+    file always pair up. Video clips also support source-window trims on their edges — see
+    <a href="/docs/video-trimming.html">video trimming &amp; cropping</a>.</p>
+
+    <h2>Audio</h2>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th><th>Key parameters</th><th>Timeline</th></tr></thead>
+      <tbody>
+        <tr><td><b>Play Audio</b></td>
+            <td>Starts an audio file playing on a named channel.</td>
+            <td>File · channel · volume · loop · scope (segment-bound or ambient)</td>
+            <td>Opens an audio clip on the channel's track</td></tr>
+        <tr><td><b>Stop Audio</b></td>
+            <td>Stops whatever the channel is playing.</td>
+            <td>Channel</td>
+            <td>Closes the audio clip</td></tr>
+        <tr><td><b>Fade Audio</b></td>
+            <td>Ramps the channel's volume to a target level — fade a bed under narration, or
+            fade to zero for a soft ending.</td>
+            <td>Channel · target volume · duration</td>
+            <td>Marker within the clip's span</td></tr>
+      </tbody>
+    </table>
+    <p>Channels are the whole story here — naming, renaming, and auto-creation are covered in
+    <a href="/docs/audio-channels.html">audio channels</a>.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> A Fade Audio to zero followed by a Stop Audio is the polished way to
+      end a sound — the fade does the musical work, the stop frees the channel.</p></div>
+    </div>
+
+    <h2>Effects</h2>
+    <p>Effects are self-contained visual events — they don't target an asset, so they carry
+    their own configuration and drop directly onto the Effects section with no picker.</p>
+    <table>
+      <thead><tr><th>Action</th><th>What it does</th><th>Key parameters</th><th>Timeline</th></tr></thead>
+      <tbody>
+        <tr><td><b>Pulse Ring</b></td>
+            <td>Shows glowing rings that pulse around the viewer — great for focus moments
+            and ambient atmosphere.</td>
+            <td>Radius · height · ring count · pulse speed (Hz) · base and peak intensity ·
+            disc radius · color</td>
+            <td>Instant marker on the Effects section</td></tr>
+        <tr><td><b>Spark Burst</b></td>
+            <td>Fires a burst of spark particles from a point in space — a celebration pop or
+            a magical accent.</td>
+            <td>Position · burst radius · birth rate · particle lifespan · particle size ·
+            duration · tint</td>
+            <td>Instant marker on the Effects section</td></tr>
+      </tbody>
+    </table>
+    <p>For richer, fully custom particle systems, build a preset in the particle editor and
+    bring it on stage with <b>Add Particle</b>.</p>
+
+    <h2>Beyond the typed forms</h2>
+    <p>Every action in this catalog has a typed parameter form in the inspector — sliders,
+    pickers, and fields for each value, shared between Studio and Chapter Vision. Studio also offers
+    a raw-JSON view on every action: a curly-braces toggle that shows the action exactly as
+    it's stored in <code>chapter.json</code>, with an explicit Apply so a half-typed edit
+    never breaks anything. It's an escape hatch for fine control and for the long tail of
+    advanced actions that don't have a dedicated form — see the
+    <a href="/docs/chapterscript-format.html">ChapterScript format</a> if you want to read
+    what's under the hood.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

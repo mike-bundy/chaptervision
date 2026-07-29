@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troubleshooting &amp; FAQ — Chapter Vision Handbook</title>
+<meta name="description" content="Fixes for common Chapter Vision issues — connection, playback, editing, media sync, and undo — plus answers to the questions authors ask most.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="troubleshooting">
+    <h1>Troubleshooting &amp; FAQ</h1>
+    <p class="doc-lede">
+      The problems authors actually hit, what's really going on, and how to fix each one — followed
+      by quick answers to the most common questions.
+    </p>
+
+    <h2>Connection</h2>
+    <p><b>My Mac doesn't appear in the headset's session list.</b> Work down this list:</p>
+    <ol class="steps">
+      <li><p><b>Same network, same subnet.</b> Both devices must be on the same Wi-Fi network —
+      and the same subnet of it. Guest networks, VPNs, and networks with "client isolation" often
+      block device-to-device discovery even when both devices show full Wi-Fi bars.</p></li>
+      <li><p><b>Check the server is running.</b> In Studio on the Mac, look for the green-dot
+      <b>Live</b> menu in the status bar. Click it to confirm the service name and port. No green
+      dot means the server isn't up — a project needs to be open.</p></li>
+      <li><p><b>Check the Mac's firewall.</b> In System Settings → Network → Firewall, allow the
+      app to accept incoming connections. A firewall that silently drops incoming traffic is the
+      most common cause of a Mac that advertises itself but can't be reached.</p></li>
+      <li><p><b>Verify with a browser.</b> From any device on the network, open
+      <code>http://&lt;mac-name&gt;.local:&lt;port&gt;/</code> (the Live menu shows the port). If
+      the status page loads, the server is fine and the issue is discovery; if it doesn't, it's
+      network or firewall.</p></li>
+    </ol>
+    <p><b>The session dropped.</b> Reconnecting is stateless — just tap the Mac in the session
+    list again. The headset refetches the document and picks up where the Mac is. Any edits or
+    media imports made while disconnected are re-asserted automatically on reconnect.</p>
+
+    <h2>Playback</h2>
+    <p><b>A video's first play seems to hang for a beat, or I expected it earlier.</b> That's
+    deliberate. The player holds a cold video invisible until its audio and picture are both fully
+    ready — the file is cued to its in-point, buffered, and prerolled — and only then reveals and
+    starts it, so sound and image begin together. The alternative is the classic black-panel-with-
+    audio glitch. Once a video has played warm, subsequent plays start immediately.</p>
+    <p><b>A trimmed or looping video plays the wrong part.</b> Loops and playback honor the clip's
+    source window: playback starts at the in-point, ends (or loops back to the in-point) at the
+    out-point. If a video plays footage you thought you'd trimmed away, check the clip's
+    <b>Trim</b> values — a Retime drag moves when the clip plays, not which part of the file plays.
+    See <a href="/docs/spatial-timeline.html">the spatial timeline</a> for the difference.</p>
+
+    <h2>Editing</h2>
+    <p><b>I can't drag a chip out of a menu or button.</b> On visionOS, controls that respond to a
+    press (menus, buttons) own the pinch, so a drag never starts from them. Drag from the plain
+    rows and chips — the Actions tab's chips and the Assets tab's rows are all built to be picked
+    up directly.</p>
+    <p><b>Snapping fights me on fine adjustments.</b> Toggle <b>snap</b> off in the timeline for
+    freehand placement, then back on when you want boundaries and the 1/24s frame grid again. The
+    cyan guide shows exactly where a snapped drag will land.</p>
+    <p><b>I'm worried auto-key will scatter keyframes everywhere.</b> It won't. Auto-key only
+    writes keys on channels that are <em>already animated</em> — moving a never-animated prop with
+    record on just moves it. The only way to start a new animation is an explicit pose key. See
+    <a href="/docs/keyframes-and-autokey.html">keyframes &amp; auto-key</a>.</p>
+
+    <h2>Media</h2>
+    <p><b>An import says "cached locally" and never syncs.</b> That's the offline state, not an
+    error: uploads queue while no Mac is connected and flush automatically the moment one appears.
+    The file is fully usable in your scene the entire time. If a row shows <b>Failed</b> after a
+    Mac was reachable, tap its retry button.</p>
+    <p><b>How do I know both devices have the same file?</b> You don't have to check — every asset
+    carries a content hash, and a file only counts as synced when the Mac's copy matches the
+    headset's hash exactly. Mismatches resolve themselves: the newer side re-sends. Details in
+    <a href="/docs/media-import.html">importing media on-device</a>.</p>
+
+    <h2>Undo</h2>
+    <p><b>Undo on the Mac reverted a whole burst of headset edits at once.</b> By design: a batch
+    of edits arriving from a connected headset lands as one undo entry in Studio, so one
+    <kbd>⌘Z</kbd> cleanly reverses one remote gesture instead of leaving it half-applied.</p>
+    <p><b>Undo in the headset feels different from the Mac.</b> Chapter Vision's undo is snapshot-based —
+    each step restores a full document state. Solo mode restores locally and instantly; in a
+    tethered session the restore is proposed to the Mac and rebroadcast, so both devices agree on
+    history.</p>
+
+    <h2>FAQ</h2>
+    <p><b>Can I author without a Mac?</b> Yes — <a href="/docs/solo-mode.html">solo mode</a> is
+    full authoring on the headset: create, edit, and save <code>.chapterscript</code> bundles
+    entirely on-device.</p>
+    <p><b>Can two people edit at once?</b> Yes. Edits are revision-checked: the Mac arbitrates,
+    stale changes are rejected and retried against fresh state, and every applied edit broadcasts
+    to all connected peers. Two editors can't silently overwrite each other.</p>
+    <p><b>Is my project locked into Chapter Vision?</b> No. A project is an open
+    <a href="/docs/chapterscript-format.html">ChapterScript bundle</a> — pretty-printed JSON plus
+    your untouched media files. Read it, diff it, version it, or write your own tools against it.</p>
+    <p><b>Do video trims re-encode my footage?</b> No. Trims are stored as in/out metadata on the
+    document; masters are never modified. The one exception is the explicit
+    <b>Crop to Clip Length…</b> command, which consolidates a master down to its used range.</p>
+    <p><b>What plays a finished chapter?</b> The player on Vision Pro — the same runtime that
+    renders your scene while you edit, so playback is identical to what you authored.</p>
+    <p><b>Does live sync need the internet?</b> No — it's entirely local-network. Nothing leaves
+    your LAN, and no account is required. See <a href="/docs/live-sync.html">live sync</a>.</p>
+    <p><b>What do I need to run it?</b> Chapter Studio runs on Apple silicon Macs on a
+    current macOS; Chapter Vision runs on Apple Vision Pro on a current visionOS. For
+    tethered sessions, both on the same Wi-Fi. See
+    <a href="/docs/install-and-setup.html">install &amp; setup</a>.</p>
+    <p><b>Will old projects open in new versions?</b> Yes — documents are upgraded on open, and
+    unknown newer fields are ignored by older versions. Your file on disk only changes when you
+    save.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

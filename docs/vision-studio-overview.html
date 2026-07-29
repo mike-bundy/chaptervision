@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The spatial studio — Chapter Vision Handbook</title>
+<meta name="description" content="A tour of Chapter Vision's studio window and immersive space — the left rail, spatial timeline, inspector, add menus, and undo — everything you need to author in the headset.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="vision-studio-overview">
+    <h1>The spatial studio</h1>
+    <p class="doc-lede">
+      Chapter Vision puts an entire authoring studio inside one window on Vision Pro —
+      and puts you inside your chapter. Here's the map.
+    </p>
+
+    <h2>One window, plus the space you're standing in</h2>
+    <p>Chapter Vision has exactly two surfaces. The <b>studio window</b> holds every panel — session,
+    libraries, timeline, transport, inspector — in a single three-column layout, so there's never a
+    hunt for a lost floating palette. The <b>immersive space</b> is your chapter itself: the same
+    scene the player renders, live around you at real scale.</p>
+    <p>That second point is worth underlining. When you turn on <b>Edit mode</b>, Chapter Vision doesn't
+    switch to a separate "editor scene." The scene stays the player's scene — the exact entities,
+    videos, particles, and backdrops your audience will see — and editing is layered on top of it:
+    entities become gaze-selectable, the <a href="/docs/spatial-gizmo.html">gizmo</a> appears on
+    selection, and animated entities draw motion trails. Turn Edit mode off and you're simply
+    watching the experience. What you preview is what ships.</p>
+
+    <h2>The left rail: session and libraries</h2>
+    <p>The left column opens with the <b>session</b> area. Macs running Chapter Studio on
+    your network appear here automatically — tap one to connect for a
+    <a href="/docs/live-sync.html">live tethered session</a>. Below that, <b>On this device</b>
+    offers <b>Open Project…</b>, <b>New Project…</b>, and a recents list for working entirely
+    without a Mac in <a href="/docs/solo-mode.html">solo mode</a>. When you're tethered with a
+    changed document, a <b>Save on Mac</b> button pushes a save to the connected Studio.</p>
+    <p>Once a document is open, a segmented picker switches the rail between three library tabs:</p>
+    <table>
+      <thead><tr><th>Tab</th><th>What's in it</th></tr></thead>
+      <tbody>
+        <tr><td><b>Assets</b></td><td>Every entity in the chapter — models, video panels, text, lights, emitters — plus the add menu and per-entity commands.</td></tr>
+        <tr><td><b>Media</b></td><td>Import from Photos or Files, with per-file sync status. See <a href="/docs/media-import.html">importing media on-device</a>.</td></tr>
+        <tr><td><b>Actions</b></td><td>The full action catalog as draggable chips, grouped by category with search — drag them straight onto the <a href="/docs/spatial-timeline.html">timeline</a>.</td></tr>
+      </tbody>
+    </table>
+    <p>The rail collapses with one tap when you want the timeline at full width.</p>
+
+    <h2>Adding entities</h2>
+    <p>The <b>+</b> menu in the Assets tab creates new entities and drops them right in front of
+    you, already selected:</p>
+    <ul>
+      <li><b>Primitives</b> — basic shapes to block out a scene.</li>
+      <li><b>3D Text…</b> — prompts for the text (and an optional name), then places it in space.</li>
+      <li><b>Lights</b> — each supported light kind, ready to reposition.</li>
+      <li><b>Particle Emitter</b> — pick from your document's presets, the built-in catalog, or <b>New Preset…</b>, which creates a fresh emitter and opens the particle editor for tuning.</li>
+    </ul>
+    <p>Each Assets row also carries entity operations: toggle <b>Visible at start</b>,
+    <b>Duplicate</b>, and <b>Delete Entity…</b> (with confirmation). Selecting a row routes the
+    inspector to that entity.</p>
+
+    <h2>The center: transport, timeline, graph</h2>
+    <p>The center column stacks three surfaces. The <b>transport bar</b> runs along the top with
+    play/pause and stepping, the Edit mode toggle, the auto-key record button, pose keyframing, the
+    current segment and step readout, and undo/redo. Below it, the
+    <a href="/docs/spatial-timeline.html">spatial timeline</a> shows the selected segment's tracks
+    and clips using the same projection Studio draws on the Mac — same lanes, same grouping, same
+    colors. When you're working on animation, the <b>graph dock</b> opens beneath the timeline with
+    the full curve editor for the selected entity's channels (see
+    <a href="/docs/animation-overview.html">animation overview</a>).</p>
+
+    <h2>The right inspector</h2>
+    <p>The inspector is context-driven — it always shows the thing you last selected:</p>
+    <ul>
+      <li><b>A segment</b> → segment settings (name, presentation mode, immersive backdrop), the ordered <b>step list</b>, and the <b>gate editor</b> when a step holds for interaction.</li>
+      <li><b>An action</b> → a typed parameter form for that action — the same forms Studio uses, so every field means the same thing on both devices.</li>
+      <li><b>An entity</b> → numeric transform fields, the record controls for keyframing, and a list of every action in the segment that targets it.</li>
+    </ul>
+    <p>The segment inspector also hosts the <b>Environment</b> card — document-wide lighting preset
+    and distance fog, shared with the Mac.</p>
+
+    <h2>Undo and redo</h2>
+    <p>Undo in Chapter Vision is snapshot-based: each edit records the document state before it, and
+    <b>Undo</b>/<b>Redo</b> in the transport bar walk those snapshots. In solo mode the restore is
+    local and instant. In a tethered session, an undo proposes the restored document to the Mac,
+    which applies it and rebroadcasts — so both devices stay on the same version of history.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> A productive rhythm: rough in placement and timing from the studio window,
+      then step into the immersive space, walk the scene, and fine-tune poses with the gizmo from
+      where your audience will actually stand.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

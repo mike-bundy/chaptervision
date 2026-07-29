@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lost in space — Chapter Vision</title>
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500&family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+  .lost {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px var(--pad);
+    position: relative;
+    overflow: hidden;
+  }
+  .lost h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(48px, 9vw, 110px);
+    line-height: 1.05;
+  }
+  .lost h1 em {
+    font-style: italic;
+    background: var(--grad-aurora);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lost .code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--peri);
+    margin-bottom: 26px;
+  }
+  .lost p { margin-top: 22px; color: var(--ink-dim); font-weight: 300; max-width: 44ch; }
+</style>
+</head>
+<body>
+<canvas id="hero-canvas" style="position:fixed;inset:0;width:100%;height:100%"></canvas>
+<div class="lost">
+  <div class="code">ERROR 404 · SEGMENT NOT FOUND</div>
+  <h1>This chapter was<br><em>never written.</em></h1>
+  <p>The page you're looking for doesn't exist in this experience. Jump back to the default segment.</p>
+  <div class="hero-ctas" style="justify-content:center">
+    <a class="btn btn-primary" href="/">Back to chapter.vision</a>
+    <a class="btn btn-ghost" href="/docs/">Open the handbook</a>
+  </div>
+</div>
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

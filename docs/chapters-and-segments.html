@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapters &amp; segments — Chapter Vision Handbook</title>
+<meta name="description" content="How a Chapter Vision document is structured: one chapter per project, built from segments — the scenes of your experience.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="chapters-and-segments">
+    <h1>Chapters &amp; segments</h1>
+    <p class="doc-lede">
+      A chapter is the whole experience; segments are its scenes. Understanding this two-level
+      structure is the key to organizing anything longer than a single moment.
+    </p>
+
+    <h2>The document model at a glance</h2>
+    <p>Every Chapter Vision project follows the same four-level hierarchy:</p>
+    <table>
+      <thead><tr><th>Level</th><th>What it is</th><th>Film analogy</th></tr></thead>
+      <tbody>
+        <tr><td><b>Chapter</b></td><td>The whole document — one <code>.chapterscript</code> bundle, one experience</td><td>The film</td></tr>
+        <tr><td><b>Segment</b></td><td>A timed scene inside the chapter</td><td>A scene</td></tr>
+        <tr><td><b>Step</b></td><td>A timed beat inside a segment</td><td>A shot</td></tr>
+        <tr><td><b>Action</b></td><td>Something that happens during a step</td><td>What's in the shot</td></tr>
+      </tbody>
+    </table>
+    <p>This page covers the top two levels. Steps and actions have
+    <a href="/docs/steps-and-actions.html">their own page</a>.</p>
+
+    <h2>The chapter: one bundle, one experience</h2>
+    <p>The chapter <em>is</em> your project: the entire <code>.chapterscript</code> bundle, saved as
+    <code>chapter.json</code> plus an <code>assets/</code> folder. It carries the experience's name,
+    all of its segments, the shared asset catalog, the environment settings, and any particle
+    presets you've defined. When the player opens a chapter, it plays the chapter's
+    <b>default segment</b> first — so a chapter always knows where to begin.</p>
+
+    <h2>Segments: the scenes of your chapter</h2>
+    <p>A segment is a self-contained scene with its own clock. Each segment carries:</p>
+    <ul>
+      <li><b>A name</b> — "Arrival", "The Reveal", "Finale" — shown on its timeline tab.</li>
+      <li><b>Steps</b> — the ordered, timed beats that make up the scene, each holding the
+      <a href="/docs/steps-and-actions.html">actions</a> that fire during it.</li>
+      <li><b>Animation tracks</b> — keyframe animation for the segment's entities lives on the
+      segment itself, not inside individual steps, so a move can arc smoothly across many beats.
+      See the <a href="/docs/animation-overview.html">animation overview</a>.</li>
+      <li><b>A presentation mode</b> — Immersive, Mixed, or Windowed; each segment chooses how it
+      meets the viewer. See <a href="/docs/presentation-modes.html">Presentation modes</a>.</li>
+      <li><b>An optional immersive backdrop</b> — a 360°/180° video skybox or a USDZ environment
+      that wraps the scene.</li>
+    </ul>
+    <p>Because presentation is per-segment, one chapter can open in a window, move to mixed
+    immersion as the story builds, and go fully immersive for the finale — the player handles each
+    transition automatically.</p>
+
+    <h2>Working with segments on the timeline</h2>
+    <p>In Studio, segments appear as a row of tabs across the top of the timeline. Click a tab and
+    the timeline, viewport, and inspector all switch to that segment. The <b>+</b> button at the end
+    of the tab strip adds a new segment.</p>
+    <p>Select a segment and the inspector shows its settings: name, presentation mode, backdrop
+    picker, its list of steps, and the Animation card for its keyframe tracks. This per-segment
+    inspector is also where you'll find the <a href="/docs/gates.html">gate editor</a> for the
+    selected step. Chapter Vision mirrors all of this — the same segment tabs sit on its
+    floating timeline, and its inspector edits the same settings.</p>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> The default segment is where playback starts when the player opens the
+      chapter. You can change which segment is the default in the segment settings — handy when you
+      want to test a later scene repeatedly without sitting through the opening.</p></div>
+    </div>
+
+    <h2>How segments relate to steps and actions</h2>
+    <p>A segment's duration is simply the sum of its steps. Each step has a duration, and its
+    actions fire as the playhead passes through — revealing entities, playing video and audio,
+    triggering effects. The clips you see on a segment's timeline are derived from those actions: a
+    reveal opens a clip, a hide closes it. Steps can also carry
+    <a href="/docs/gates.html">gates</a> that hold the scene until the audience or an operator is
+    ready, which is how a fixed timeline becomes a live, responsive performance. The full timing
+    model is on <a href="/docs/steps-and-actions.html">Steps &amp; actions</a>.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Segment at scene granularity. If you're tempted to build one enormous
+      segment with dozens of steps, split it wherever the story naturally turns — segments are cheap,
+      and smaller ones are far easier to time, test, and rearrange.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

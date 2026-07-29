@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editing clips — Chapter Vision Handbook</title>
+<meta name="description" content="Retiming clips in Chapter Studio — body and edge drags, live time readouts, the clip context menu, draggable step boundaries, and the clip inspector.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="editing-clips">
+    <h1>Editing clips</h1>
+    <p class="doc-lede">
+      Once actions are on the timeline, timing is a drag away — slide clips, trim their
+      edges, stretch steps, and tune parameters inline, all with full undo.
+    </p>
+
+    <h2>Moving and resizing clips</h2>
+    <p>A clip on the timeline is the span between two actions — its opening action (a Reveal,
+    Play Video, or Play Audio) and its closing action (a Hide or Stop). Dragging edits those
+    actions directly:</p>
+    <ul>
+      <li><b>Drag the clip body</b> to slide the whole clip in time. Both the opening and
+      closing actions move together by the same amount, so the clip keeps its length.</li>
+      <li><b>Drag an edge</b> to retime just one endpoint. Each clip has a thin grab zone at
+      its left and right edge; the left edge moves the opening action, the right edge moves
+      the closing one. Studio clamps the drag so the opening can never pass the closing.</li>
+    </ul>
+    <p>While you drag, a live tooltip rides above the timeline showing the exact time —
+    <code>→ 5.20s</code> for a body drag, or <code>start 4.10s</code> /
+    <code>end 7.30s</code> when resizing an edge — so you can land on a precise beat without
+    guessing from pixels.</p>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> On video clips, edge drags do a little more: the right edge also
+      sets the clip's source out-point. See
+      <a href="/docs/video-trimming.html">video trimming &amp; cropping</a>.</p></div>
+    </div>
+
+    <h2>Crossing step boundaries</h2>
+    <p>Clips aren't fenced inside their step. Drag a clip (or an edge) across a step boundary
+    and Studio moves the underlying action into the destination step for you, converting
+    between a step-start action and a scheduled action as needed. You think in seconds; Studio
+    keeps the <a href="/docs/steps-and-actions.html">step structure</a> bookkeeping straight
+    underneath.</p>
+    <p>Each completed drag records exactly <b>one undo entry</b> — a long, fiddly drag is
+    still a single <kbd>⌘Z</kbd> away from being undone, never a stack of micro-steps.</p>
+
+    <h2>The clip context menu</h2>
+    <p>Right-click any clip for quick operations:</p>
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><b>Reveal in Inspector</b></td><td>Selects the clip's source step and asset so
+        the inspector jumps straight to its actions.</td></tr>
+        <tr><td><b>Duplicate at +0.5s</b></td><td>Copies the opening action half a second
+        later — handy for echoing a beat or building a repeated pattern.</td></tr>
+        <tr><td><b>Delete Opening Action</b></td><td>Removes the action that opens the clip.
+        The clip disappears from the timeline (its closing action, if any, no longer has
+        anything to close).</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Retiming steps on the ruler</h2>
+    <p>Timing isn't only about clips — the steps themselves can stretch. Every interior step
+    boundary on the time ruler is a draggable handle: pull it left or right to shorten or
+    lengthen the step that ends there. Steps are clamped to a minimum of 0.1&nbsp;seconds, so
+    you can't accidentally collapse a beat out of existence.</p>
+
+    <h2>The clip inspector</h2>
+    <p>Select an asset within a segment — by clicking one of its clips is the quickest way —
+    and the right-hand inspector leads with a card listing <em>every action in the segment
+    that targets that asset</em>, in time order. Each row shows the action's glyph and label,
+    a one-line parameter summary (like "opacity 0.5 · 0.50s"), and its absolute time, plus a
+    jump button that selects the source step and a delete button.</p>
+    <p>Rows for the most-tuned actions carry an expand chevron that opens compact inline
+    controls, so the common adjustments never need a dialog:</p>
+    <table>
+      <thead><tr><th>Action</th><th>Inline controls</th></tr></thead>
+      <tbody>
+        <tr><td>Reveal</td><td>Fade-in duration slider</td></tr>
+        <tr><td>Fade</td><td>Opacity + duration sliders</td></tr>
+        <tr><td>Scale</td><td>Multiplier + duration sliders</td></tr>
+        <tr><td>Move</td><td>Duration slider</td></tr>
+        <tr><td>Play Audio / Play Video</td><td>Volume slider + loop toggle</td></tr>
+        <tr><td>Fade Audio</td><td>Target volume + duration sliders</td></tr>
+      </tbody>
+    </table>
+    <p>Everything else still shows its summary row, and any action can be opened in its full
+    parameter form — including the raw-JSON view — from the inspector. See the
+    <a href="/docs/actions-reference.html">actions reference</a> for what each action
+    exposes.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> The clip inspector is the fastest way to audit an asset's whole arc
+      through a segment — every reveal, move, fade, and hide in one scrollable list, each one
+      click from its source step.</p></div>
+    </div>
+
+    <h2>Undo is everywhere</h2>
+    <p>Every edit described on this page — clip drags, edge trims, boundary drags, inline
+    slider changes, context-menu commands — flows through the same undo stack.
+    <kbd>⌘Z</kbd> undoes, <kbd>⇧⌘Z</kbd> redoes, and the history runs deep, so experiment
+    freely: the timeline is a safe place to try a timing idea and walk it back.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

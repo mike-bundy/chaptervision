@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ChapterScript format — Chapter Vision Handbook</title>
+<meta name="description" content="Inside the open .chapterscript bundle: chapter.json's segments, steps, actions, animation tracks, entities, and the SHA-256 asset manifest — plain JSON, built for git.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="chapterscript-format">
+    <h1>The ChapterScript format</h1>
+    <p class="doc-lede">
+      Every chapter is a folder of plain files: one JSON document plus your media. Open, readable,
+      diffable — nothing about your work is locked inside Chapter Vision.
+    </p>
+
+    <h2>The bundle</h2>
+    <p>A project is a <code>.chapterscript</code> directory bundle:</p>
+    <pre><code>MyStory.chapterscript/
+├── chapter.json      the entire document
+└── assets/           your media, unmodified
+    ├── intro.mp4
+    ├── ambience.m4a
+    └── lantern.usdz</code></pre>
+    <p><code>chapter.json</code> describes everything the player needs; <code>assets/</code> holds
+    the referenced files byte-for-byte as imported. Copy the folder and you've copied the project.
+    Studio, Chapter Vision, and the player all read and write this same format, on disk and over
+    <a href="/docs/live-sync.html">the wire</a>.</p>
+
+    <h2>chapter.json, top to bottom</h2>
+    <p>The document (format version <b>2</b>) opens with identity — an experience id, a display
+    name, and the id of the default segment to play first — then five main collections:</p>
+    <ul>
+      <li><b>segments</b> — the timed scenes of the chapter (detailed below).</li>
+      <li><b>entities</b> — definitions for everything placeable: video panels, 3D models, text,
+      lights, primitives, particle emitters — each with a transform, its kind-specific settings,
+      and whether it starts enabled.</li>
+      <li><b>environment</b> — document-wide lighting preset and distance fog.</li>
+      <li><b>particlePresets</b> — reusable emitter recipes referenced by emitter entities,
+      carrying the particle editor's full parameter surface.</li>
+      <li><b>manifest</b> — one entry per asset file: relative path, byte size, and SHA-256
+      content hash (plus probed duration and dimensions for media). Hashes drive cache
+      invalidation and sync convergence everywhere.</li>
+    </ul>
+
+    <h2>Segments, steps, actions</h2>
+    <p>Each segment carries a <b>presentation</b> (immersive, mixed, or windowed), an optional
+    <b>immersive backdrop</b> — either a video skybox with layout (mono, side-by-side, over-under,
+    or multiview HEVC), field of view (180° or 360°), and loop flag, or a USDZ scene — and its
+    <b>steps</b>.</p>
+    <p>A step is a timed beat: a <code>duration</code>, an optional <b>gate</b> (holds the step
+    until the audience interacts or a timeout passes), a list of <b>actions</b> that fire at the
+    step's start, and <b>scheduled actions</b> that fire at second offsets within the step.
+    Actions are the verbs — reveal, hide, fade, move, scale, play video, play audio, effects, and
+    so on, each a small typed JSON object.</p>
+    <p>Segments also own <b>animation tracks</b>: one track per animated entity, with up to ten
+    scalar channels (position x/y/z, rotation x/y/z, scale x/y/z, opacity). Keys sit at absolute
+    seconds from the segment's start and carry Bézier tangent handles (or linear/stepped modes)
+    for easing; rotations are continuous Euler degrees with an explicit rotate order, so a
+    two-turn spin is stored as 720° — no shortest-path surprises.</p>
+
+    <h2>A condensed example</h2>
+    <pre><code>{
+  "formatVersion": 2,
+  "id": "experience-9b21c4d0",
+  "displayName": "Lantern Walk",
+  "defaultSegmentId": "segment_intro",
+  "segments": [
+    {
+      "id": "segment_intro",
+      "name": "Intro",
+      "presentation": "immersive",
+      "immersiveBackdrop": {
+        "kind": "video",
+        "file": "forest_360.mp4",
+        "layout": "mono", "field": "field360", "loop": true
+      },
+      "steps": [
+        {
+          "id": "step_1", "duration": 8.0,
+          "actions": [
+            { "revealEntity": { "entity": "lantern.usdz", "fadeIn": 0.5 } }
+          ],
+          "scheduledActions": [
+            { "at": 2.0, "action": { "playVideo": {
+                "file": "intro.mp4", "channel": "video-intro",
+                "sourceIn": 12.5, "sourceOut": 47.25 } } }
+          ]
+        },
+        {
+          "id": "step_2", "duration": 10.0,
+          "gate": { "type": "tap", "prompt": "Tap the lantern" },
+          "actions": []
+        }
+      ],
+      "animationTracks": [
+        {
+          "entity": "lantern.usdz",
+          "rotateOrder": "xyz",
+          "channels": {
+            "ty": [
+              { "t": 0.0, "v": 1.0, "interp": "bezier",
+                "inTangent": { "dt": -0.4, "dv": 0.0 },
+                "outTangent": { "dt": 0.4, "dv": 0.0 } },
+              { "t": 4.0, "v": 1.6, "interp": "bezier" }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "entities": [
+    { "id": "lantern.usdz", "kind": "model",
+      "transform": { "position": [0, 1, -1.5] }, "initiallyEnabled": false }
+  ],
+  "environment": { "lightingPreset": "dusk", "fogDensity": 0.02 },
+  "particlePresets": [],
+  "manifest": { "entries": [
+    { "id": "intro.mp4", "relativePath": "intro.mp4",
+      "byteSize": 48211930, "sha256": "9f31ab…" }
+  ] }
+}</code></pre>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Condensed for reading — a real document spells out every field, and the
+      apps write more metadata (probe dimensions, tint colors, and so on) than shown here.</p></div>
+    </div>
+
+    <h2>Trims are metadata, not surgery</h2>
+    <p>Notice <code>sourceIn</code>/<code>sourceOut</code> on the video action above: that's a
+    non-destructive trim. The player cues the master at <code>sourceIn</code>, stops (or loops) at
+    <code>sourceOut</code>, and the file in <code>assets/</code> is never re-encoded or modified.
+    Several clips can window the same master differently. Omitting the fields means "play the whole
+    file." Only the explicit <b>Crop to Clip Length…</b> command actually rewrites a master — and
+    it rebases every clip's window so nothing shifts.</p>
+
+    <h2>Built for version control</h2>
+    <p>Saves are deterministic: pretty-printed JSON with sorted keys, every time, on every device.
+    Save without changing anything and the bytes are identical; change one fade duration and the
+    diff is one line. That makes <code>.chapterscript</code> bundles genuinely pleasant in git —
+    reviewable diffs, meaningful history, mergeable when edits don't collide.</p>
+
+    <h2>Forward compatibility</h2>
+    <p>Decoding is tolerant by design. Unknown fields are ignored, missing newer fields take
+    defaults, and documents from older versions are migrated on open (legacy step-embedded
+    animation, for example, is hoisted into segment animation tracks). A newer app opens your old
+    chapters; an older player degrades gracefully on newer ones. Migration happens in memory —
+    your file on disk changes only when you save.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Chapter Vision? — Chapter Vision Handbook</title>
+<meta name="description" content="An overview of the Chapter Vision suite: Studio on Mac, Chapter Vision on Apple Vision Pro, the player, and the open ChapterScript format that ties them together.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="what-is-chapter-vision">
+    <h1>What is Chapter Vision?</h1>
+    <p class="doc-lede">
+      Chapter Vision is an authoring suite for immersive experiences on Apple Vision Pro.
+      You direct scenes on a timeline, and your audience steps inside them.
+    </p>
+
+    <h2>One suite, three parts</h2>
+    <p>Chapter Vision is built around a simple idea: authoring an immersive experience should feel
+    like editing a film, not writing software. The suite has three parts that share one document
+    format and stay in constant conversation with each other:</p>
+    <ul>
+      <li><b>Chapter Studio</b> — the Mac app. Studio is the timeline cockpit: a full-width,
+      film-editor-style multi-track timeline, a 3D viewport, an asset sidebar, and inspectors for
+      every parameter. It is where you do the bulk of your composing, timing, and polishing.</li>
+      <li><b>Chapter Vision</b> — the Vision Pro app. Chapter Vision puts the same document in the
+      room with you. Walk around your scene, grab entities and move them where they should really be,
+      set keyframes at true scale, trim clips on a floating timeline, and import media straight from
+      Photos or Files. Chapter Vision can pair with a Mac running Studio, or work
+      <a href="/docs/solo-mode.html">fully on its own</a>.</li>
+      <li><b>The player</b> — the playback runtime that performs a finished chapter for an audience
+      on Vision Pro. The player runs your segments, fires your actions, waits at your
+      <a href="/docs/gates.html">gates</a>, and presents everything in the
+      <a href="/docs/presentation-modes.html">presentation mode</a> you chose.</li>
+    </ul>
+
+    <h2>The open ChapterScript format</h2>
+    <p>Everything you make is saved as <b>ChapterScript</b> — an open, human-readable document
+    format. A project is a <code>.chapterscript</code> bundle: on disk it is simply a folder
+    containing a <code>chapter.json</code> document and an <code>assets/</code> folder with your
+    media. There is no proprietary database and no lock-in; any compliant player can load the same
+    bundle you edit, and you can back it up, version it, or hand it to a collaborator like any other
+    folder of files.</p>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> The document you edit in Studio, the one you sculpt in Chapter Vision, and the
+      one the player performs are the same file. There is no export step between editing and
+      playback.</p></div>
+    </div>
+
+    <h2>Live sync: edit on the Mac, watch in the headset</h2>
+    <p>Studio runs a built-in live server. Put a Vision Pro on the same Wi-Fi network, connect from
+    Chapter Vision, and every save on the Mac appears in the headset in under a second — including edited
+    video, which streams straight from the Mac. Sync runs both ways: edits you make in the headset
+    flow back into the Studio document too, so a two-person team can have one person timing beats at
+    the keyboard while another places set pieces in the room. See
+    <a href="/docs/connecting-vision-pro.html">Connecting a Vision Pro</a> and
+    <a href="/docs/live-sync.html">Live sync</a>.</p>
+
+    <h2>Who it's for, and what you can make</h2>
+    <p>Chapter Vision is for creative authors — directors, exhibit designers, educators, musicians,
+    storytellers — not programmers. If you can arrange clips on a timeline, you can build a spatial
+    experience. Typical projects include:</p>
+    <ul>
+      <li><b>Immersive theater</b> — staged scenes that surround the audience, advancing on cues
+      from a show operator or a tap from the viewer.</li>
+      <li><b>Guided tours</b> — museum and site walkthroughs that hold each beat until the visitor
+      is ready, with narration, video panels, and 3D props.</li>
+      <li><b>Spatial storytelling</b> — narrative pieces that mix 360° video backdrops, animated 3D
+      models, spatial audio, and particle effects.</li>
+      <li><b>Ambient installations</b> — looping environmental pieces for lobbies, galleries, and
+      events that run unattended in the player.</li>
+    </ul>
+    <p>Under the hood, a chapter is organized as
+    <a href="/docs/chapters-and-segments.html">segments</a> (scenes) made of
+    <a href="/docs/steps-and-actions.html">steps and actions</a> (timed beats and the things that
+    happen in them) — a model that will feel familiar within your first hour.</p>
+
+    <h2>Which app do I use when?</h2>
+    <table>
+      <thead><tr><th>You want to…</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>Rough out timing, arrange clips, edit many parameters quickly</td><td>Studio</td></tr>
+        <tr><td>Place and scale objects where they belong in a real room</td><td>Chapter Vision</td></tr>
+        <tr><td>Set pose keyframes at true scale, judge sightlines and distances</td><td>Chapter Vision</td></tr>
+        <tr><td>Import media from a Mac's file system</td><td>Studio</td></tr>
+        <tr><td>Import media from Photos or Files on the headset</td><td>Chapter Vision</td></tr>
+        <tr><td>Author with no Mac available at all</td><td>Chapter Vision in <a href="/docs/solo-mode.html">solo mode</a></td></tr>
+        <tr><td>Preview a segment while you edit it</td><td>Either — Studio's viewport, or Chapter Vision live-synced</td></tr>
+        <tr><td>Perform the finished chapter for an audience</td><td>The player</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> The best workflow uses both editors at once: Studio for speed, Chapter Vision for
+      truth. Keep them connected and every save crosses the room in under a second.</p></div>
+    </div>
+
+    <h2>Where to start</h2>
+    <p>Head to <a href="/docs/install-and-setup.html">Install &amp; set up</a> to get both apps
+    running, then build something real in <a href="/docs/your-first-chapter.html">Your first
+    chapter</a> — a complete beginner tutorial that takes you from an empty project to an immersive
+    scene playing live in a headset.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

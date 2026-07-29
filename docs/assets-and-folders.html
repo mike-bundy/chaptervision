@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assets &amp; folders — Chapter Vision Handbook</title>
+<meta name="description" content="Importing video, 3D models, images, and audio into a Chapter Vision project, organizing them with folders, and how the bundle keeps everything self-contained.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="assets-and-folders">
+    <h1>Assets &amp; folders</h1>
+    <p class="doc-lede">
+      Drag media in, organize it into folders, and let the project bundle keep everything
+      self-contained and verified.
+    </p>
+
+    <h2>Importing by drag and drop</h2>
+    <p>Drag files from Finder into the asset sidebar and they join the project. Chapter Vision
+    accepts:</p>
+    <table>
+      <thead><tr><th>Kind</th><th>Formats</th><th>Typical use</th></tr></thead>
+      <tbody>
+        <tr><td><b>Video</b></td><td><code>.mp4</code>, <code>.mov</code>, <code>.m4v</code>, <code>.aivu</code>, <code>.hevc</code></td><td>Video panels in the scene; 360°/180° skybox backdrops</td></tr>
+        <tr><td><b>3D models</b></td><td><code>.usdz</code></td><td>Props, set pieces, characters; USDZ scene backdrops</td></tr>
+        <tr><td><b>Images</b></td><td>Common image formats</td><td>Pictures and textures in the scene</td></tr>
+        <tr><td><b>Audio</b></td><td>Common audio formats</td><td>Narration, music, ambience on named channels</td></tr>
+      </tbody>
+    </table>
+    <p>On the headset, Chapter Vision imports from Photos and Files instead — same result,
+    and imported media syncs back to the Mac automatically during a live session.</p>
+
+    <h2>Scene Assets and Backdrops</h2>
+    <p>The sidebar has two sections:</p>
+    <ul>
+      <li><b>Scene Assets</b> — everything that lives <em>inside</em> the scene: models, video
+      panels, images, audio. New imports land here.</li>
+      <li><b>Backdrops</b> — media that wraps <em>around</em> the scene as a segment's immersive
+      environment: 360°/180° videos and USDZ environments.</li>
+    </ul>
+    <p>To promote a video or USDZ, right-click it and choose <b>Mark as Backdrop</b> — it moves to
+    the Backdrops section and becomes available in every segment's
+    <a href="/docs/presentation-modes.html">backdrop picker</a>. The reverse command moves it back
+    to Scene Assets. Only videos and USDZ models can be backdrops.</p>
+
+    <h2>Folders</h2>
+    <p>As a project grows, group assets into folders. Folders are purely organizational — they never
+    affect playback or where files sit on disk.</p>
+    <ul>
+      <li><b>Create</b> — use the <b>+folder</b> button in a section header, or right-click an asset
+      and choose <b>Folder → New folder…</b>. The per-asset route is the smoothest: it creates the
+      folder and files the asset in one move.</li>
+      <li><b>Move</b> — right-click an asset → <b>Folder → Move to</b> an existing folder, or
+      <b>Remove from folder</b> to send it back to the section's root.</li>
+      <li><b>Rename / remove</b> — right-click the folder's own row. Removing a folder never deletes
+      the assets inside; they return to the root of their section.</li>
+    </ul>
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Folders are scoped per section — a "Props" folder under Scene Assets is
+      independent of a "Props" folder under Backdrops. Assets appear at their section's root first,
+      then grouped under their folders.</p></div>
+    </div>
+
+    <h2>Everyday asset housekeeping</h2>
+    <p>Each asset's context menu covers the essentials:</p>
+    <ul>
+      <li><b>Duplicate</b> — a second copy to place or configure independently.</li>
+      <li><b>Hide / Show</b> — toggle an asset out of the scene without removing it; useful for
+      staging alternatives while you decide.</li>
+      <li><b>Remove</b> — take the asset out of the project.</li>
+    </ul>
+    <div class="callout warn">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+      <div><p><b>Watch out.</b> Removing an asset that actions still reference leaves those actions
+      pointing at nothing. Check the asset's clips on the timeline before removing it — or hide it
+      instead if you might change your mind.</p></div>
+    </div>
+
+    <h2>Inside the bundle: copies and checksums</h2>
+    <p>When you import a file, Chapter Vision <b>copies</b> it into the project bundle's
+    <code>assets/</code> folder — it never references the original in place. That's why a
+    <code>.chapterscript</code> bundle is fully portable: everything the chapter needs travels with
+    it.</p>
+    <p>On every save, the project walks its <code>assets/</code> folder and records each file in the
+    chapter's asset manifest with its path, size, and a SHA-256 fingerprint. Players use those
+    fingerprints to know exactly which files they already have and which have changed — so a
+    connected headset re-downloads only what's new, and never plays a stale copy of a video you just
+    edited.</p>
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Since imports are copies, you can reorganize or archive your source media
+      freely once it's in the project. And because the manifest fingerprints every file, duplicating
+      a bundle for backup is always safe — the copy is complete by construction.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>
