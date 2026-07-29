@@ -30,7 +30,7 @@
     {
       section: "The Timeline",
       pages: [
-        { id: "timeline-overview", file: "timeline-overview.html", title: "Timeline overview", desc: "The Final Cut–style editing surface: segment tabs, ruler, track groups, derived clips, playhead and scrubbing.", keywords: "timeline overview tracks clips ruler playhead scrub zoom lanes" },
+        { id: "timeline-overview", file: "timeline-overview.html", title: "Timeline overview", desc: "The multi-track editing surface: segment tabs, ruler, track groups, derived clips, playhead and scrubbing.", keywords: "timeline overview tracks clips ruler playhead scrub zoom lanes" },
         { id: "adding-actions", file: "adding-actions.html", title: "Adding actions", desc: "Drag chips from the action library onto tracks, snap to step boundaries, and drop onto empty rails.", keywords: "add action drag drop library chip snap boundary empty section" },
         { id: "editing-clips", file: "editing-clips.html", title: "Editing clips", desc: "Retime by dragging clip bodies and edges, drag step boundaries, use the clip inspector, and edit parameters inline.", keywords: "clip drag resize retime trim edge inspector move duplicate delete" },
         { id: "video-trimming", file: "video-trimming.html", title: "Video trimming & cropping", desc: "Non-destructive source windows — slip in-points, set out-points — and the destructive Crop to Clip Length command.", keywords: "video trim slip source in out crop consolidate non-destructive master" },
