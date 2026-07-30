@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Audio channels — Chapter Vision Handbook</title>
-<meta name="description" content="How audio works in Chapter Vision — named channels, play/stop/fade actions, auto-created channels, and safe channel renaming.">
+<meta name="description" content="How audio works in Chapter Vision: named channels, play/stop/fade actions, auto-created channels, and safe channel renaming.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
 
     <h2>Channels, not files</h2>
     <p>Every audio track in the timeline's Audio section is a <b>channel</b> with a name of
-    your choosing — <code>narration</code>, <code>ambience</code>, <code>stingers</code>.
+    your choosing: <code>narration</code>, <code>ambience</code>, <code>stingers</code>.
     A channel plays one file at a time, and actions address the channel by name. That
     indirection is what makes audio easy to restructure: swap the file an action plays, and
     every fade and stop aimed at that channel keeps working untouched.</p>
@@ -41,29 +41,29 @@
             duration</td><td>A marker inside the clip's span</td></tr>
       </tbody>
     </table>
-    <p>A channel with no Stop simply plays to the end of the segment — the timeline shows
+    <p>A channel with no Stop simply plays to the end of the segment; the timeline shows
     its clip running to the segment's edge. Full parameter details are in the
     <a href="/docs/actions-reference.html">actions reference</a>.</p>
 
     <h2>Play Audio's parameters</h2>
     <p>Play Audio is where the mixing decisions live:</p>
     <ul>
-      <li><b>File</b> — the audio asset to play, chosen from the media you've imported.</li>
-      <li><b>Channel</b> — the channel name. Chapter Studio suggests existing channels so a typo
+      <li><b>File.</b> The audio asset to play, chosen from the media you've imported.</li>
+      <li><b>Channel.</b> The channel name. Chapter Studio suggests existing channels so a typo
       doesn't silently create a stray one.</li>
-      <li><b>Volume</b> — 0 to 1. This is the channel's starting level; Fade Audio can move
+      <li><b>Volume.</b> 0 to 1. This is the channel's starting level; Fade Audio can move
       it later.</li>
-      <li><b>Loop</b> — when on, the file repeats until a Stop Audio (or the segment ends).
+      <li><b>Loop.</b> When on, the file repeats until a Stop Audio (or the segment ends).
       Ideal for ambience beds.</li>
     </ul>
-    <p>You can adjust volume and loop right from the timeline, too — expand the clip's row in
+    <p>You can adjust volume and loop right from the timeline, too. Expand the clip's row in
     the <a href="/docs/editing-clips.html">clip inspector</a> for an inline slider and
     toggle.</p>
 
     <h2>Creating channels by dropping</h2>
     <p>The quickest way to add a channel is not to create one at all. Drag an audio chip from
     the action library onto the Audio section's empty rail and Chapter Studio auto-creates a fresh
-    channel — named <code>channel_1</code>, <code>channel_2</code>, and so on — and places
+    channel (named <code>channel_1</code>, <code>channel_2</code>, and so on) and places
     the action on it in one gesture. Drop onto an <em>existing</em> audio track instead and
     the action targets that channel. See
     <a href="/docs/adding-actions.html">adding actions</a> for the full drop behavior.</p>
@@ -73,19 +73,19 @@
     <code>channel_3</code> six months from now. Right-click an audio track's header and
     choose the rename command:</p>
     <ol class="steps">
-      <li><p><b>Right-click the track header</b> in the Audio section — the header showing
+      <li><p><b>Right-click the track header</b> in the Audio section, the header showing
       the channel's current name.</p></li>
       <li><p><b>Enter the new name.</b> Chapter Studio updates every Play Audio, Stop Audio, and
-      Fade Audio in the segment that referenced the old name — along with any triggers that
+      Fade Audio in the segment that referenced the old name, along with any triggers that
       wait on the channel finishing.</p></li>
     </ol>
-    <p>Because every reference moves together, a rename can never orphan a Stop or a Fade —
-    audio that was playing keeps playing, fades still find their target, and nothing goes
+    <p>Because every reference moves together, a rename can never orphan a Stop or a Fade.
+    Audio that was playing keeps playing and fades still find their target; nothing goes
     silent.</p>
 
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
-      <div><p><b>Tip.</b> Name channels by <em>role</em>, not by file — <code>narration</code>
+      <div><p><b>Tip.</b> Name channels by <em>role</em>, not by file: <code>narration</code>
       outlives <code>vo_take_04</code>. When you swap in a new recording, only the Play Audio
       action's file changes; the channel and everything targeting it stay put.</p></div>
     </div>
@@ -93,7 +93,7 @@
     <h2>Audio during playback and gates</h2>
     <p>During playback, audio follows the timeline: each Play fires at its authored moment,
     fades ramp over their durations, and stops land on their beats. When a step holds at a
-    <a href="/docs/gates.html">gate</a> — waiting for the viewer to act — audio that is
+    <a href="/docs/gates.html">gate</a>, waiting for the viewer to act, audio that is
     already playing keeps playing. A looping ambience bed carries right through the wait,
     which is usually exactly what you want: the world stays alive while the story pauses.
     Time-based beats that haven't fired yet simply wait with the step.</p>

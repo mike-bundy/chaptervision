@@ -24,7 +24,7 @@
     </p>
 
     <h2>Before you pair</h2>
-    <p>Pairing uses Bonjour, Apple's zero-configuration discovery, so there is nothing to type — no
+    <p>Pairing uses Bonjour, Apple's zero-configuration discovery, so there is nothing to type: no
     IP addresses, no pairing codes. You just need:</p>
     <ul>
       <li>A Mac running <b>Chapter Studio</b> with a project open.</li>
@@ -37,7 +37,7 @@
     <ol class="steps">
       <li><p><b>Check the Live menu on the Mac.</b> With a project open, Chapter Studio's status bar shows
       a <b>Live</b> menu with a green dot when the built-in server is running. Click it to see the
-      service name — <b>Chapter Vision on <i>&lt;your Mac's name&gt;</i></b> — along with the port
+      service name, <b>Chapter Vision on <i>&lt;your Mac's name&gt;</i></b>, along with the port
       and the current subscriber count. Green dot means you're discoverable.</p></li>
       <li><p><b>Open the session rail in Chapter Vision.</b> On the headset, Chapter Vision's left-hand session
       rail lists every Mac on the network that's currently serving a project. Your Mac appears by
@@ -48,20 +48,20 @@
     <h2>What happens when you connect</h2>
     <p>The first moments of a session do three things:</p>
     <ul>
-      <li><b>Document fetch.</b> Chapter Vision downloads the current chapter document — the same
+      <li><b>Document fetch.</b> Chapter Vision downloads the current chapter document, the same
       <code>chapter.json</code> Chapter Studio has open.</li>
       <li><b>Asset prefetch.</b> The headset pulls the media the chapter references, using the
       chapter's checksummed asset manifest so it never re-downloads files it already has, and never
       keeps a stale copy of one that changed. Large videos stream on demand from the Mac.</li>
       <li><b>Live subscription.</b> Chapter Vision opens a persistent update channel to Chapter Studio. From here
       on, every <kbd>⌘S</kbd> on the Mac pushes the new document to the headset in under a second,
-      and playback re-applies in place — you keep standing exactly where you were in the scene while
+      and playback re-applies in place. You keep standing exactly where you were in the scene while
       the content updates around you.</li>
     </ul>
 
     <h2>Edits flow both ways</h2>
-    <p>A live session is not a one-way broadcast. Changes you make in Chapter Vision — nudging an entity,
-    retiming a clip, setting a keyframe, importing a photo — are sent back to the Mac and applied to
+    <p>A live session is not a one-way broadcast. Changes you make in Chapter Vision (nudging an entity,
+    retiming a clip, setting a keyframe, importing a photo) are sent back to the Mac and applied to
     the Chapter Studio document immediately, then rebroadcast to any other connected headset. Each batch of
     remote edits lands as a <b>single undo entry</b> in Chapter Studio, so if a change from the headset
     isn't right, one <kbd>⌘Z</kbd> at the Mac takes back the whole batch cleanly.</p>
@@ -74,14 +74,14 @@
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
       <div><p><b>Note.</b> Media imported on the headset from Photos or Files is usable in the
-      scene instantly and uploads to the Mac's project bundle in the background — your flow never
+      scene instantly and uploads to the Mac's project bundle in the background, so your flow never
       waits on the transfer.</p></div>
     </div>
 
     <h2>If the Mac doesn't appear</h2>
     <p>Discovery problems are almost always network problems. Run down this list:</p>
     <ul>
-      <li><b>Same network, really?</b> Check that both devices are on the same Wi-Fi name — a Mac on
+      <li><b>Same network, really?</b> Check that both devices are on the same Wi-Fi name. A Mac on
       Ethernet and a headset on a guest network won't see each other on many routers.</li>
       <li><b>Is the green dot on?</b> Chapter Studio's Live menu must show a running server; it starts when
       a project is open.</li>
@@ -100,7 +100,7 @@
 
     <h2>Working without a Mac</h2>
     <p>A connection is optional. Chapter Vision can open, edit, and save <code>.chapterscript</code>
-    bundles entirely on the headset — see <a href="/docs/solo-mode.html">solo mode</a>. You can
+    bundles entirely on the headset; see <a href="/docs/solo-mode.html">solo mode</a>. You can
     start solo on a flight and reconnect to your Mac later; it's the same document format
     everywhere.</p>
   </article>

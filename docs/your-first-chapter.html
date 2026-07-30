@@ -27,16 +27,16 @@
     <p>In about twenty minutes you'll author a single-segment chapter in Chapter Studio: a
     3D object appears in the scene, audio plays, the object glides to a new position, the experience
     waits for the viewer to tap, and everything happens inside a 360° video backdrop. Along the way
-    you'll touch every core surface of the editor — the asset sidebar, the viewport, the timeline,
+    you'll touch every core surface of the editor: the asset sidebar, the viewport, the timeline,
     the action library, and the inspector.</p>
     <p>You'll need: a Mac running Chapter Studio, one <code>.usdz</code> 3D model, one video file (any
-    <code>.mp4</code> or <code>.mov</code> will do — a 360° clip is ideal for the backdrop step),
+    <code>.mp4</code> or <code>.mov</code> will do; a 360° clip is ideal for the backdrop step),
     and one audio file. A Vision Pro is optional until the final step.</p>
 
     <h2>Build it</h2>
     <ol class="steps">
       <li><p><b>Create a project.</b> Launch Chapter Studio and create a new project from the welcome
-      window (or open one with <kbd>⌘O</kbd>). Give it a name — this becomes the name of your
+      window (or open one with <kbd>⌘O</kbd>). Give it a name. This becomes the name of your
       <code>.chapterscript</code> bundle, an ordinary folder you can keep anywhere. The editor opens
       with the asset sidebar on the left, the 3D viewport in the center, the inspector on the right,
       and the full-width timeline across the bottom.</p></li>
@@ -44,11 +44,11 @@
       <li><p><b>Import your media.</b> Drag your <code>.usdz</code> model, your video, and your
       audio file from Finder into the asset sidebar. Each file is copied into the project bundle's
       <code>assets/</code> folder and appears under <b>Scene Assets</b>. Your project is now
-      self-contained — the originals can move or vanish without breaking anything. (More on
+      self-contained, so the originals can move or vanish without breaking anything. (More on
       importing and organizing in <a href="/docs/assets-and-folders.html">Assets &amp;
       folders</a>.)</p></li>
 
-      <li><p><b>Meet the default segment.</b> Every new chapter starts with one segment — a scene —
+      <li><p><b>Meet the default segment.</b> Every new chapter starts with one segment (a scene),
       shown as a tab at the top of the timeline. It's marked as the default segment, which means
       it's where playback begins. A segment holds timed steps, and the timeline you're looking at is
       that segment's contents. One segment is plenty for today; see
@@ -56,16 +56,16 @@
       picture.</p></li>
 
       <li><p><b>Place the model in the viewport.</b> Select your <code>.usdz</code> asset in the
-      sidebar. It appears in the viewport — drag it to position it in the scene, and use the
+      sidebar. It appears in the viewport. Drag it to position it in the scene, and use the
       inspector's transform values for precise placement or scaling. The viewport camera sits at
       standing eye height, so what you see is a good preview of what a viewer will see. Put the
       model somewhere pleasing a couple of meters out.</p></li>
 
       <li><p><b>Drag a Reveal onto the scene track.</b> Just above the time ruler sits the action
-      library — a strip of draggable chips grouped by category. Find the <b>Reveal</b> chip in the
+      library, a strip of draggable chips grouped by category. Find the <b>Reveal</b> chip in the
       Scene category and drag it onto your model's row in the timeline's Scene section, right at the
       start. Reveal fades an entity in; you've just authored your first action. Notice a clip
-      appears on the track: clips in Chapter Vision are derived from actions — this one runs from
+      appears on the track: clips in Chapter Vision are derived from actions; this one runs from
       your Reveal until the entity is hidden or the segment ends. (See
       <a href="/docs/steps-and-actions.html">Steps &amp; actions</a>.)</p></li>
 
@@ -75,16 +75,16 @@
       clip selected, the inspector offers volume and loop controls.</p></li>
 
       <li><p><b>Scrub and play back.</b> Click anywhere on the time ruler to jump the playhead
-      there — the viewport updates to show exactly what's on screen at that moment, even while
+      there. The viewport updates to show exactly what's on screen at that moment, even while
       stopped. Drag along the ruler to scrub. Then press play in the transport: the model fades in,
       the audio starts, and the active clip pulses gently on the timeline so you can see what's
       live. This scrub-anywhere behavior is your fastest feedback loop — use it constantly.</p></li>
 
       <li><p><b>Make the model move.</b> Drag a <b>Move</b> chip onto the model's row a few seconds
-      in, and give it a destination and duration in the inspector — the model now glides from its
+      in, and give it a destination and duration in the inspector. The model now glides from its
       resting spot to the new position during playback. For richer motion, Chapter Vision also
       supports keyframe animation: pose keys that live on the segment itself, edited in the
-      Animation card of the segment inspector with a full curve editor. That's a deeper topic —
+      Animation card of the segment inspector with a full curve editor. That's a deeper topic;
       when you're ready, read the <a href="/docs/animation-overview.html">animation
       overview</a>.</p></li>
 
@@ -94,10 +94,10 @@
       inspector, turn on <b>Gate</b> for the <em>previous</em> step. Now that step holds at its
       end until the viewer taps, and you can add a prompt like "Tap to continue" that the player
       shows while waiting. A yellow gate flag appears on the ruler. Gates can also take a timeout
-      that auto-advances — see <a href="/docs/gates.html">Gates</a>.</p></li>
+      that auto-advances; see <a href="/docs/gates.html">Gates</a>.</p></li>
 
       <li><p><b>Go immersive with a 360° backdrop.</b> First, mark your video as a backdrop:
-      right-click it in the asset sidebar and choose <b>Mark as Backdrop</b> — it moves into the
+      right-click it in the asset sidebar and choose <b>Mark as Backdrop</b>, and it moves into the
       sidebar's Backdrops section. Then select the segment and, in the segment inspector, set the
       presentation mode to <b>Immersive</b>. A backdrop picker appears: choose <b>Video</b>, pick
       your clip, and set the field to 360° with loop on. Click the globe button in the viewport's
@@ -105,7 +105,7 @@
       <a href="/docs/presentation-modes.html">Presentation modes &amp; backdrops</a>.</p></li>
 
       <li><p><b>Save.</b> Press <kbd>⌘S</kbd>. Chapter Studio writes <code>chapter.json</code> into your
-      bundle, fingerprints every asset, and — if a headset is connected — pushes the new version to
+      bundle, fingerprints every asset, and, if a headset is connected, pushes the new version to
       it immediately. Save early and often; every edit is also undoable with <kbd>⌘Z</kbd>.</p></li>
 
       <li><p><b>See it live on a Vision Pro.</b> Put a Vision Pro on the same Wi-Fi, open Chapter
@@ -113,8 +113,8 @@
       <a href="/docs/connecting-vision-pro.html">Connecting a Vision Pro</a>). The headset fetches
       your chapter, prefetches the media, and plays it back: the backdrop wraps around you, the
       model fades in at real scale, the narration plays, and the scene waits for your pinch at the
-      gate. From now on, every <kbd>⌘S</kbd> on the Mac updates the headset in under a second —
-      tweak the move duration, save, and watch it change while you're standing in the
+      gate. From now on, every <kbd>⌘S</kbd> on the Mac updates the headset in under a second.
+      Tweak the move duration, save, and watch it change while you're standing in the
       scene.</p></li>
     </ol>
 
@@ -127,7 +127,7 @@
 
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Everything you just did on the Mac can also be done in the headset —
+      <div><p><b>Note.</b> Everything you just did on the Mac can also be done in the headset.
       Chapter Vision has its own timeline, action chips, inspectors, and gizmos, and its edits sync back to
       Chapter Studio live. Many authors block out timing on the Mac, then fine-tune placement in the
       room.</p></div>
@@ -135,17 +135,17 @@
 
     <h2>Where to next</h2>
     <ul>
-      <li><a href="/docs/chapters-and-segments.html">Chapters &amp; segments</a> — structure a
+      <li><a href="/docs/chapters-and-segments.html">Chapters &amp; segments</a>: structure a
       longer experience out of multiple scenes.</li>
-      <li><a href="/docs/steps-and-actions.html">Steps &amp; actions</a> — the timing model behind
+      <li><a href="/docs/steps-and-actions.html">Steps &amp; actions</a>: the timing model behind
       everything you just dragged.</li>
-      <li><a href="/docs/gates.html">Gates</a> — tap and timeout gates for pacing an
+      <li><a href="/docs/gates.html">Gates</a>: tap and timeout gates for pacing an
       audience.</li>
-      <li><a href="/docs/presentation-modes.html">Presentation modes &amp; backdrops</a> —
+      <li><a href="/docs/presentation-modes.html">Presentation modes &amp; backdrops</a>:
       Immersive, Mixed, and Windowed, and every backdrop option.</li>
-      <li><a href="/docs/animation-overview.html">Animation overview</a> — keyframes, curves, and
+      <li><a href="/docs/animation-overview.html">Animation overview</a>: keyframes, curves, and
       the graph editor.</li>
-      <li><a href="/docs/connecting-vision-pro.html">Connecting a Vision Pro</a> — pairing,
+      <li><a href="/docs/connecting-vision-pro.html">Connecting a Vision Pro</a>: pairing,
       prefetching, and two-way live editing.</li>
     </ul>
   </article>

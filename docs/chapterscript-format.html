@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The ChapterScript format — Chapter Vision Handbook</title>
-<meta name="description" content="Inside the open .chapterscript bundle: chapter.json's segments, steps, actions, animation tracks, entities, and the SHA-256 asset manifest — plain JSON, built for git.">
+<meta name="description" content="Inside the open .chapterscript bundle: chapter.json's segments, steps, actions, animation tracks, entities, and the SHA-256 asset manifest. Plain JSON, built for git.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   <article class="doc-article" data-page="chapterscript-format">
     <h1>The ChapterScript format</h1>
     <p class="doc-lede">
-      Every chapter is a folder of plain files: one JSON document plus your media. Open, readable,
-      diffable — nothing about your work is locked inside Chapter Vision.
+      Every chapter is a folder of plain files: one JSON document plus your media. It's open,
+      readable, and diffable, so nothing about your work is locked inside Chapter Vision.
     </p>
 
     <h2>The bundle</h2>
@@ -37,17 +37,17 @@
     <a href="/docs/live-sync.html">the wire</a>.</p>
 
     <h2>chapter.json, top to bottom</h2>
-    <p>The document (format version <b>2</b>) opens with identity — an experience id, a display
-    name, and the id of the default segment to play first — then five main collections:</p>
+    <p>The document (format version <b>2</b>) opens with identity (an experience id, a display
+    name, and the id of the default segment to play first), then five main collections:</p>
     <ul>
-      <li><b>segments</b> — the timed scenes of the chapter (detailed below).</li>
-      <li><b>entities</b> — definitions for everything placeable: video panels, 3D models, text,
-      lights, primitives, particle emitters — each with a transform, its kind-specific settings,
+      <li><b>segments</b>: the timed scenes of the chapter (detailed below).</li>
+      <li><b>entities</b>: definitions for everything placeable (video panels, 3D models, text,
+      lights, primitives, particle emitters), each with a transform, its kind-specific settings,
       and whether it starts enabled.</li>
-      <li><b>environment</b> — document-wide lighting preset and distance fog.</li>
-      <li><b>particlePresets</b> — reusable emitter recipes referenced by emitter entities,
+      <li><b>environment</b>: document-wide lighting preset and distance fog.</li>
+      <li><b>particlePresets</b>: reusable emitter recipes referenced by emitter entities,
       carrying the particle editor's full parameter surface.</li>
-      <li><b>manifest</b> — one entry per asset file: relative path, byte size, and SHA-256
+      <li><b>manifest</b>: one entry per asset file with its relative path, byte size, and SHA-256
       content hash (plus probed duration and dimensions for media). Hashes drive cache
       invalidation and sync convergence everywhere.</li>
     </ul>
@@ -60,7 +60,7 @@
     <p>A step is a timed beat: a <code>duration</code>, an optional <b>gate</b> (holds the step
     until the audience interacts or a timeout passes), a list of <b>actions</b> that fire at the
     step's start, and <b>scheduled actions</b> that fire at second offsets within the step.
-    Actions are the verbs — reveal, hide, fade, move, scale, play video, play audio, effects, and
+    Actions are the verbs: reveal, hide, fade, move, scale, play video, play audio, effects, and
     so on, each a small typed JSON object.</p>
     <p>Segments also own <b>animation tracks</b>: one track per animated entity, with up to ten
     scalar channels (position x/y/z, rotation x/y/z, scale x/y/z, opacity). Keys sit at absolute
@@ -131,8 +131,9 @@
 }</code></pre>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Condensed for reading — a real document spells out every field, and the
-      apps write more metadata (probe dimensions, tint colors, and so on) than shown here.</p></div>
+      <div><p><b>Note.</b> This example is condensed for reading; a real document spells out every
+      field, and the apps write more metadata (probe dimensions, tint colors, and so on) than
+      shown here.</p></div>
     </div>
 
     <h2>Trims are metadata, not surgery</h2>
@@ -140,20 +141,20 @@
     non-destructive trim. The player cues the master at <code>sourceIn</code>, stops (or loops) at
     <code>sourceOut</code>, and the file in <code>assets/</code> is never re-encoded or modified.
     Several clips can window the same master differently. Omitting the fields means "play the whole
-    file." Only the explicit <b>Crop to Clip Length…</b> command actually rewrites a master — and
+    file." Only the explicit <b>Crop to Clip Length…</b> command actually rewrites a master, and
     it rebases every clip's window so nothing shifts.</p>
 
     <h2>Built for version control</h2>
     <p>Saves are deterministic: pretty-printed JSON with sorted keys, every time, on every device.
     Save without changing anything and the bytes are identical; change one fade duration and the
-    diff is one line. That makes <code>.chapterscript</code> bundles genuinely pleasant in git —
-    reviewable diffs, meaningful history, mergeable when edits don't collide.</p>
+    diff is one line. That makes <code>.chapterscript</code> bundles genuinely pleasant in git:
+    diffs are reviewable, history is meaningful, and non-colliding edits merge cleanly.</p>
 
     <h2>Forward compatibility</h2>
     <p>Decoding is tolerant by design. Unknown fields are ignored, missing newer fields take
     defaults, and documents from older versions are migrated on open (legacy step-embedded
     animation, for example, is hoisted into segment animation tracks). A newer app opens your old
-    chapters; an older player degrades gracefully on newer ones. Migration happens in memory —
+    chapters; an older player degrades gracefully on newer ones. Migration happens in memory, and
     your file on disk changes only when you save.</p>
   </article>
 </main>

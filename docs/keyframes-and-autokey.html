@@ -20,27 +20,27 @@
     <h1>Keyframes &amp; auto-key</h1>
     <p class="doc-lede">
       Set Key captures a whole pose in one press. Auto-key records your adjustments as you
-      make them — and only on channels you've already chosen to animate.
+      make them, and only on channels you've already chosen to animate.
     </p>
 
     <h2>Set Key: capture the whole pose</h2>
-    <p><b>Set Key</b> writes the selected entity's full pose — all ten channels: position,
-    rotation, scale, and opacity — as keys at the playhead's current time. It doesn't matter
+    <p><b>Set Key</b> writes the selected entity's full pose (all ten channels: position,
+    rotation, scale, and opacity) as keys at the playhead's current time. It doesn't matter
     whether the entity already has a track; Set Key creates one on the first press.</p>
     <ol class="steps">
-      <li><p><b>Park the playhead</b> where you want the pose to land — scrub the timeline ruler or the graph editor's ruler band.</p></li>
+      <li><p><b>Park the playhead</b> where you want the pose to land. Scrub the timeline ruler or the graph editor's ruler band to get there.</p></li>
       <li><p><b>Pose the entity</b> using the inspector's transform fields in Chapter Studio, or by grabbing it with <a href="/docs/spatial-gizmo.html">the gizmo</a> in Chapter Vision.</p></li>
       <li><p><b>Press Set Key.</b> A diamond appears in the entity's keyframe lane at that time.</p></li>
     </ol>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
       <div><p><b>Note.</b> If the entity has never been shown in the segment, your first Set Key
-      also adds a reveal for it. Keyframing something implies you want to see it — you'll never
+      also adds a reveal for it. Keyframing something implies you want to see it; you'll never
       animate an entity the audience can't watch.</p></div>
     </div>
 
     <h2>Auto-key: record as you adjust</h2>
-    <p>Both apps have an auto-key toggle — the round <b>record</b> button near the transport.
+    <p>Both apps have an auto-key toggle, the round <b>record</b> button near the transport.
     With auto-key on, every transform change you make writes a key at the playhead
     automatically: nudge a position field, drag the gizmo, dial opacity, and the adjustment
     becomes animation.</p>
@@ -60,7 +60,7 @@
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> This makes it safe to leave auto-key on for a whole session: animated
       entities record; everything else stays still. Use Set Key when you want to promote a new
-      channel — or a whole entity — into the animation.</p></div>
+      channel (or a whole entity) into the animation.</p></div>
     </div>
 
     <h2>Moving and deleting keys</h2>
@@ -68,23 +68,23 @@
     <table>
       <thead><tr><th>Where</th><th>What you can do</th></tr></thead>
       <tbody>
-        <tr><td>Keyframe lane (timeline)</td><td>Drag a diamond to retime a whole pose — every channel keyed at that time slides together. Double-click a diamond in Chapter Studio to delete the pose.</td></tr>
+        <tr><td>Keyframe lane (timeline)</td><td>Drag a diamond to retime a whole pose: every channel keyed at that time slides together. Double-click a diamond in Chapter Studio to delete the pose.</td></tr>
         <tr><td><a href="/docs/graph-editor.html">Graph editor</a></td><td>Drag individual keys per channel in time and value, multi-select groups, insert keys on a curve, and delete the current selection.</td></tr>
       </tbody>
     </table>
-    <p>The lane is your dope sheet — fast, pose-level timing. The graph editor is your fine
-    brush — per-channel value and curve shaping.</p>
+    <p>The lane is your dope sheet for fast, pose-level timing. The graph editor is your fine
+    brush for per-channel value and curve shaping.</p>
 
     <h2>Keying from the gizmo on Vision Pro</h2>
-    <p>In Chapter Vision, the gizmo is auto-key aware. With record on, finish a drag —
-    move, rotate, or scale — and the changed channels are keyed at the playhead the moment you
+    <p>In Chapter Vision, the gizmo is auto-key aware. With record on, finish a move, rotate,
+    or scale drag, and the changed channels are keyed at the playhead the moment you
     let go. Combined with the in-room preview, this is the fastest way to block spatial motion:
     stand where your audience will stand, grab the entity, and put it where it should be at
     that moment. See <a href="/docs/spatial-gizmo.html">the gizmo</a> for the handle layout.</p>
 
     <h2>A workflow that works</h2>
     <ol class="steps">
-      <li><p><b>Block with Set Key.</b> Step through the segment and capture full poses at the story beats — start, arrival, rest. Don't fuss over easing yet.</p></li>
+      <li><p><b>Block with Set Key.</b> Step through the segment and capture full poses at the story beats: start, arrival, rest. Don't fuss over easing yet.</p></li>
       <li><p><b>Turn on auto-key and refine.</b> Scrub to a beat, adjust what's wrong, and let record mode write the corrections into the already-animated channels.</p></li>
       <li><p><b>Polish in the graph editor.</b> Shape tangents, fix overshoot, and offset channels against each other for natural motion.</p></li>
     </ol>

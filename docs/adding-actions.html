@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adding actions — Chapter Vision Handbook</title>
-<meta name="description" content="How to drag actions from the library onto the timeline in Chapter Studio — snapping, section rules, empty-rail drops, and instant inspector editing.">
+<meta name="description" content="How to drag actions from the library onto the timeline in Chapter Studio: snapping, section rules, empty-rail drops, and instant inspector editing.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +25,17 @@
 
     <h2>The action library</h2>
     <p>The library is the horizontal strip of chips between the segment tabs and the time
-    ruler. Chips are grouped by category — <b>Scene</b>, <b>Add</b>, <b>Video</b>,
-    <b>Audio</b>, and <b>Effects</b> — and each chip is tinted to match the timeline section
+    ruler. Chips are grouped by category (<b>Scene</b>, <b>Add</b>, <b>Video</b>,
+    <b>Audio</b>, and <b>Effects</b>), and each chip is tinted to match the timeline section
     it lands on, so you can see at a glance where a chip belongs.</p>
     <p>Two conveniences keep the strip manageable as you learn the catalog:</p>
     <ul>
-      <li><b>Search</b> — type in the filter field to narrow the strip to matching chip
+      <li><b>Search.</b> Type in the filter field to narrow the strip to matching chip
       names.</li>
-      <li><b>Collapse</b> — click a category header to fold the whole group down to a count
+      <li><b>Collapse.</b> Click a category header to fold the whole group down to a count
       chip, keeping the categories you use most within easy reach.</li>
     </ul>
-    <p>The full catalog of all 18 actions — with every parameter — is in the
+    <p>The full catalog of all 18 actions, with every parameter, is in the
     <a href="/docs/actions-reference.html">actions reference</a>.</p>
 
     <h2>Drag, drop, snap</h2>
@@ -44,7 +44,7 @@
       <li><p><b>Drop it on a track.</b> Aim for the track of the asset or channel you want the
       action to target, at the horizontal position matching the time it should fire.</p></li>
       <li><p><b>Let the snap help you.</b> Drops within a few pixels of a step boundary snap
-      to that boundary exactly — you never have to pixel-hunt the start of a step.</p></li>
+      to that boundary exactly, so you never have to pixel-hunt the start of a step.</p></li>
       <li><p><b>Fine-tune in the inspector.</b> The moment the drop lands, Chapter Studio selects the
       new action's step and target so the inspector on the right is already showing its
       parameters. Adjust and move on.</p></li>
@@ -56,44 +56,45 @@
       <thead><tr><th>Drop position</th><th>Result</th></tr></thead>
       <tbody>
         <tr><td>Exactly on a step boundary (or snapped to one)</td>
-            <td>A <b>step-start action</b> — it fires the instant that step begins.</td></tr>
+            <td>A <b>step-start action</b>, which fires the instant that step begins.</td></tr>
         <tr><td>Anywhere inside a step</td>
-            <td>A <b>scheduled action</b> — it fires at an offset into the step, matching the
-            exact time you dropped it.</td></tr>
+            <td>A <b>scheduled action</b>, which fires at an offset into the step, matching
+            the exact time you dropped it.</td></tr>
       </tbody>
     </table>
     <p>Both kinds show up identically as clips or markers on the timeline, and you can slide
-    either to a new time later — see <a href="/docs/editing-clips.html">editing clips</a>.</p>
+    either to a new time later (see <a href="/docs/editing-clips.html">editing clips</a>).</p>
 
     <h2>Section rules</h2>
     <p>Drops are section-aware: Scene, Add, and Video chips land on Scene tracks, Audio chips
     on Audio tracks, and Effects chips on the Effects section. If you drop a chip on a section
-    that can't accept it, the track flashes red and nothing is added — the drop is simply
+    that can't accept it, the track flashes red and nothing is added. The drop is simply
     rejected, with no cleanup needed.</p>
 
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
-      <div><p><b>Tip.</b> The chip's tint tells you its destination before you drag — blue
+      <div><p><b>Tip.</b> The chip's tint tells you its destination before you drag: blue
       chips are Scene-bound, green audio chips head for the Audio section, and violet effect
       chips for Effects.</p></div>
     </div>
 
     <h2>Dropping on an empty section</h2>
-    <p>Every section renders even when it has no tracks yet — an empty section shows a dashed
-    dropzone — so a fresh segment is never a dead end. What happens next depends on the
+    <p>Every section renders even when it has no tracks yet (an empty section shows a dashed
+    dropzone), so a fresh segment is never a dead end. What happens next depends on the
     section:</p>
     <ul>
-      <li><b>Scene</b> — there's no implicit target, so Chapter Studio opens a picker listing every
+      <li><b>Scene:</b> there's no implicit target, so Chapter Studio opens a picker listing every
       scene-eligible asset in your project. Choose one and it becomes the action's target,
       creating that asset's track group in the same gesture.</li>
-      <li><b>Audio</b> — Chapter Studio auto-creates a fresh channel with a generated name like
+      <li><b>Audio:</b> Chapter Studio auto-creates a fresh channel with a generated name like
       <code>channel_1</code>, <code>channel_2</code>, and so on, and drops the action there.
-      You can rename it any time — see <a href="/docs/audio-channels.html">audio channels</a>.</li>
-      <li><b>Effects</b> — effect actions carry their own track identity, so the drop inserts
+      You can rename it any time; see <a href="/docs/audio-channels.html">audio channels</a>.</li>
+      <li><b>Effects:</b> effect actions carry their own track identity, so the drop inserts
       directly with no dialog.</li>
     </ul>
-    <p>The <b>Add</b> chips (Add Asset, Add Image, Add Particle) always open a picker on drop
-    — they exist to bring something new into the scene, then reveal it at the drop time.</p>
+    <p>The <b>Add</b> chips (Add Asset, Add Image, Add Particle) always open a picker on
+    drop. They exist to bring something new into the scene, then reveal it at the drop
+    time.</p>
 
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
@@ -106,7 +107,7 @@
     <p>Chapter Vision has the identical drag-to-timeline flow: action chips and asset
     rows in the left rail drag onto the floating timeline panel, with the same section
     routing, the same empty-section dropzones, and the same pickers. Authoring muscle memory
-    transfers directly between the Mac and the headset — see the
+    transfers directly between the Mac and the headset; see the
     <a href="/docs/spatial-timeline.html">spatial timeline</a>.</p>
   </article>
 </main>

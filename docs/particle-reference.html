@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Particle parameter reference — Chapter Vision Handbook</title>
-<meta name="description" content="Every particle preset parameter in Chapter Vision — emission, physics, color, visual, force fields, and spawned emitters — with practical recipes.">
+<meta name="description" content="Every particle preset parameter in Chapter Vision, from emission and physics to color, visuals, force fields, and spawned emitters, with practical recipes.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   <article class="doc-article" data-page="particle-reference">
     <h1>Particle parameter reference</h1>
     <p class="doc-lede">
-      Every knob in a particle preset, grouped the way the preset editor groups them —
-      with the recipes that show how the groups combine.
+      Every knob in a particle preset, grouped the way the preset editor groups them,
+      plus the recipes that show how the groups combine.
     </p>
 
     <p>New to particles? Start with the
@@ -31,8 +31,8 @@
     variation is what turns a uniform stream into something organic.</p>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> All angle-type fields — spread angle, radial amount, particle angle,
-      angular speed — display in <b>degrees</b> in the preset editor.</p></div>
+      <div><p><b>Note.</b> All angle-type fields (spread angle, radial amount, particle angle,
+      angular speed) display in <b>degrees</b> in the preset editor.</p></div>
     </div>
 
     <h2>Emission</h2>
@@ -50,7 +50,7 @@
         <tr><td><b>Birth direction</b></td><td>normal · world · local</td><td><b>Normal</b> launches outward from the shape's surface; <b>world</b> and <b>local</b> use the emission direction vector, in world space or the emitter's own space respectively.</td></tr>
         <tr><td><b>Emission direction</b></td><td>vector</td><td>The direction used by world/local birth direction. (0, 1, 0) is straight up.</td></tr>
         <tr><td><b>Radial amount</b></td><td>0–360°</td><td>How much of the shape's circumference emits. Full circle sprays all around; a slice makes a directional fan.</td></tr>
-        <tr><td><b>Torus inner radius</b></td><td>0–1</td><td>Thickness of the torus ring, as a fraction — only used by the torus shape.</td></tr>
+        <tr><td><b>Torus inner radius</b></td><td>0–1</td><td>Thickness of the torus ring, as a fraction. Only the torus shape uses it.</td></tr>
         <tr><td><b>Burst count</b></td><td>0–1000</td><td>Particles released in one burst when a one-shot emitter fires (see <a href="/docs/particles-overview.html">burst vs. loop</a>).</td></tr>
         <tr><td><b>Particles inherit transform</b></td><td>on / off</td><td>On: existing particles ride along when the emitter moves (a torch carried through the room). Off: born particles stay in the world where they were emitted (a smoke trail behind a moving object).</td></tr>
       </tbody>
@@ -64,8 +64,8 @@
         <tr><td><b>Mass</b> (+ variation)</td><td>0–10</td><td>Heavier particles respond less to forces. Mass variation makes a mixed flurry where some flakes dart and some drift.</td></tr>
         <tr><td><b>Angle</b> (+ variation)</td><td>0–360°</td><td>Initial spin orientation of each particle's sprite.</td></tr>
         <tr><td><b>Angular speed</b> (+ variation)</td><td>−/+</td><td>How fast each sprite rotates over its life; negative reverses direction. Pair with variation so sprites don't spin in lockstep.</td></tr>
-        <tr><td><b>Damping</b></td><td>0–1</td><td>Drag. Higher values bleed off velocity so particles launch fast and coast to a stop — the heart of any explosion that blooms and hangs.</td></tr>
-        <tr><td><b>Stretch</b></td><td>0–10</td><td>Elongates sprites along their motion. Turns dots into streaks — rain, sparks, warp lines.</td></tr>
+        <tr><td><b>Damping</b></td><td>0–1</td><td>Drag. Higher values bleed off velocity so particles launch fast and coast to a stop, the heart of any explosion that blooms and hangs.</td></tr>
+        <tr><td><b>Stretch</b></td><td>0–10</td><td>Elongates sprites along their motion, turning dots into streaks for rain, sparks, or warp lines.</td></tr>
         <tr><td><b>Acceleration</b></td><td>vector, −10–10 per axis</td><td>A constant force on every particle. (0, −9.8, 0) is Earth gravity; a small −Y is lazy snow; +Y makes embers rise.</td></tr>
       </tbody>
     </table>
@@ -94,37 +94,37 @@
       <thead><tr><th>Parameter</th><th>Options / range</th><th>What it does</th></tr></thead>
       <tbody>
         <tr><td><b>Size</b> (+ variation)</td><td>0–1 m</td><td>Sprite size at birth.</td></tr>
-        <tr><td><b>End size</b></td><td>0–2×, + curve power 0–5</td><td>Size at end of life, relative to birth size — shrink to 0 for dissolving sparks, grow past 1 for billowing smoke. The power bends how quickly the change happens.</td></tr>
+        <tr><td><b>End size</b></td><td>0–2×, + curve power 0–5</td><td>Size at end of life, relative to birth size: shrink to 0 for dissolving sparks, or grow past 1 for billowing smoke. The power bends how quickly the change happens.</td></tr>
         <tr><td><b>Opacity curve</b></td><td>constant · fade in · fade out · fade in/out · linear fade in · linear fade out</td><td>How opacity changes over each particle's life, multiplied with the color alpha. Fade in/out removes pops at both birth and death.</td></tr>
         <tr><td><b>Billboard mode</b></td><td>billboard · Y-aligned · free rotating · velocity aligned</td><td><b>Billboard</b> always faces the viewer; <b>Y-aligned</b> faces the viewer but stays upright; <b>free rotating</b> tumbles in 3D; <b>velocity aligned</b> points along the particle's motion (use with stretch for streaks).</td></tr>
         <tr><td><b>Lighting</b></td><td>on / off</td><td>Whether scene lighting shades particles. Off for self-luminous effects (sparks, magic); on for matter (dust, snow) that should sit in the room's light.</td></tr>
         <tr><td><b>Sort order</b></td><td>unsorted · depth near→far · depth far→near · age young→old · age old→young</td><td>Draw order within the effect. Unsorted is cheapest and fine for additive effects; depth sorting fixes layering artifacts with alpha-blended sprites.</td></tr>
-        <tr><td><b>Blend mode</b></td><td>additive · alpha · replace · multiply · screen</td><td><b>Additive</b> brightens whatever is behind it — the default, ideal for light-like effects. <b>Alpha</b> is ordinary transparency for solid matter. <b>Multiply</b> darkens (smoke, shadow); <b>screen</b> is a softer brighten; <b>replace</b> overwrites outright.</td></tr>
-        <tr><td><b>Sprite image</b></td><td>soft glow (default) · SF Symbol name</td><td>The picture each particle draws. The default is a soft radial glow; or type any SF Symbol name — <code>snowflake</code>, <code>star.fill</code>, <code>heart.fill</code>, <code>sparkle</code> — for shaped particles.</td></tr>
+        <tr><td><b>Blend mode</b></td><td>additive · alpha · replace · multiply · screen</td><td><b>Additive</b> brightens whatever is behind it; it's the default, and ideal for light-like effects. <b>Alpha</b> is ordinary transparency for solid matter. <b>Multiply</b> darkens (smoke, shadow); <b>screen</b> is a softer brighten; <b>replace</b> overwrites outright.</td></tr>
+        <tr><td><b>Sprite image</b></td><td>soft glow (default) · SF Symbol name</td><td>The picture each particle draws. The default is a soft radial glow; or type any SF Symbol name (<code>snowflake</code>, <code>star.fill</code>, <code>heart.fill</code>, <code>sparkle</code>) for shaped particles.</td></tr>
       </tbody>
     </table>
 
     <h2>Force fields</h2>
-    <p>Three fields act on particles for their entire flight. All default to zero — off.</p>
+    <p>Three fields act on particles for their entire flight. All default to zero, which means off.</p>
     <table>
       <thead><tr><th>Field</th><th>Parameters</th><th>What it does</th></tr></thead>
       <tbody>
-        <tr><td><b>Noise</b></td><td>strength 0–10 · scale 0–10</td><td>Turbulence — a swirling, ever-shifting wind. Strength sets how hard particles are pushed; scale sets the size of the eddies (low = broad slow currents, high = fine jitter). The one parameter that makes snow and smoke stop looking synthetic.</td></tr>
+        <tr><td><b>Noise</b></td><td>strength 0–10 · scale 0–10</td><td>Turbulence, a swirling and ever-shifting wind. Strength sets how hard particles are pushed; scale sets the size of the eddies (low = broad slow currents, high = fine jitter). This is the one parameter that makes snow and smoke stop looking synthetic.</td></tr>
         <tr><td><b>Attraction</b></td><td>strength −10–10 · center point</td><td>Pulls every particle toward a point; negative strength pushes away. Orbit-like gathers, genie-into-the-lamp effects, or a repulsor that keeps a zone clear.</td></tr>
         <tr><td><b>Vortex</b></td><td>strength 0–10 · axis</td><td>Swirls particles around an axis. A vertical axis with moderate strength is a dust devil; combine with upward acceleration for a rising tornado of sparks.</td></tr>
       </tbody>
     </table>
 
     <h2>Spawn</h2>
-    <p>A preset may carry one <b>secondary emitter</b> — a complete child particle system that
+    <p>A preset may carry one <b>secondary emitter</b>: a complete child particle system that
     fires from the parent's particles rather than from the emitter shape. The child has its own
     full set of emission, physics, color, visual, and force-field parameters.</p>
     <table>
       <thead><tr><th>Parameter</th><th>Options</th><th>What it does</th></tr></thead>
       <tbody>
-        <tr><td><b>Spawn occasion</b></td><td>on birth · on death · on update</td><td>When each parent particle triggers the child: at its birth, at its death (fireworks — the shell dies, the crackle blooms), or continuously along its flight (trails).</td></tr>
+        <tr><td><b>Spawn occasion</b></td><td>on birth · on death · on update</td><td>When each parent particle triggers the child: at its birth, at its death (the fireworks pattern, where the shell dies and the crackle blooms), or continuously along its flight (trails).</td></tr>
         <tr><td><b>Spread factor</b></td><td>0–1</td><td>How widely child particles scatter from their spawn point.</td></tr>
-        <tr><td><b>Velocity factor</b></td><td>0–1</td><td>How much of the parent particle's velocity the children inherit — 0 blooms in place, 1 carries the parent's momentum.</td></tr>
+        <tr><td><b>Velocity factor</b></td><td>0–1</td><td>How much of the parent particle's velocity the children inherit. At 0 they bloom in place; at 1 they carry the parent's momentum.</td></tr>
         <tr><td><b>Inherit parent color</b></td><td>on / off</td><td>Children take their parent's current color, keeping a layered effect reading as one.</td></tr>
         <tr><td><b>Child sprite</b></td><td>soft glow · SF Symbol name</td><td>The child system's own sprite image.</td></tr>
       </tbody>

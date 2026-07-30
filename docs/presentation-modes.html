@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Presentation modes &amp; backdrops — Chapter Vision Handbook</title>
-<meta name="description" content="Choose how each segment meets the viewer — Immersive, Mixed, or Windowed — and wrap immersive scenes in 360° video or USDZ backdrops.">
+<meta name="description" content="Choose how each segment meets the viewer (Immersive, Mixed, or Windowed) and wrap immersive scenes in 360° video or USDZ backdrops.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
     <h1>Presentation modes &amp; backdrops</h1>
     <p class="doc-lede">
       Every segment chooses how it meets the viewer: fully immersive, mixed into the real room, or
-      in a plain window — and immersive scenes can wrap themselves in a backdrop.
+      in a plain window. Immersive scenes can also wrap themselves in a backdrop.
     </p>
 
     <h2>The three modes</h2>
@@ -28,17 +28,17 @@
     <table>
       <thead><tr><th>Mode</th><th>What the viewer experiences</th><th>Best for</th></tr></thead>
       <tbody>
-        <tr><td><b>Immersive</b></td><td>The full space opens and passthrough is hidden — your
+        <tr><td><b>Immersive</b></td><td>The full space opens and passthrough is hidden; your
         content is the entire world.</td><td>Fully authored environments: 360° video worlds, staged
         theater, transportive finales</td></tr>
         <tr><td><b>Mixed</b></td><td>Your content places into the viewer's real room; passthrough
         stays visible.</td><td>Guided tours, exhibits, anything anchored to a real space</td></tr>
-        <tr><td><b>Windowed</b></td><td>The experience appears in a plain window — no immersive
+        <tr><td><b>Windowed</b></td><td>The experience appears in a plain window, with no immersive
         space at all.</td><td>Intros, menus, epilogues, calm framing beats</td></tr>
       </tbody>
     </table>
     <p>Because the mode is per-<a href="/docs/chapters-and-segments.html">segment</a>, a chapter can
-    arc from a window, into the room, into another world, and back — the player handles every
+    arc from a window, into the room, into another world, and back. The player handles every
     transition as playback moves from segment to segment.</p>
 
     <h2>Switching rules</h2>
@@ -48,7 +48,7 @@
       <li><b>→ Windowed</b> clears the segment's backdrop. There's no immersive space around a
       window, so there's nothing for a backdrop to wrap.</li>
       <li><b>→ Mixed</b> drops a <em>video</em> backdrop but keeps a USDZ one. A video skybox is a
-      sphere around the viewer — in mixed mode it would obscure the passthrough view of the real
+      sphere around the viewer; in mixed mode it would obscure the passthrough view of the real
       room, defeating the point. USDZ scenery coexists with passthrough, so it stays.</li>
       <li><b>→ Immersive</b> leaves the backdrop untouched.</li>
     </ul>
@@ -61,29 +61,29 @@
 
     <h2>The backdrop picker</h2>
     <p>When a segment is Immersive or Mixed, the inspector shows a backdrop picker below the mode
-    control. Backdrops come from the sidebar's Backdrops section — mark a video or USDZ with
+    control. Backdrops come from the sidebar's Backdrops section, so mark a video or USDZ with
     <b>Mark as Backdrop</b> first (see <a href="/docs/assets-and-folders.html">Assets &amp;
     folders</a>). The choices:</p>
     <ul>
-      <li><b>None</b> — no backdrop; the segment plays against the empty space (Immersive) or the
+      <li><b>None</b>: no backdrop; the segment plays against the empty space (Immersive) or the
       real room (Mixed).</li>
-      <li><b>Video skybox</b> — an interior-facing sphere that plays a video around the viewer, with
+      <li><b>Video skybox</b>: an interior-facing sphere that plays a video around the viewer, with
       three sub-controls:
         <ul>
-          <li><b>Layout</b> — how the source frame carries stereo: <b>mono</b> (flat), <b>side by
+          <li><b>Layout</b> sets how the source frame carries stereo: <b>mono</b> (flat), <b>side by
           side</b> or <b>over-under</b> (packed stereo pairs), or <b>MV-HEVC</b> (Apple's
           multiview format for true spatial video).</li>
-          <li><b>Field</b> — <b>360°</b> fully surrounds the viewer; <b>180°</b> fills the front
-          hemisphere, right for VR180 footage.</li>
-          <li><b>Loop</b> — repeat the video for as long as the segment runs.</li>
+          <li><b>Field</b> sets coverage: <b>360°</b> fully surrounds the viewer; <b>180°</b> fills
+          the front hemisphere, right for VR180 footage.</li>
+          <li><b>Loop</b> repeats the video for as long as the segment runs.</li>
         </ul>
       </li>
-      <li><b>USDZ scene</b> — a 3D environment loaded around the viewer: a room, a landscape, a
-      stage set.</li>
+      <li><b>USDZ scene</b>: a 3D environment loaded around the viewer, such as a room, a landscape,
+      or a stage set.</li>
     </ul>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> In Mixed mode the picker offers only None and USDZ — the video skybox
+      <div><p><b>Note.</b> In Mixed mode the picker offers only None and USDZ. The video skybox
       option is hidden for the same reason a switch to Mixed drops it: a skybox would blot out
       passthrough.</p></div>
     </div>

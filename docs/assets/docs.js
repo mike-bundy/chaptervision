@@ -10,7 +10,7 @@
     {
       section: "Start Here",
       pages: [
-        { id: "index", file: "index.html", title: "Handbook home", desc: "The Chapter Vision handbook — every guide, tutorial and reference.", keywords: "home docs handbook help" },
+        { id: "index", file: "index.html", title: "Handbook home", desc: "The Chapter Vision handbook: every guide, tutorial and reference.", keywords: "home docs handbook help" },
         { id: "what-is-chapter-vision", file: "what-is-chapter-vision.html", title: "What is Chapter Vision?", desc: "The suite at a glance: Chapter Studio on Mac, Chapter Vision on Vision Pro, the player, and the ChapterScript format.", keywords: "overview intro introduction studio spatial player chapterscript suite apps" },
         { id: "install-and-setup", file: "install-and-setup.html", title: "Install & set up", desc: "System requirements and first-launch setup for Chapter Studio on macOS and Chapter Vision on visionOS.", keywords: "install setup requirements macos visionos download launch" },
         { id: "your-first-chapter", file: "your-first-chapter.html", title: "Your first chapter", desc: "A start-to-finish tutorial: import assets, build a segment, add actions, animate, gate, and play it live on Vision Pro.", keywords: "tutorial first chapter getting started walkthrough beginner" },
@@ -21,10 +21,10 @@
       section: "Core Concepts",
       pages: [
         { id: "chapters-and-segments", file: "chapters-and-segments.html", title: "Chapters & segments", desc: "The document model: a chapter is the experience; segments are its timed scenes, each with steps, animation tracks and a backdrop.", keywords: "chapter segment document model scenes default segment structure" },
-        { id: "steps-and-actions", file: "steps-and-actions.html", title: "Steps & actions", desc: "Steps are timed beats inside a segment; actions are what happens — reveals, moves, audio, video, effects — at step start or scheduled mid-step.", keywords: "step action scheduled duration beat timing structure" },
+        { id: "steps-and-actions", file: "steps-and-actions.html", title: "Steps & actions", desc: "Steps are timed beats inside a segment; actions (reveals, moves, audio, video, effects) run at step start or scheduled mid-step.", keywords: "step action scheduled duration beat timing structure" },
         { id: "assets-and-folders", file: "assets-and-folders.html", title: "Assets & folders", desc: "Importing video, USDZ, images and audio, organizing with folders, duplicating, and the Scene vs Backdrops sections.", keywords: "asset import video usdz image audio folder organize sidebar library" },
-        { id: "presentation-modes", file: "presentation-modes.html", title: "Presentation modes & backdrops", desc: "Immersive, Mixed and Windowed segments — and wrapping a scene in a 360°/180° video sphere or USDZ environment.", keywords: "immersive mixed windowed passthrough backdrop skybox 360 180 video sphere usdz environment presentation" },
-        { id: "gates", file: "gates.html", title: "Gates", desc: "Hold a step until the audience taps or a timeout fires — with optional prompts.", keywords: "gate tap timeout prompt hold interaction pause wait" }
+        { id: "presentation-modes", file: "presentation-modes.html", title: "Presentation modes & backdrops", desc: "Immersive, Mixed and Windowed segments, plus wrapping a scene in a 360°/180° video sphere or USDZ environment.", keywords: "immersive mixed windowed passthrough backdrop skybox 360 180 video sphere usdz environment presentation" },
+        { id: "gates", file: "gates.html", title: "Gates", desc: "Hold a step until the audience taps, gazes at, approaches, or grabs an entity, or until a timeout fires. Optional prompts.", keywords: "gate tap gaze approach grab timeout prompt hold interaction pause wait" }
       ]
     },
     {
@@ -33,14 +33,14 @@
         { id: "timeline-overview", file: "timeline-overview.html", title: "Timeline overview", desc: "The multi-track editing surface: segment tabs, ruler, track groups, derived clips, playhead and scrubbing.", keywords: "timeline overview tracks clips ruler playhead scrub zoom lanes" },
         { id: "adding-actions", file: "adding-actions.html", title: "Adding actions", desc: "Drag chips from the action library onto tracks, snap to step boundaries, and drop onto empty rails.", keywords: "add action drag drop library chip snap boundary empty section" },
         { id: "editing-clips", file: "editing-clips.html", title: "Editing clips", desc: "Retime by dragging clip bodies and edges, drag step boundaries, use the clip inspector, and edit parameters inline.", keywords: "clip drag resize retime trim edge inspector move duplicate delete" },
-        { id: "video-trimming", file: "video-trimming.html", title: "Video trimming & cropping", desc: "Non-destructive source windows — slip in-points, set out-points — and the destructive Crop to Clip Length command.", keywords: "video trim slip source in out crop consolidate non-destructive master" },
+        { id: "video-trimming", file: "video-trimming.html", title: "Video trimming & cropping", desc: "Non-destructive source windows (slip in-points, set out-points) and the destructive Crop to Clip Length command.", keywords: "video trim slip source in out crop consolidate non-destructive master" },
         { id: "audio-channels", file: "audio-channels.html", title: "Audio channels", desc: "How audio tracks work: channels, play/stop/fade actions, renaming channels safely, and volume control.", keywords: "audio channel sound music volume loop fade rename" }
       ]
     },
     {
       section: "Actions Reference",
       pages: [
-        { id: "actions-reference", file: "actions-reference.html", title: "All actions", desc: "Every library action — Scene, Add, Video, Audio and Effects — with parameters and timeline behavior.", keywords: "action reference show hide reveal fade move scale rotate play stop pulse spark burst add asset image particle catalog list all" }
+        { id: "actions-reference", file: "actions-reference.html", title: "All actions", desc: "Every library action in the Scene, Add, Video, Audio and Effects categories, with parameters and timeline behavior.", keywords: "action reference show hide reveal fade move scale rotate play stop pulse spark burst add asset image particle catalog list all" }
       ]
     },
     {
@@ -58,7 +58,7 @@
         { id: "vision-studio-overview", file: "vision-studio-overview.html", title: "The spatial studio", desc: "Chapter Vision's single studio window: session rail, libraries, timeline, graph dock and inspectors.", keywords: "vision pro spatial studio window layout rail inspector library" },
         { id: "spatial-gizmo", file: "spatial-gizmo.html", title: "The gizmo & direct editing", desc: "Gaze-and-pinch entity edits: the mode picker, translate arms, rotation rings, uniform scale, and how auto-key interacts with drags.", keywords: "gizmo mode picker translate rotate scale rings arms pinch gaze drag axis grab bar direct manipulation" },
         { id: "spatial-timeline", file: "spatial-timeline.html", title: "The spatial timeline", desc: "The in-headset timeline: segment tabs, drag-retiming, trim mode, step boundaries, snapping and zoom.", keywords: "spatial timeline vision retime trim snap zoom step boundaries clips" },
-        { id: "media-import", file: "media-import.html", title: "Importing media on-device", desc: "Pull video and images from Photos or Files on the headset — local-first, with background upload to the Mac.", keywords: "import photos files media icloud upload local-first background device" },
+        { id: "media-import", file: "media-import.html", title: "Importing media on-device", desc: "Pull video and images from Photos or Files on the headset: local-first, with background upload to the Mac.", keywords: "import photos files media icloud upload local-first background device" },
         { id: "solo-mode", file: "solo-mode.html", title: "Solo mode", desc: "Author complete chapters on Vision Pro with no Mac: create, open, save, undo/redo and recents.", keywords: "solo mode standalone offline no mac local save open create undo" }
       ]
     },
@@ -74,7 +74,7 @@
       pages: [
         { id: "live-sync", file: "live-sync.html", title: "Live sync", desc: "How the live server works: Bonjour discovery, sub-second pushes, bidirectional edit ops, revisions, and Save on Mac.", keywords: "live sync server bonjour sse ops revision save push network" },
         { id: "chapterscript-format", file: "chapterscript-format.html", title: "The ChapterScript format", desc: "Inside a .chapterscript bundle: chapter.json structure, the asset manifest, versioning and compatibility.", keywords: "chapterscript format file json bundle manifest sha version open" },
-        { id: "troubleshooting", file: "troubleshooting.html", title: "Troubleshooting & FAQ", desc: "Fixes for connection, playback, video, import and editing issues — plus frequently asked questions.", keywords: "troubleshooting faq problem fix error connection black video help" }
+        { id: "troubleshooting", file: "troubleshooting.html", title: "Troubleshooting & FAQ", desc: "Fixes for connection, playback, video, import and editing issues, plus frequently asked questions.", keywords: "troubleshooting faq problem fix error connection black video help" }
       ]
     }
   ];
@@ -117,6 +117,7 @@
       "</div>" +
       '<a class="home-link" href="/">← chapter.vision</a>' +
       "</header>" +
+      '<div class="docs-scrim" id="docs-scrim"></div>' +
       '<div class="docs-layout">' +
       '<nav class="docs-sidebar" id="docs-sidebar">' + sidebarHtml + "</nav>" +
       "</div>";
@@ -133,14 +134,19 @@
     // Mobile menu
     var menuBtn = shell.querySelector(".menu-btn");
     var sidebar = document.getElementById("docs-sidebar");
+    var scrim = document.getElementById("docs-scrim");
     if (menuBtn && sidebar) {
+      var setOpen = function (open) {
+        sidebar.classList.toggle("open", open);
+        if (scrim) scrim.classList.toggle("show", open);
+      };
       menuBtn.addEventListener("click", function (e) {
         e.stopPropagation();
-        sidebar.classList.toggle("open");
+        setOpen(!sidebar.classList.contains("open"));
       });
       document.addEventListener("click", function (e) {
         if (sidebar.classList.contains("open") && !sidebar.contains(e.target)) {
-          sidebar.classList.remove("open");
+          setOpen(false);
         }
       });
     }

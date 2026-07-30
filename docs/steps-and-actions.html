@@ -25,7 +25,7 @@
 
     <h2>Steps: the beats of a scene</h2>
     <p>A <a href="/docs/chapters-and-segments.html">segment</a> is divided into an ordered sequence
-    of steps. Each step has a duration — as short as 0.1 seconds — and the segment's total length is
+    of steps. Each step has a duration (as short as 0.1 seconds), and the segment's total length is
     simply its steps laid end to end. Step boundaries appear as vertical guides on the timeline
     ruler, and each interior boundary is a draggable handle, so retiming a beat is a matter of
     sliding its edge.</p>
@@ -40,20 +40,20 @@
     fire that particle burst. Every action belongs to a step, and its timing works one of two
     ways:</p>
     <ul>
-      <li><b>At step start</b> — the action fires the instant its step begins. This is the natural
+      <li><b>At step start:</b> the action fires the instant its step begins. This is the natural
       home for "beat downbeats": the things that define what this moment is.</li>
-      <li><b>Scheduled mid-step</b> — the action fires at an offset into the step, for example 1.4
+      <li><b>Scheduled mid-step:</b> the action fires at an offset into the step, for example 1.4
       seconds after it begins. When you drop an action chip in the middle of a step on the timeline,
       Chapter Studio schedules it at that offset automatically.</li>
     </ul>
-    <p>You don't usually think about this distinction while working — you just drop a chip where you
+    <p>You don't usually think about this distinction while working; you just drop a chip where you
     want it to happen. Drops that land on a step boundary become step-start actions; drops inside a
     step become scheduled ones. Drops snap to the nearest boundary when you're close, so hitting a
     downbeat exactly is easy.</p>
 
     <h2>Action categories</h2>
     <p>The action library groups its chips by category, and timeline sections accept matching
-    categories — scene chips land on scene rows, audio on audio rows, and so on:</p>
+    categories, so scene chips land on scene rows, audio on audio rows, and so on:</p>
     <table>
       <thead><tr><th>Category</th><th>What it covers</th></tr></thead>
       <tbody>
@@ -64,8 +64,8 @@
         <tr><td><b>Effects</b></td><td>Instant flourishes: pulse rings, spark bursts, custom events</td></tr>
       </tbody>
     </table>
-    <p>Every action's parameters are editable in the inspector — the common ones (opacity, duration,
-    volume, loop) with inline sliders and toggles right on the selected clip's card. For the full
+    <p>Every action's parameters are editable in the inspector. The common ones (opacity, duration,
+    volume, loop) have inline sliders and toggles right on the selected clip's card. For the full
     catalog of actions and their parameters, see the
     <a href="/docs/actions-reference.html">action reference</a>.</p>
 
@@ -81,11 +81,11 @@
     </ul>
     <p>So when you drag a clip's left edge, you're retiming the opening action; the right edge, the
     closing action; the clip body, both together. The timeline is a live view of your action stream
-    rendered the way a film editor expects — which means it can never drift out of sync with what
+    rendered the way a film editor expects, which means it can never drift out of sync with what
     actually plays, because it <em>is</em> what actually plays.</p>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Clip colors and glyphs reflect the action behind them — a fade clip, a
+      <div><p><b>Note.</b> Clip colors and glyphs reflect the action behind them: a fade clip, a
       move clip, and a video clip each read differently at a glance, and the clip under the playhead
       pulses during playback.</p></div>
     </div>
@@ -94,11 +94,11 @@
     <p>Steps and actions are freely rearrangeable, and every change is one undo entry:</p>
     <ul>
       <li><b>Drag a clip</b> to slide its actions in time. Cross a step boundary and the action
-      moves into the neighboring step automatically — you think in seconds, not in steps.</li>
+      moves into the neighboring step automatically, so you think in seconds, not in steps.</li>
       <li><b>Right-click a clip</b> for quick moves: duplicate it slightly later, delete its opening
       action, or jump to it in the inspector.</li>
       <li><b>Move or duplicate whole steps</b> from the segment inspector's step list to reorder or
-      repeat a beat with everything it contains. Both editors — Chapter Studio and Chapter Vision — support step
+      repeat a beat with everything it contains. Both editors, Chapter Studio and Chapter Vision, support step
       and action move/duplicate, and changes sync live between them.</li>
     </ul>
 
@@ -110,7 +110,7 @@
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> Scrub the ruler constantly. Clicking anywhere shows exactly what's on
-      screen at that moment — even while stopped — so you can verify a beat without playing the whole
+      screen at that moment, even while stopped, so you can verify a beat without playing the whole
       segment.</p></div>
     </div>
   </article>

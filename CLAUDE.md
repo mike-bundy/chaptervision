@@ -70,20 +70,29 @@ Use the CSS variables, not literal hex, for anything new.
 ## File map
 
 ```
-index.html                Marketing homepage (nav, hero w/ canvas, marquee, sections
-                          01–08, final CTA, footer). Section anchors: #studio #spatial
-                          #animation #sync #particles #everything #format #learn
+index.html                Marketing homepage: a chapter-structured scroll experience
+                          (nav, reading-progress bar, chapter rail scroll-spy, hero w/
+                          canvas, "film" video slots, marquee, chapters 01–08, final
+                          CTA, footer). Section anchors: #studio #spatial #animation
+                          #sync #particles #everything #format #learn.
+                          SIX VIDEO PLACEHOLDERS (.film-frame > .vp) await real product
+                          captures — each has an adjacent HTML comment with the exact
+                          <video> tag to swap in and a footage spec. Files are expected
+                          at /assets/video/<name>.mp4. Do not reinvent CSS product
+                          mockups; real capture video replaces them.
 404.html                  Themed not-found page (reuses hero canvas)
 README.md                 Human-facing: structure, local dev, deploy instructions
 CLAUDE.md                 This file
 assets/
-  css/site.css            ALL design tokens + homepage styles (nav, hero, panels,
-                          timeline mock .tl-*, graph mock, gizmo mock .gz-*, sync
-                          diagram, grid cards, docs teaser, footer, .reveal scroll
-                          animations)
-  js/site.js              Homepage interactions: nav scroll state, IntersectionObserver
-                          reveals, hero constellation canvas, particle emitter demo
-                          canvas (hues: gold 34±14 / periwinkle 250)
+  css/site.css            ALL design tokens + homepage styles (progress bar, nav,
+                          chapter rail, hero, .film/.vp video slots, marquee, chapter
+                          sections, word-reveal headlines, feature lists, panels,
+                          sync stats, grid cards, docs teaser, footer, .reveal)
+  js/site.js              Homepage interactions: nav scroll state, [data-words]
+                          word-by-word headline reveal, IntersectionObserver reveals,
+                          chapter-rail scroll-spy, rAF scroll scrubbing (progress bar,
+                          hero fade via --hero-p, film scale via --p, [data-parallax]),
+                          hero constellation canvas
   icon-256.png            App icon (brand mark + favicon on every page)
   icon-512.png            App icon hi-res (final CTA on homepage)
 docs/
@@ -162,10 +171,14 @@ curl -s -o /dev/null -w "%{http_code}\n" http://chaptervision.test/
   (Apple's format), "spatial storytelling", "Spatial gizmos" are NOT app references.
 - **docs.js MANIFEST is the single source of truth** for docs nav/search. A page not in
   it is invisible (no sidebar entry, no search hits) even though the file serves fine.
-- Homepage product mockups (timeline `.tl-*`, graph SVG, gizmo `.gz-*`, sync diagram)
-  are hand-built CSS/SVG in index.html — keep them consistent with real product behavior.
-- `prefers-reduced-motion` is honored: canvases don't run, reveals show instantly. Keep
-  that true for anything new.
-- Timeline clip colors (`.tl-clip.c-*`) are thematically tinted (scene=gold,
-  video=blue, audio=green, fx=lavender, move=periwinkle) — they intentionally echo the
-  real editor's track tints.
+- The old hand-built CSS/SVG product mockups (timeline `.tl-*`, gizmo `.gz-*`, graph
+  SVG, sync diagram, particle demo canvas) were removed 2026-07-30 in favor of the six
+  homepage video placeholder slots. When filling a slot, follow the HTML comment next
+  to it exactly (video path, poster, attributes) and delete the placeholder `.vp` div.
+- `prefers-reduced-motion` is honored: canvases and scroll scrubbing don't run, reveals
+  and headline words show instantly, films render at final scale. Keep that true for
+  anything new.
+- Em dash policy (2026-07-30 de-AI pass): body prose keeps at most ~1–3 per page,
+  only where a dash genuinely earns its place. The em dash in `<title>` tags ("… —
+  Chapter Vision Handbook") is the title pattern and stays. Don't reintroduce
+  dash-heavy copy.

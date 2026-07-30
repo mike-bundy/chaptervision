@@ -19,38 +19,38 @@
   <article class="doc-article" data-page="video-trimming">
     <h1>Video trimming &amp; cropping</h1>
     <p class="doc-lede">
-      Play just the part of a video you want — trims are non-destructive source windows by
+      Play just the part of a video you want. Trims are non-destructive source windows by
       default, with a one-way crop tool for when you're ready to shrink the master itself.
     </p>
 
     <h2>Source windows: trims without touching the file</h2>
-    <p>Every video clip can carry a <b>source window</b> — an in-point and an out-point into
+    <p>Every video clip can carry a <b>source window</b>: an in-point and an out-point into
     the master file. The clip plays only that slice: playback cues up at the in-point and
     stops at the out-point. The master video on disk is never modified and never re-encoded;
     the window is just timing data stored with the action, so you can widen, narrow, or clear
     it at any time with zero quality cost.</p>
-    <p>Both the Chapter Studio preview and the player on Vision Pro honor the window — what you
+    <p>Both the Chapter Studio preview and the player on Vision Pro honor the window, so what you
     scrub on the Mac is exactly what plays on the headset, down to the frame where the clip
     cues in and where it ends.</p>
 
     <h2>Trimming on the timeline</h2>
     <p>Trims live on the video clip's edges in Chapter Studio:</p>
     <ul>
-      <li><b>Right edge</b> — drag the clip's right edge (plain or with <kbd>⌥</kbd> held) to
+      <li><b>Right edge.</b> Drag the clip's right edge (plain or with <kbd>⌥</kbd> held) to
       set the <b>out-point</b>: the moment in the source where playback stops.</li>
-      <li><b><kbd>⌥</kbd> + left edge</b> — hold Option and drag the left edge to <b>slip the
+      <li><b><kbd>⌥</kbd> + left edge.</b> Hold Option and drag the left edge to <b>slip the
       in-point</b>: the clip stays where it is on the timeline, but starts from a later
       moment in the source. It's the classic film-editing slip — reframe the content without
       moving the beat.</li>
     </ul>
     <p>A plain left-edge drag still retimes when the clip <em>starts</em> in the segment, as
-    with any clip — see <a href="/docs/editing-clips.html">editing clips</a>. Think of it as:
+    with any clip; see <a href="/docs/editing-clips.html">editing clips</a>. Think of it as:
     plain drags edit <em>when</em>, Option drags edit <em>what</em>.</p>
 
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> On Chapter Vision, select a video clip and switch its mode
-      chip to <b>Trim</b> — the left handle becomes the slip and the right handle the
+      chip to <b>Trim</b>. The left handle becomes the slip and the right handle the
       out-point, mirroring the Mac's Option-drag behavior.</p></div>
     </div>
 
@@ -60,19 +60,19 @@
     When the edit has settled, <b>Crop to Clip Length…</b> makes the trim physical:</p>
     <ol class="steps">
       <li><p><b>The windows are rebased.</b> Every clip in the chapter that plays the same
-      master — across all segments — has its source window recalculated against the new,
+      master, across all segments, has its source window recalculated against the new,
       shorter file, so every clip keeps playing exactly the frames it played before.</p></li>
       <li><p><b>The file is trimmed with a passthrough export.</b> The video is cut, not
-      re-encoded — no generation loss, no quality change, and it's fast.</p></li>
+      re-encoded: no generation loss, no quality change, and it's fast.</p></li>
       <li><p><b>The master is replaced atomically.</b> The new file swaps in as a single
       operation, so there's never a moment where the chapter points at a half-written
       video.</p></li>
       <li><p><b>Content fingerprints refresh.</b> The chapter's asset records are updated so
-      a connected Vision Pro re-fetches the new file immediately — the headset never plays
+      a connected Vision Pro re-fetches the new file immediately, so the headset never plays
       stale frames from a cached copy of the old master.</p></li>
     </ol>
-    <p>You'll find the command in two places in Chapter Studio — the video clip's right-click menu
-    and the clip inspector — and on Chapter Vision in the selected clip's trim card
+    <p>You'll find the command in two places in Chapter Studio (the video clip's right-click menu
+    and the clip inspector), and on Chapter Vision in the selected clip's trim card
     or by long-pressing the clip.</p>
 
     <div class="callout warn">
@@ -87,8 +87,8 @@
     <table>
       <thead><tr><th></th><th>Source window (edge trim)</th><th>Crop to Clip Length</th></tr></thead>
       <tbody>
-        <tr><td><b>Reversible</b></td><td>Yes — adjust or clear any time</td>
-            <td>No — discarded media is gone</td></tr>
+        <tr><td><b>Reversible</b></td><td>Yes, adjust or clear any time</td>
+            <td>No, discarded media is gone</td></tr>
         <tr><td><b>Master file</b></td><td>Untouched</td><td>Physically shortened</td></tr>
         <tr><td><b>Quality</b></td><td>Unchanged</td><td>Unchanged (passthrough, no re-encode)</td></tr>
         <tr><td><b>Bundle size</b></td><td>Full master ships</td><td>Only the kept slice ships</td></tr>
@@ -97,7 +97,7 @@
       </tbody>
     </table>
     <p>A good rhythm: trim non-destructively while the story is still moving, then crop the
-    masters as a last pass — your <code>.chapterscript</code> bundle gets lighter, loads
+    masters as a last pass. Your <code>.chapterscript</code> bundle gets lighter, loads
     faster over <a href="/docs/live-sync.html">live sync</a>, and plays identically.</p>
   </article>
 </main>

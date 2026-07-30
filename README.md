@@ -1,29 +1,39 @@
 # chapter.vision
 
 Marketing site + handbook for **Chapter Vision**, the immersive experience authoring
-suite for Apple Vision Pro (Studio on macOS, Chapter Vision on visionOS, ChapterScript format).
+suite for Apple Vision Pro (Chapter Studio on macOS, Chapter Vision on visionOS,
+ChapterScript format).
 
 ## Structure
 
 ```
-index.html               Marketing homepage
+index.html               Marketing homepage (scroll experience with six video
+                         placeholder slots awaiting real product captures)
 404.html                 Not-found page
 assets/
   css/site.css           Design system + homepage styles
-  js/site.js             Hero canvas, particle demo, scroll reveals
-  favicon.svg            Brand mark
+  js/site.js             Hero canvas, scroll scrubbing, reveals, chapter rail
+  icon-256.png           App icon (brand mark + favicon)
+  icon-512.png           App icon, hi-res
 docs/
   index.html             Handbook home
   *.html                 29 handbook pages (flat)
   _TEMPLATE.html         Boilerplate for new handbook pages
   assets/docs.css        Docs layout + typography
-  assets/docs.js         Sidebar, search, TOC, prev/next — all driven by the
+  assets/docs.js         Sidebar, search, TOC, prev/next, all driven by the
                          MANIFEST array at the top of the file
 ```
 
+## Video placeholders
+
+The homepage has six clearly labeled video slots (`.film-frame` blocks). Each has
+an HTML comment beside it specifying the footage to capture and the exact `<video>`
+tag to swap in. Drop the files in `assets/video/` and replace each placeholder's
+`.vp` div per its comment.
+
 ## Local dev
 
-Served by Laravel Herd at http://chaptervision.test — no build step. Everything is
+Served by Laravel Herd at http://chaptervision.test with no build step. Everything is
 static HTML/CSS/JS; the only external dependency is Google Fonts.
 
 ## Adding a handbook page

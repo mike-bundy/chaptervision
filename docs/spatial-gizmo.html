@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The gizmo &amp; direct editing — Chapter Vision Handbook</title>
-<meta name="description" content="Move, rotate, and scale entities in space with Chapter Vision's gizmo, direct drags, motion trails, and pose keyframing — all with gaze and pinch.">
+<meta name="description" content="Move, rotate, and scale entities in space with Chapter Vision's gizmo, direct drags, motion trails, and pose keyframing, all with gaze and pinch.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +25,17 @@
     </p>
 
     <h2>Selecting in space</h2>
-    <p>Every entity in your scene is gaze-pickable — there's no edit mode to switch on; the
-    workspace is always an editing surface. Look at an entity — it highlights — and pinch to
+    <p>Every entity in your scene is gaze-pickable: there's no edit mode to switch on; the
+    workspace is always an editing surface. Look at an entity (it highlights) and pinch to
     select it. The selection routes everywhere at once: the inspector shows the entity's
     transform, and the timeline scrolls to its clips.</p>
-    <p>What happens in space is up to you. By default your hands own the selection directly —
+    <p>What happens in space is up to you. By default your hands own the selection directly:
     grab and move it, no gizmo in the way. When one axis matters, the <b>mode picker</b> in the
     transport bar (<b>Move</b> / <b>Rotate</b> / <b>Scale</b>) summons that handle family around
     the selected entity. One family shows at a time; tap the active mode again to put the gizmo
     away and go back to direct manipulation.</p>
     <p>The gizmo sizes itself to encompass whatever you select, so it hugs a small prop and wraps a
-    large one. It's also capped at roughly 0.3&nbsp;meters across — selecting a room-sized backdrop
+    large one. It's also capped at roughly 0.3&nbsp;meters across, so selecting a room-sized backdrop
     won't summon a gizmo that dwarfs you. The handles stay a comfortable arm's-length tool no
     matter the subject.</p>
 
@@ -43,7 +43,7 @@
     <table>
       <thead><tr><th>Mode</th><th>Handles</th><th>What they do</th></tr></thead>
       <tbody>
-        <tr><td><b>Move</b></td><td>Three arrow arms</td><td>Translate along the x, y, or z axis. The arms are aligned to world axes — "up" is always the room's up, no matter how the entity is rotated.</td></tr>
+        <tr><td><b>Move</b></td><td>Three arrow arms</td><td>Translate along the x, y, or z axis. The arms are aligned to world axes: "up" is always the room's up, no matter how the entity is rotated.</td></tr>
         <tr><td><b>Rotate</b></td><td>Three dashed rings</td><td>Rotate around one axis each. Drag along a ring to spin the entity around that axis.</td></tr>
         <tr><td><b>Scale</b></td><td>Center cube</td><td>Uniform scale. Drag it outward to grow the entity, inward to shrink it, proportions locked.</td></tr>
       </tbody>
@@ -53,17 +53,17 @@
     manipulation just to reposition.</p>
     <p>Each drag is frozen-frame stable: the moment you pinch a handle, the gizmo locks its axis
     frame for the duration of the gesture. Walking around the entity mid-drag, or the entity
-    animating underneath you, never bends the axis you're pulling along — the drag tracks exactly
+    animating underneath you, never bends the axis you're pulling along. The drag tracks exactly
     the line or ring you grabbed.</p>
 
     <h2>Direct drags: the default</h2>
-    <p>With no gizmo mode active, manipulation is direct — and it's always on. A one-handed
+    <p>With no gizmo mode active, manipulation is direct, and it's always on. A one-handed
     pinch-drag moves the entity through space, with wrist rotation turning it as you go. Bring in
     your second hand and pinch with both to scale. These direct manipulations write the same
-    transform edits as the gizmo — the gizmo is for precision, direct drags are for speed.</p>
+    transform edits as the gizmo: the gizmo is for precision, direct drags are for speed.</p>
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
-      <div><p><b>Tip.</b> Use direct drags for blocking — "the lantern goes about here" — and the
+      <div><p><b>Tip.</b> Use direct drags for blocking ("the lantern goes about here") and the
       gizmo when one axis matters, like sliding a panel straight back without drifting sideways.</p></div>
     </div>
 
@@ -71,31 +71,31 @@
     <p>The gizmo is animation-aware. With the record button (auto-key) enabled in the transport
     bar, a gizmo drag on an <em>already-animated</em> entity writes keyframes for exactly the
     channels you changed, at the current playhead time. Slide an animated entity along x, and only
-    its x-position channel gets a new key — its rotation and scale curves are untouched.</p>
+    its x-position channel gets a new key; its rotation and scale curves are untouched.</p>
     <p>Auto-key deliberately never keys a channel that has no animation yet. Nudging a static prop
     with record on repositions it; it doesn't sprout an accidental one-key animation track. To
-    start animating an entity, set an explicit pose key first — see
-    <a href="/docs/keyframes-and-autokey.html">keyframes &amp; auto-key</a>.</p>
+    start animating an entity, set an explicit pose key first (see
+    <a href="/docs/keyframes-and-autokey.html">keyframes &amp; auto-key</a>).</p>
 
     <h2>Motion trails: grab the path itself</h2>
-    <p>Animated entities draw their motion as a trail through space — the actual path the entity
+    <p>Animated entities draw their motion as a trail through space: the actual path the entity
     will travel during the segment. Along the trail sit grabbable orbs, one per position keyframe.
-    Pinch an orb and drag it to a new spot, and the keyframe underneath it moves with it — the
+    Pinch an orb and drag it to a new spot, and the keyframe underneath it moves with it. The
     curve reshapes live, and the trail redraws as you drag.</p>
     <p>This is the most spatial way to author movement in Chapter Vision: instead of scrubbing to a
     time and adjusting numbers, you sculpt the flight path with your hands, standing where the
     audience will stand.</p>
 
     <h2>Pose keyframing from where you stand</h2>
-    <p>The transport bar's keyframing controls capture poses in place. Position an entity — gizmo,
-    direct drag, or inspector numbers — scrub to the moment you want, and set a key: the entity's
+    <p>The transport bar's keyframing controls capture poses in place. Position an entity (gizmo,
+    direct drag, or inspector numbers), scrub to the moment you want, and set a key: the entity's
     full pose (position, rotation, scale, opacity) is recorded at that time. Move, scrub, key
     again, and the entity animates between your poses. Because you author from inside the scene,
     you're always judging the move from a real viewpoint, not a proxy viewport.</p>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Every transform edit — gizmo, direct drag, trail orb, pose key — lands in
-      the same undo history and, in a tethered session, syncs live to Chapter Studio on your
+      <div><p><b>Note.</b> Every transform edit, whether gizmo, direct drag, trail orb, or pose
+      key, lands in the same undo history and, in a tethered session, syncs live to Chapter Studio on your
       Mac. There is no separate "spatial edit" that the Mac can't see.</p></div>
     </div>
   </article>

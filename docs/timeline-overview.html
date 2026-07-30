@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Timeline overview — Chapter Vision Handbook</title>
-<meta name="description" content="A tour of the multi-track timeline in Chapter Studio — segment tabs, the time ruler, asset-anchored track groups, derived clips, and playback scrubbing.">
+<meta name="description" content="A tour of the multi-track timeline in Chapter Studio: segment tabs, the time ruler, asset-anchored track groups, derived clips, and playback scrubbing.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +26,8 @@
 
     <h2>Where it lives</h2>
     <p>The timeline spans the entire width of the Chapter Studio window, sitting below the main
-    editing area. A draggable horizontal divider separates it from the 3D viewport above —
-    pull the divider up when you're deep in timing work, or down when you want a bigger
+    editing area. A draggable horizontal divider separates it from the 3D viewport above.
+    Pull the divider up when you're deep in timing work, or down when you want a bigger
     stage. The timeline always shows <em>one segment at a time</em>; a chapter is a set of
     segments, and each segment is a run of timed <a href="/docs/steps-and-actions.html">steps</a>.</p>
     <p>From top to bottom, the timeline stacks four strips:</p>
@@ -38,33 +38,33 @@
       <li><p><b>The action library.</b> A horizontal strip of draggable action chips, grouped
       by category, with search and collapsible groups. See
       <a href="/docs/adding-actions.html">adding actions</a>.</p></li>
-      <li><p><b>The time ruler.</b> Tick marks, step boundaries, and gate flags — plus
+      <li><p><b>The time ruler.</b> Tick marks, step boundaries, and gate flags, plus
       click-to-seek and drag-to-scrub.</p></li>
       <li><p><b>The tracks.</b> Scene, Audio, and Effects sections holding one track group
       per asset, channel, or effect.</p></li>
     </ol>
 
     <h2>The time ruler</h2>
-    <p>The ruler shows second ticks — labeled every second when you're zoomed in, every five
+    <p>The ruler shows second ticks, labeled every second when you're zoomed in and every five
     seconds when zoomed out. Accent-colored vertical guides mark each step boundary, and those
     guides continue faintly down through every lane so you can see exactly which step a clip
     belongs to. Steps that wait for the viewer carry a yellow gate flag on the ruler; clicking
     a flag selects the source step and opens its <a href="/docs/gates.html">gate</a> settings
     in the inspector.</p>
     <p>Click anywhere on the ruler to seek the playhead to that time; press and drag to scrub
-    continuously. Interior step boundaries are themselves draggable handles — see
+    continuously. Interior step boundaries are themselves draggable handles; see
     <a href="/docs/editing-clips.html">editing clips</a> for retiming steps.</p>
 
     <h2>Track groups: everything anchors to an asset</h2>
     <p>Each track is a <b>group</b> anchored to one thing: a scene asset, an audio channel, or
-    an effect type. A group owns one or more <b>primary lanes</b> — the asset's own on-stage
-    ranges — plus shorter <b>attached lanes</b> nested directly beneath, holding the modifiers
+    an effect type. A group owns one or more <b>primary lanes</b> (the asset's own on-stage
+    ranges) plus shorter <b>attached lanes</b> nested directly beneath, holding the modifiers
     (fades, moves, scales, motion) that target that asset. Modifiers never live on a separate
     effects row somewhere else; they always sit under the thing they change, so a glance at a
     group tells you the asset's whole story.</p>
     <p>When two clips on the same track overlap in time, they pack into stacked sub-lanes
-    instead of painting over each other. Groups appear in order of first use in the segment —
-    the first asset to come on stage gets the top row.</p>
+    instead of painting over each other. Groups appear in order of first use in the segment,
+    so the first asset to come on stage gets the top row.</p>
     <p>Three sections are always rendered, even when empty: <b>Scene</b>, <b>Audio</b>, and
     <b>Effects</b>. An empty section shows a dashed dropzone so you can drag an action into a
     brand-new segment without anything existing there first.</p>
@@ -76,7 +76,7 @@
     Anything still open when the segment ends simply runs to the end. Playing a video also
     surfaces its panel on the Scene section automatically, so a step that only plays a video
     still shows the panel's clip.</p>
-    <p>Each clip is tinted by its track's section color and modulated by subtype — show,
+    <p>Each clip is tinted by its track's section color and modulated by subtype: show,
     reveal, fade, scale, move, motion, video, audio, and effect clips each get a distinct
     shade and a small glyph inside the clip, so you can read a dense timeline without
     selecting anything. The full mapping is in the
@@ -85,7 +85,7 @@
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
       <div><p><b>Note.</b> Because clips are derived from actions, editing a clip is really
-      editing the underlying actions — and everything stays perfectly in sync with what the
+      editing the underlying actions, so everything stays perfectly in sync with what the
       player runs on Vision Pro.</p></div>
     </div>
 
@@ -102,8 +102,8 @@
     the live beat; clips that have already finished dim to half opacity. When playback is
     stopped, the timeline renders statically — no distracting motion.</p>
     <p>Scrubbing works even while stopped. Clicking a step, a clip, or a spot on the ruler
-    updates the viewport to show exactly what's on stage at that moment — which assets are
-    visible, which video panels are up. That "what's on stage at this step" preview is what
+    updates the viewport to show exactly what's on stage at that moment (which assets are
+    visible, which video panels are up). That "what's on stage at this step" preview is what
     makes the timeline feel like a film editor rather than a static outline: you can walk a
     whole segment beat by beat without ever pressing play.</p>
 
@@ -115,7 +115,7 @@
     </div>
 
     <p>The same timeline model appears in Chapter Vision as a floating panel, so
-    edits made on the headset and on the Mac read identically — see the
+    edits made on the headset and on the Mac read identically; see the
     <a href="/docs/spatial-timeline.html">spatial timeline</a>.</p>
   </article>
 </main>

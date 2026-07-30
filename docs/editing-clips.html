@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Editing clips — Chapter Vision Handbook</title>
-<meta name="description" content="Retiming clips in Chapter Studio — body and edge drags, live time readouts, the clip context menu, draggable step boundaries, and the clip inspector.">
+<meta name="description" content="Retiming clips in Chapter Studio: body and edge drags, live time readouts, the clip context menu, draggable step boundaries, and the clip inspector.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +19,12 @@
   <article class="doc-article" data-page="editing-clips">
     <h1>Editing clips</h1>
     <p class="doc-lede">
-      Once actions are on the timeline, timing is a drag away — slide clips, trim their
+      Once actions are on the timeline, timing is a drag away. Slide clips, trim their
       edges, stretch steps, and tune parameters inline, all with full undo.
     </p>
 
     <h2>Moving and resizing clips</h2>
-    <p>A clip on the timeline is the span between two actions — its opening action (a Reveal,
+    <p>A clip on the timeline is the span between two actions: its opening action (a Reveal,
     Play Video, or Play Audio) and its closing action (a Hide or Stop). Dragging edits those
     actions directly:</p>
     <ul>
@@ -34,9 +34,9 @@
       its left and right edge; the left edge moves the opening action, the right edge moves
       the closing one. Chapter Studio clamps the drag so the opening can never pass the closing.</li>
     </ul>
-    <p>While you drag, a live tooltip rides above the timeline showing the exact time —
-    <code>→ 5.20s</code> for a body drag, or <code>start 4.10s</code> /
-    <code>end 7.30s</code> when resizing an edge — so you can land on a precise beat without
+    <p>While you drag, a live tooltip rides above the timeline showing the exact time
+    (<code>→ 5.20s</code> for a body drag, or <code>start 4.10s</code> /
+    <code>end 7.30s</code> when resizing an edge), so you can land on a precise beat without
     guessing from pixels.</p>
 
     <div class="callout note">
@@ -52,7 +52,7 @@
     between a step-start action and a scheduled action as needed. You think in seconds; Chapter Studio
     keeps the <a href="/docs/steps-and-actions.html">step structure</a> bookkeeping straight
     underneath.</p>
-    <p>Each completed drag records exactly <b>one undo entry</b> — a long, fiddly drag is
+    <p>Each completed drag records exactly <b>one undo entry</b>. A long, fiddly drag is
     still a single <kbd>⌘Z</kbd> away from being undone, never a stack of micro-steps.</p>
 
     <h2>The clip context menu</h2>
@@ -63,7 +63,7 @@
         <tr><td><b>Reveal in Inspector</b></td><td>Selects the clip's source step and asset so
         the inspector jumps straight to its actions.</td></tr>
         <tr><td><b>Duplicate at +0.5s</b></td><td>Copies the opening action half a second
-        later — handy for echoing a beat or building a repeated pattern.</td></tr>
+        later, handy for echoing a beat or building a repeated pattern.</td></tr>
         <tr><td><b>Delete Opening Action</b></td><td>Removes the action that opens the clip.
         The clip disappears from the timeline (its closing action, if any, no longer has
         anything to close).</td></tr>
@@ -71,13 +71,13 @@
     </table>
 
     <h2>Retiming steps on the ruler</h2>
-    <p>Timing isn't only about clips — the steps themselves can stretch. Every interior step
+    <p>The steps themselves can stretch, too. Every interior step
     boundary on the time ruler is a draggable handle: pull it left or right to shorten or
     lengthen the step that ends there. Steps are clamped to a minimum of 0.1&nbsp;seconds, so
     you can't accidentally collapse a beat out of existence.</p>
 
     <h2>The clip inspector</h2>
-    <p>Select an asset within a segment — by clicking one of its clips is the quickest way —
+    <p>Select an asset within a segment (clicking one of its clips is the quickest way)
     and the right-hand inspector leads with a card listing <em>every action in the segment
     that targets that asset</em>, in time order. Each row shows the action's glyph and label,
     a one-line parameter summary (like "opacity 0.5 · 0.50s"), and its absolute time, plus a
@@ -96,14 +96,14 @@
       </tbody>
     </table>
     <p>Everything else still shows its summary row, and any action can be opened in its full
-    parameter form — including the raw-JSON view — from the inspector. See the
+    parameter form, including the raw-JSON view, from the inspector. See the
     <a href="/docs/actions-reference.html">actions reference</a> for what each action
     exposes.</p>
 
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> The clip inspector is the fastest way to audit an asset's whole arc
-      through a segment — every reveal, move, fade, and hide in one scrollable list, each one
+      through a segment: every reveal, move, fade, and hide in one scrollable list, each one
       click from its source step.</p></div>
     </div>
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The spatial timeline — Chapter Vision Handbook</title>
-<meta name="description" content="Retime, trim, snap, zoom, and drop actions on Chapter Vision's in-headset timeline — the same multi-track view as the Mac, built for pinch and gaze.">
+<meta name="description" content="Retime, trim, snap, zoom, and drop actions on Chapter Vision's in-headset timeline, the same multi-track view as the Mac, built for pinch and gaze.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   <article class="doc-article" data-page="spatial-timeline">
     <h1>The spatial timeline</h1>
     <p class="doc-lede">
-      The center of the studio window is a full multi-track timeline — the same tracks, lanes, and
-      clips you see in Chapter Studio on the Mac, rebuilt for gaze and pinch.
+      The center of the studio window is a full multi-track timeline with the same tracks, lanes,
+      and clips you see in Chapter Studio on the Mac, rebuilt for gaze and pinch.
     </p>
 
     <h2>Same projection as the Mac</h2>
@@ -30,15 +30,15 @@
     directly beneath — never exiled to a distant effects row. Overlapping clips pack into sub-lanes
     automatically. This is the identical projection Chapter Studio renders, so a tethered session shows the
     same picture on both devices, updating live in both directions.</p>
-    <p>Tap the <b>ruler</b> at any point to jump the playhead to the step under your finger —
-    handy for stepping through a segment beat by beat.</p>
+    <p>Tap the <b>ruler</b> at any point to jump the playhead to the step under your finger,
+    which is handy for stepping through a segment beat by beat.</p>
 
     <h2>Retiming clips</h2>
-    <p>Drag a clip's body to retime it — both its start and end move together, so a five-second
+    <p>Drag a clip's body to retime it. Both its start and end move together, so a five-second
     video stays five seconds long wherever you slide it. Drag an <b>edge-trim handle</b> at either
     end to move just that endpoint: pull a reveal earlier, extend a fade, shorten an effect.</p>
     <p><b>Step boundaries</b> are draggable too. Grab the boundary line between two steps and slide
-    it to change the earlier step's duration — the whole segment's step layout retimes with it.</p>
+    it to change the earlier step's duration, and the whole segment's step layout retimes with it.</p>
 
     <h2>Retime vs. Trim: two kinds of edge drag</h2>
     <p>Video clips can mean two different things when you drag an edge, so a selected video clip
@@ -47,7 +47,7 @@
       <thead><tr><th>Mode</th><th>Left edge</th><th>Right edge</th></tr></thead>
       <tbody>
         <tr><td><b>Retime</b></td><td>Moves when the video starts playing in the segment.</td><td>Moves when it stops.</td></tr>
-        <tr><td><b>Trim</b></td><td>Slips the source in-point — content stays pinned in place on the timeline while earlier footage is cut from the head.</td><td>Sets the source out-point, cutting footage from the tail.</td></tr>
+        <tr><td><b>Trim</b></td><td>Slips the source in-point. Content stays pinned in place on the timeline while earlier footage is cut from the head.</td><td>Sets the source out-point, cutting footage from the tail.</td></tr>
       </tbody>
     </table>
     <p>Trims are non-destructive: they set an in/out window on the master file, stored in the
@@ -58,14 +58,14 @@
     <p>A <b>snap toggle</b> keeps drags honest: with it on, clip and boundary drags snap to nearby
     step boundaries and to a 1/24-second frame grid, with a cyan guide line showing exactly where
     you'll land. Toggle it off for freehand placement.</p>
-    <p>Zoom with the <b>±</b> buttons or pinch directly on the timeline — zooming is
+    <p>Zoom with the <b>±</b> buttons or pinch directly on the timeline. Zooming is
     center-preserving, so the moment under the middle of your view stays put while the scale
     changes around it, from a whole-segment overview down to frame-level detail.</p>
 
     <h2>Keyframes and the graph dock</h2>
     <p>Any entity with animation gets a <b>keyframe lane</b> in its track group: diamonds mark each
     key at its absolute time. Drag diamonds to retime keys; double-tap deletes one. For full curve
-    work — easing, tangents, per-channel editing — open the <b>graph editor</b>, which docks
+    work (easing, tangents, per-channel editing), open the <b>graph editor</b>, which docks
     beneath the timeline and shows the selected entity's channels with the same editor the Mac
     uses. See the <a href="/docs/animation-overview.html">animation overview</a>.</p>
 
@@ -73,8 +73,8 @@
     <p>Building a segment is drag-and-drop, straight from the left rail:</p>
     <ol class="steps">
       <li><p><b>Drag a chip from the Actions tab</b> (or a row from Assets) and hold it over the
-      timeline. Drag from the plain rows themselves — chips are made to be picked up.</p></li>
-      <li><p><b>Aim at a track at the time you want.</b> Empty sections show dashed dropzones —
+      timeline. Drag from the plain rows themselves; chips are made to be picked up.</p></li>
+      <li><p><b>Aim at a track at the time you want.</b> Empty sections show dashed dropzones, so
       even a brand-new project has somewhere to drop.</p></li>
       <li><p><b>Release.</b> Effect chips insert directly onto their target's track. Scene, video,
       and audio chips dropped where the target is ambiguous open a quick picker so you choose which
@@ -82,7 +82,7 @@
     </ol>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Drops honor the snap toggle too — with snap on, a dropped action lands
+      <div><p><b>Note.</b> Drops honor the snap toggle too. With snap on, a dropped action lands
       cleanly on a step boundary or frame line instead of an arbitrary millisecond.</p></div>
     </div>
 

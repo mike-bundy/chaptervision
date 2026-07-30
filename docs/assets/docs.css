@@ -508,6 +508,20 @@ body.docs {
 .dh-card .dh-links a:hover { color: var(--gold); }
 .dh-card .dh-links a::before { content: "→ "; color: var(--peri); }
 
+/* ---- Mobile drawer scrim ---- */
+.docs-scrim {
+  position: fixed;
+  inset: 62px 0 0 0;
+  z-index: 140;
+  background: rgba(13, 12, 29, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.docs-scrim.show { opacity: 1; pointer-events: auto; }
+
 /* ---- Responsive ---- */
 @media (max-width: 1160px) {
   .doc-main { grid-template-columns: 1fr; }
@@ -518,7 +532,7 @@ body.docs {
   .docs-sidebar {
     position: fixed;
     left: 0; top: 62px;
-    width: 290px;
+    width: min(300px, 85vw);
     background: var(--bg-2);
     z-index: 150;
     transform: translateX(-100%);
@@ -526,8 +540,41 @@ body.docs {
     box-shadow: 30px 0 60px rgba(0,0,0,0.4);
   }
   .docs-sidebar.open { transform: translateX(0); }
-  .menu-btn { display: flex; }
+  .menu-btn { display: flex; flex: none; }
+  .docs-header { padding: 0 14px; gap: 12px; }
   .docs-header .home-link { display: none; }
   .doc-footer-nav { grid-template-columns: 1fr; }
   .doc-nav-card.next { grid-column: 1; }
+
+  /* Maximize content width */
+  .doc-main { padding: 28px 18px 70px; gap: 0; }
+  .doc-article .doc-lede {
+    font-size: 16.5px;
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+  }
+  .doc-article h2 { font-size: 23px; margin: 42px 0 14px; }
+  .doc-article pre { padding: 14px 16px; border-radius: 10px; }
+  .doc-article ul, .doc-article ol { margin-left: 18px; }
+  .steps > li { padding-left: 42px; }
+  .steps > li::before { width: 28px; height: 28px; font-size: 12px; }
+  .steps > li:not(:last-child)::after { left: 14px; top: 30px; }
+  .callout { padding: 13px 14px; gap: 11px; }
+
+  /* Tables scroll inside themselves instead of stretching the page */
+  .doc-article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .doc-article th, .doc-article td { white-space: normal; min-width: 120px; }
+}
+@media (max-width: 520px) {
+  /* Give the search field the header: icon + tag only for the brand */
+  .docs-header .brand { font-size: 0; gap: 6px; }
+  .docs-header .brand .docs-tag { margin-left: 0; }
+  .docs-search input { font-size: 16px; /* prevents iOS zoom-on-focus */ }
+  .docs-search kbd.slash { display: none; }
+  .doc-main { padding: 22px 14px 60px; }
+  .doc-article h1 { font-size: 29px; }
 }

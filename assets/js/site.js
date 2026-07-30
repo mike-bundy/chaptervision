@@ -12,6 +12,37 @@
     onScroll();
   }
 
+  /* ---- Headline word reveal: wrap [data-words] words in staggered spans.
+         Text nodes split per word; element children (the gradient <em>)
+         animate as one unit so background-clip: text stays intact. ---- */
+  if (!reduced) {
+    document.querySelectorAll("[data-words]").forEach((h) => {
+      [...h.childNodes].forEach((child) => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach((piece) => {
+            if (!piece) return;
+            if (/^\s+$/.test(piece)) {
+              frag.appendChild(document.createTextNode(piece));
+            } else {
+              const s = document.createElement("span");
+              s.className = "w";
+              s.textContent = piece;
+              frag.appendChild(s);
+            }
+          });
+          h.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== "BR") {
+          child.classList.add("w");
+        }
+      });
+      let i = 0;
+      h.querySelectorAll(".w").forEach((s) => {
+        s.style.setProperty("--wd", (i++ * 0.055).toFixed(3) + "s");
+      });
+    });
+  }
+
   /* ---- Scroll reveal ---- */
   const io = new IntersectionObserver(
     (entries) => {
@@ -24,7 +55,88 @@
     },
     { threshold: 0.18, rootMargin: "0px 0px -40px 0px" }
   );
-  document.querySelectorAll(".reveal, .graph-wrap").forEach((el) => io.observe(el));
+  document.querySelectorAll(".reveal, [data-words]").forEach((el) => io.observe(el));
+
+  /* ---- Chapter rail: show after hero, spotlight the current section ---- */
+  const rail = document.querySelector(".rail");
+  if (rail) {
+    const links = [...rail.querySelectorAll("a")];
+    const byId = {};
+    links.forEach((a) => { byId[a.getAttribute("href").slice(1)] = a; });
+
+    const spy = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            links.forEach((a) => a.classList.remove("active"));
+            const link = byId[e.target.id];
+            if (link) link.classList.add("active");
+          }
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+    Object.keys(byId).forEach((id) => {
+      const sec = document.getElementById(id);
+      if (sec) spy.observe(sec);
+    });
+
+    const hero = document.querySelector(".hero");
+    const railVis = () => {
+      const past = hero ? window.scrollY > hero.offsetHeight * 0.6 : true;
+      const beforeFooter = window.scrollY + window.innerHeight <
+        document.body.scrollHeight - (document.querySelector("footer")?.offsetHeight || 0);
+      rail.classList.toggle("visible", past && beforeFooter);
+    };
+    window.addEventListener("scroll", railVis, { passive: true });
+    railVis();
+  }
+
+  /* ---- Scroll scrubbing: progress bar, hero fade, film scale, parallax ---- */
+  const progressBar = document.getElementById("progress-bar");
+  const heroInner = document.getElementById("hero-inner");
+  const scrubs = [...document.querySelectorAll("[data-scrub]")];
+  const parallaxEls = [...document.querySelectorAll("[data-parallax]")];
+
+  if (!reduced && (progressBar || heroInner || scrubs.length || parallaxEls.length)) {
+    let ticking = false;
+    const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      const max = document.body.scrollHeight - vh;
+
+      if (progressBar) {
+        progressBar.style.transform = "scaleX(" + (max > 0 ? clamp01(window.scrollY / max) : 0) + ")";
+      }
+      if (heroInner) {
+        heroInner.style.setProperty("--hero-p", clamp01(window.scrollY / (vh * 0.8)).toFixed(4));
+      }
+      for (const el of scrubs) {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -80 || r.top > vh + 80) continue;
+        // 0 when the frame's top touches the viewport bottom → 1 once it is
+        // ~55% of the way in. Eased by the CSS transition on transform.
+        const p = clamp01((vh - r.top) / (vh * 0.55));
+        el.style.setProperty("--p", p.toFixed(4));
+      }
+      for (const el of parallaxEls) {
+        const f = parseFloat(el.dataset.parallax) || 0;
+        el.style.translate = "0 " + (window.scrollY * f).toFixed(1) + "px";
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  } else {
+    // Reduced motion: pin everything to its settled state.
+    scrubs.forEach((el) => el.style.setProperty("--p", "1"));
+    if (progressBar) progressBar.style.display = "none";
+  }
 
   /* ---- Hero canvas: drifting spatial dust + constellation ---- */
   const heroCanvas = document.getElementById("hero-canvas");
@@ -110,75 +222,6 @@
             ctx.stroke();
           }
         }
-      }
-      requestAnimationFrame(frame);
-    }
-    frame();
-  }
-
-  /* ---- Particle emitter demo ---- */
-  const pc = document.getElementById("particle-canvas");
-  if (pc && !reduced) {
-    const ctx = pc.getContext("2d");
-    let w, h, dpr;
-    const parts = [];
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = pc.clientWidth; h = pc.clientHeight;
-      pc.width = w * dpr; pc.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    let running = false;
-    const pio = new IntersectionObserver((es) => {
-      running = es[0].isIntersecting;
-    }, { threshold: 0.1 });
-    pio.observe(pc);
-
-    function spawn() {
-      const cx = w / 2, cy = h * 0.78;
-      const ang = -Math.PI / 2 + (Math.random() - 0.5) * 0.9; // spread cone
-      const speed = 1.2 + Math.random() * 2.4;
-      parts.push({
-        x: cx + (Math.random() - 0.5) * 30,
-        y: cy,
-        vx: Math.cos(ang) * speed,
-        vy: Math.sin(ang) * speed,
-        life: 1,
-        decay: 0.004 + Math.random() * 0.008,
-        size: 1.5 + Math.random() * 3,
-        hue: Math.random() < 0.7 ? 34 + Math.random() * 14 : 250, // gold or periwinkle
-        spin: (Math.random() - 0.5) * 0.06,
-      });
-    }
-
-    function frame() {
-      if (running) {
-        for (let i = 0; i < 4; i++) spawn();
-        ctx.clearRect(0, 0, w, h);
-        ctx.globalCompositeOperation = "lighter";
-        for (let i = parts.length - 1; i >= 0; i--) {
-          const p = parts[i];
-          p.life -= p.decay;
-          if (p.life <= 0) { parts.splice(i, 1); continue; }
-          // vortex-ish curl + slight gravity fade
-          const ang = Math.atan2(p.vy, p.vx) + p.spin;
-          const sp = Math.hypot(p.vx, p.vy) * 0.996;
-          p.vx = Math.cos(ang) * sp;
-          p.vy = Math.sin(ang) * sp + -0.004;
-          p.x += p.vx; p.y += p.vy;
-          const a = p.life * p.life * 0.85;
-          const s = p.size * (0.4 + p.life);
-          const sat = p.hue > 100 ? 80 : 95;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, s, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${p.hue}, ${sat}%, ${55 + p.life * 20}%, ${a})`;
-          ctx.fill();
-        }
-        ctx.globalCompositeOperation = "source-over";
       }
       requestAnimationFrame(frame);
     }

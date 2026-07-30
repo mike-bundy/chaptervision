@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Importing media on-device — Chapter Vision Handbook</title>
-<meta name="description" content="Pull video, audio, images, and 3D models into your chapter straight from Photos or Files on Vision Pro — usable instantly, synced to your Mac in the background.">
+<meta name="description" content="Pull video, audio, images, and 3D models into your chapter straight from Photos or Files on Vision Pro. Everything is usable instantly and syncs to your Mac in the background.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +26,10 @@
     <h2>Where you can import from</h2>
     <p>The <b>Media</b> tab in the left rail offers two pickers:</p>
     <ul>
-      <li><b>Photos</b> — your photo library, including iCloud Photos and spatial videos shot on
+      <li><b>Photos</b>: your photo library, including iCloud Photos and spatial videos shot on
       Vision Pro or iPhone. Spatial video imports are recognized and set up as immersive backdrops
       automatically.</li>
-      <li><b>Files</b> — anything reachable in the Files app, including iCloud Drive, other cloud
+      <li><b>Files</b>: anything reachable in the Files app, including iCloud Drive, other cloud
       providers, and On My Vision Pro. Video, audio, images, and USDZ models are all supported,
       including Apple Immersive Video files.</li>
     </ul>
@@ -41,7 +41,7 @@
     the scene, and you can drop <code>play</code> actions for it on the timeline immediately.</p>
     <p>Nothing about that first minute involves the network. The scene plays the file from the
     local cache — a multi-gigabyte spatial video is scrubbing in your timeline seconds after you
-    picked it.</p>
+    pick it.</p>
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> This is the fastest path for spatial video: shoot on-device, import from
@@ -60,20 +60,20 @@
         <tr><td><b>Cached locally</b></td><td>Usable now; upload queued (or parked until a Mac connects).</td></tr>
         <tr><td><b>Uploading</b></td><td>Bytes in flight, with progress.</td></tr>
         <tr><td><b>Synced</b></td><td>The Mac has confirmed an identical copy.</td></tr>
-        <tr><td><b>Failed</b></td><td>All retry attempts exhausted — a retry button appears on the row.</td></tr>
+        <tr><td><b>Failed</b></td><td>All retry attempts exhausted; a retry button appears on the row.</td></tr>
       </tbody>
     </table>
     <p>Uploads retry automatically with increasing backoff. If the connection drops mid-transfer,
-    the upload isn't a failure — it parks, and the next time a Mac connects, every pending file
-    re-registers and resumes. Editing never waits on any of this: "cached locally" is a fully
-    working state, not a limbo.</p>
+    the upload simply parks; the next time a Mac connects, every pending file re-registers and
+    resumes. Editing never waits on any of this: "cached locally" is a fully working state, not
+    a limbo.</p>
 
     <h2>Hashes keep both sides honest</h2>
-    <p>Every asset in a chapter carries a content hash in the document's manifest — computed the
+    <p>Every asset in a chapter carries a content hash in the document's manifest, computed the
     same way on the headset and the Mac. That single fingerprint does a lot of quiet work:</p>
     <ul>
       <li><b>Sync confirmation.</b> A file counts as synced only when the Mac's manifest entry
-      matches the local hash — not merely because an upload request returned.</li>
+      matches the local hash, not merely because an upload request returned.</li>
       <li><b>No redundant transfers.</b> Re-importing a file the Mac already has is detected by
       hash and marked synced instantly, with zero bytes sent. The headset also avoids re-downloading
       a file it just uploaded.</li>
@@ -85,12 +85,12 @@
     <h2>Tethered and solo</h2>
     <p>Everything above describes a tethered session, where the Mac's project bundle is the
     ultimate destination. In <a href="/docs/solo-mode.html">solo mode</a> there's no Mac to sync
-    to — imports stay in the local cache, and saving the project copies any imported media into the
+    to. Imports stay in the local cache, and saving the project copies any imported media into the
     bundle's <code>assets/</code> folder so the <code>.chapterscript</code> bundle remains fully
     self-contained. Nothing queues, nothing is pending; the bundle is its own truth.</p>
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> Files imported on-device while offline are safe across launches — the
+      <div><p><b>Note.</b> Files imported on-device while offline are safe across launches. The
       cache and the pending-upload queue persist, and <a href="/docs/live-sync.html">live sync</a>
       flushes them whenever a Mac next appears.</p></div>
     </div>
