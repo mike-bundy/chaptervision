@@ -81,22 +81,12 @@
 <section class="film-hero">
   <figure class="film reveal" aria-label="Product film placeholder">
     <div class="film-frame" data-scrub>
-      <!-- ▶▶ VIDEO PLACEHOLDER 1 · "the film" ▶▶
-           Replace the <div class="vp">…</div> below with:
-             <video class="film-video" src="/assets/video/film.mp4"
-                    poster="/assets/video/film-poster.jpg"
-                    autoplay muted loop playsinline></video>
-           Footage: 25–40s montage. Suggested beats: hands dragging a clip on the
-           Mac timeline → in-headset gaze+pinch moving an entity → ⌘S on the Mac →
-           the scene updating live in the room → a finished immersive moment
-           (particles + backdrop). 16:9, 1920×1080 or better, no audio needed. -->
-      <div class="vp" role="img" aria-label="Placeholder for the Chapter Vision product film">
-        <div class="vp-glow"></div>
-        <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6.2v11.6a.7.7 0 001.07.6l9.2-5.8a.7.7 0 000-1.2l-9.2-5.8A.7.7 0 009 6.2z"/></svg></div>
-        <span class="vp-badge">Video placeholder</span>
-        <p class="vp-what">The Chapter Vision film</p>
-        <p class="vp-spec">25–40s montage · Mac timeline edit → in-headset edit → save → live in the room · 16:9</p>
-      </div>
+      <video class="film-video" poster="/assets/video/film-poster.jpg"
+             autoplay muted loop playsinline
+             aria-label="Chapter Vision product film">
+        <source src="/assets/video/film.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+        <source src="/assets/video/film.mp4" type="video/mp4">
+      </video>
     </div>
   </figure>
 </section>
@@ -123,10 +113,13 @@
     <figure class="film reveal d1" aria-label="Timeline capture placeholder">
       <div class="film-frame" data-scrub>
         <!-- ▶▶ VIDEO PLACEHOLDER 2 · "studio-timeline" ▶▶
-             Replace the <div class="vp">…</div> below with:
-               <video class="film-video" src="/assets/video/studio-timeline.mp4"
-                      poster="/assets/video/studio-timeline-poster.jpg"
-                      autoplay muted loop playsinline></video>
+             Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 studio-timeline
+             Then replace the <div class="vp">…</div> below with:
+               <video class="film-video" poster="/assets/video/studio-timeline-poster.jpg"
+                      autoplay muted loop playsinline>
+                 <source src="/assets/video/studio-timeline.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+                 <source src="/assets/video/studio-timeline.mp4" type="video/mp4">
+               </video>
              Footage: 15–25s Chapter Studio screen recording. Suggested beats:
              drag a clip to retime it → trim a video clip edge → drag an action
              chip from the library onto a track → scrub the playhead and watch
@@ -168,10 +161,13 @@
     <figure class="film reveal d1" aria-label="In-headset editing capture placeholder">
       <div class="film-frame" data-scrub>
         <!-- ▶▶ VIDEO PLACEHOLDER 3 · "spatial-editing" ▶▶
-             Replace the <div class="vp">…</div> below with:
-               <video class="film-video" src="/assets/video/spatial-editing.mp4"
-                      poster="/assets/video/spatial-editing-poster.jpg"
-                      autoplay muted loop playsinline></video>
+             Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 spatial-editing
+             Then replace the <div class="vp">…</div> below with:
+               <video class="film-video" poster="/assets/video/spatial-editing-poster.jpg"
+                      autoplay muted loop playsinline>
+                 <source src="/assets/video/spatial-editing.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+                 <source src="/assets/video/spatial-editing.mp4" type="video/mp4">
+               </video>
              Footage: 15–25s visionOS screen recording from inside the headset.
              Suggested beats: gaze-highlight an entity → pinch-drag it through
              the room → tap a gizmo mode and drag a rotation ring → grab a motion
@@ -214,10 +210,13 @@
     <figure class="film reveal d1" aria-label="Graph editor capture placeholder">
       <div class="film-frame" data-scrub>
         <!-- ▶▶ VIDEO PLACEHOLDER 4 · "graph-editor" ▶▶
-             Replace the <div class="vp">…</div> below with:
-               <video class="film-video" src="/assets/video/graph-editor.mp4"
-                      poster="/assets/video/graph-editor-poster.jpg"
-                      autoplay muted loop playsinline></video>
+             Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 graph-editor
+             Then replace the <div class="vp">…</div> below with:
+               <video class="film-video" poster="/assets/video/graph-editor-poster.jpg"
+                      autoplay muted loop playsinline>
+                 <source src="/assets/video/graph-editor.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+                 <source src="/assets/video/graph-editor.mp4" type="video/mp4">
+               </video>
              Footage: 12–20s screen recording of the graph editor (Mac or headset).
              Suggested beats: toggle a channel chip → drag a key with axis lock →
              pull a tangent handle and watch the curve ease change → scrub and
@@ -259,10 +258,13 @@
     <figure class="film reveal d1" aria-label="Live sync capture placeholder">
       <div class="film-frame" data-scrub>
         <!-- ▶▶ VIDEO PLACEHOLDER 5 · "live-sync" ▶▶
-             Replace the <div class="vp">…</div> below with:
-               <video class="film-video" src="/assets/video/live-sync.mp4"
-                      poster="/assets/video/live-sync-poster.jpg"
-                      autoplay muted loop playsinline></video>
+             Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 live-sync
+             Then replace the <div class="vp">…</div> below with:
+               <video class="film-video" poster="/assets/video/live-sync-poster.jpg"
+                      autoplay muted loop playsinline>
+                 <source src="/assets/video/live-sync.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+                 <source src="/assets/video/live-sync.mp4" type="video/mp4">
+               </video>
              Footage: 15–25s split-screen or over-the-shoulder shot. Suggested
              beats: Mac screen on the left (edit a clip, ⌘S) and the in-headset
              view on the right updating in under a second → then reverse it:
@@ -302,10 +304,13 @@
     <figure class="film reveal d1" aria-label="Particle editor capture placeholder">
       <div class="film-frame" data-scrub>
         <!-- ▶▶ VIDEO PLACEHOLDER 6 · "particles" ▶▶
-             Replace the <div class="vp">…</div> below with:
-               <video class="film-video" src="/assets/video/particles.mp4"
-                      poster="/assets/video/particles-poster.jpg"
-                      autoplay muted loop playsinline></video>
+             Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 particles
+             Then replace the <div class="vp">…</div> below with:
+               <video class="film-video" poster="/assets/video/particles-poster.jpg"
+                      autoplay muted loop playsinline>
+                 <source src="/assets/video/particles.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+                 <source src="/assets/video/particles.mp4" type="video/mp4">
+               </video>
              Footage: 12–20s capture of the particle editor with a live emitter.
              Suggested beats: pick a preset → drag a parameter slider (size,
              velocity, color ramp) and show the emitter responding live without

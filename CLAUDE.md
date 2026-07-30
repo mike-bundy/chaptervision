@@ -174,7 +174,13 @@ curl -s -o /dev/null -w "%{http_code}\n" http://chaptervision.test/
 - The old hand-built CSS/SVG product mockups (timeline `.tl-*`, gizmo `.gz-*`, graph
   SVG, sync diagram, particle demo canvas) were removed 2026-07-30 in favor of the six
   homepage video placeholder slots. When filling a slot, follow the HTML comment next
-  to it exactly (video path, poster, attributes) and delete the placeholder `.vp` div.
+  to it exactly and delete the placeholder `.vp` div.
+- **Video pipeline:** raw captures go in `videos/` (gitignored, never deployed);
+  `scripts/encode-web-video.sh <input> <slug>` produces `assets/video/<slug>.av1.mp4`
+  (AV1 10-bit primary, SVT-AV1 preset 3 CRF 43 ≈ VMAF 95), `<slug>.mp4` (H.264
+  CRF 26 fallback), and `<slug>-poster.jpg`, all muted/audio-stripped. Slots use two
+  `<source>` tags with the AV1 first. Don't commit raw captures or re-encode by hand
+  with other settings.
 - `prefers-reduced-motion` is honored: canvases and scroll scrubbing don't run, reveals
   and headline words show instantly, films render at final scale. Keep that true for
   anything new.

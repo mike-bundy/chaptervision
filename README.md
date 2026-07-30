@@ -24,12 +24,21 @@ docs/
                          MANIFEST array at the top of the file
 ```
 
-## Video placeholders
+## Homepage videos
 
-The homepage has six clearly labeled video slots (`.film-frame` blocks). Each has
-an HTML comment beside it specifying the footage to capture and the exact `<video>`
-tag to swap in. Drop the files in `assets/video/` and replace each placeholder's
-`.vp` div per its comment.
+The homepage has six video slots (`.film-frame` blocks); slot 1 (the product film)
+is live, the other five are labeled placeholders with capture specs in adjacent
+HTML comments.
+
+To fill one:
+
+1. Drop the raw capture in `videos/` (gitignored; raw files never deploy).
+2. Run `scripts/encode-web-video.sh videos/<file> <slug>` (needs `brew install ffmpeg`).
+   It writes three files to `assets/video/`: `<slug>.av1.mp4` (AV1 10-bit primary,
+   VMAF-tuned to ~95 at roughly 15% of source size), `<slug>.mp4` (H.264 fallback),
+   and `<slug>-poster.jpg`. Audio is stripped; clips autoplay muted.
+3. Replace the slot's `.vp` div with the `<video>` markup the script prints
+   (AV1 `<source>` first, H.264 second).
 
 ## Local dev
 

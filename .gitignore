@@ -1,1 +1,5 @@
 .DS_Store
+
+# Raw video captures (encode with scripts/encode-web-video.sh; only
+# the compressed outputs in assets/video/ are committed and deployed)
+videos/
