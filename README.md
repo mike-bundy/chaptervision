@@ -26,9 +26,8 @@ docs/
 
 ## Homepage videos
 
-The homepage has six video slots (`.film-frame` blocks); slot 1 (the product film)
-is live, the other five are labeled placeholders with capture specs in adjacent
-HTML comments.
+The homepage has six video slots (`.film-frame` blocks), all currently labeled
+placeholders with capture specs in adjacent HTML comments.
 
 To fill one:
 
