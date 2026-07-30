@@ -136,6 +136,54 @@ keyframes-and-autokey, graph-editor, rotation-and-euler) · On Vision Pro
 Particles (particles-overview, particle-reference) · Live Sync & Format (live-sync,
 chapterscript-format, troubleshooting).
 
+## Homepage videos (the repeatable pipeline)
+
+The homepage has six film slots. Status: **film** (hero product film) filled
+2026-07-30 from `videos/firstvid.mp4`; still placeholders: **studio-timeline**,
+**spatial-editing**, **graph-editor**, **live-sync**, **particles** (footage specs
+live in the HTML comment inside each slot's `.film-frame` in index.html).
+
+**To fill a slot:**
+
+1. Drop the raw capture anywhere in `videos/` (gitignored — masters must never be
+   committed or deployed; a 20 MB source became 3 MB served).
+2. Run `scripts/encode-web-video.sh videos/<capture> <slug>` (needs
+   `brew install ffmpeg`). Optional third arg = poster timestamp in seconds
+   (default 1). It writes to `assets/video/`:
+   - `<slug>.av1.mp4` — SVT-AV1, 10-bit, preset 3, CRF 43. The primary source.
+   - `<slug>.mp4` — x264 veryslow, CRF 26, 8-bit. Fallback for older browsers.
+   - `<slug>-poster.jpg` — poster frame.
+   Audio is always stripped (`-an`); the clips autoplay muted. Max width 1920,
+   never upscaled.
+3. Replace that slot's entire `<div class="vp">…</div>` (placeholder) with the
+   `<video>` markup the script prints — AV1 `<source>` first, then H.264:
+   ```html
+   <video class="film-video" poster="/assets/video/<slug>-poster.jpg"
+          autoplay muted loop playsinline>
+     <source src="/assets/video/<slug>.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+     <source src="/assets/video/<slug>.mp4" type="video/mp4">
+   </video>
+   ```
+   Keep the slot's HTML comment in place (delete only the "Then replace…" half if
+   tidying); keep `data-scrub` on the `.film-frame`.
+4. Verify playback in a **normal** browser (chaptervision.test). Do NOT trust the
+   Claude-in-Chrome automated browser for this — it blocks all media playback
+   (even reference MP4s stall in it; discovered 2026-07-30) and only ever shows
+   the poster.
+
+**Why these settings (don't change casually):** tuned 2026-07-30 against real
+footage using VMAF. AV1 CRF 43 preset 3 scored VMAF 95.3 at 3.0 MB (vs 20.6 MB
+source); CRF 46 fell to 93.5; H.264 CRF 26 scored 94.4 at 6.3 MB. VMAF ≥95 ≈
+visually transparent. 10-bit AV1 exists to prevent banding on the site's dark
+indigo gradients. If a particularly detailed clip looks soft, drop AV1 CRF to
+~40 and re-check; measure rather than guess:
+
+```bash
+ffmpeg -i assets/video/<slug>.av1.mp4 -i videos/<capture> -lavfi \
+  "[0:v]setpts=PTS-STARTPTS,format=yuv420p[d];[1:v]setpts=PTS-STARTPTS,format=yuv420p[r];[d][r]libvmaf=n_threads=8" \
+  -f null - 2>&1 | grep "VMAF score"
+```
+
 ## Verification (run after any sitewide change)
 
 ```bash
@@ -175,12 +223,8 @@ curl -s -o /dev/null -w "%{http_code}\n" http://chaptervision.test/
   SVG, sync diagram, particle demo canvas) were removed 2026-07-30 in favor of the six
   homepage video placeholder slots. When filling a slot, follow the HTML comment next
   to it exactly and delete the placeholder `.vp` div.
-- **Video pipeline:** raw captures go in `videos/` (gitignored, never deployed);
-  `scripts/encode-web-video.sh <input> <slug>` produces `assets/video/<slug>.av1.mp4`
-  (AV1 10-bit primary, SVT-AV1 preset 3 CRF 43 ≈ VMAF 95), `<slug>.mp4` (H.264
-  CRF 26 fallback), and `<slug>-poster.jpg`, all muted/audio-stripped. Slots use two
-  `<source>` tags with the AV1 first. Don't commit raw captures or re-encode by hand
-  with other settings.
+- **Video encoding:** never re-encode by hand or commit raw captures — follow
+  "Homepage videos (the repeatable pipeline)" above.
 - `prefers-reduced-motion` is honored: canvases and scroll scrubbing don't run, reveals
   and headline words show instantly, films render at final scale. Keep that true for
   anything new.
