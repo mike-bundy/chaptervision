@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gates — Chapter Vision Handbook</title>
-<meta name="description" content="Hold a step until the audience taps, a show operator cues, or a timeout elapses — gates turn a fixed timeline into a live performance.">
+<meta name="description" content="Hold a step until the audience taps or a timeout elapses — gates turn a fixed timeline into a self-paced experience.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,39 +19,31 @@
   <article class="doc-article" data-page="gates">
     <h1>Gates</h1>
     <p class="doc-lede">
-      A gate holds a step at its end until someone says go — the viewer with a tap, a show operator
-      with a cue, or a timeout that keeps the show moving.
+      A gate holds a step at its end until someone says go — the viewer with a tap, or a timeout
+      that keeps the show moving.
     </p>
 
     <h2>What a gate does</h2>
     <p>Normally a <a href="/docs/steps-and-actions.html">step</a> runs for its duration and the next
     step begins. Add a gate and the step plays to its end, then <em>holds</em>. The scene stays alive —
     video keeps playing, ambience continues — but advancement waits for input. Gates are how you
-    hand pacing to the audience or a human operator: the timeline proposes, the gate disposes.</p>
+    hand pacing to the audience: the timeline proposes, the gate disposes.</p>
 
-    <h2>Gate types</h2>
-    <table>
-      <thead><tr><th>Type</th><th>Advances when…</th><th>Use it for</th></tr></thead>
-      <tbody>
-        <tr><td><b>Tap</b></td><td>The viewer taps — a pinch or a tap in the scene.</td>
-        <td>Self-paced experiences: tours, stories, anything the audience drives</td></tr>
-        <tr><td><b>Orchestrator</b></td><td>An external cue arrives from a show operator.</td>
-        <td>Staged shows where a human runs the cues</td></tr>
-        <tr><td><b>Either</b></td><td>Whichever comes first — viewer tap or operator cue.</td>
-        <td>Operated shows that still let an eager audience move ahead</td></tr>
-      </tbody>
-    </table>
+    <h2>How a gate releases</h2>
+    <p>A held step advances when the viewer <b>taps</b> — a pinch or a tap anywhere in the scene —
+    or when the gate's optional <b>timeout</b> fires. That makes gated experiences self-paced:
+    tours, stories, anything the audience drives at their own speed.</p>
 
     <h2>Timeout and prompt</h2>
     <p>Two optional settings round out a gate:</p>
     <ul>
       <li><b>Timeout</b> — when enabled, the gate auto-advances after a set number of seconds even
-      if no tap or cue arrives (30 seconds by default when you turn it on; settable from 1 to 120).
+      if no tap arrives (30 seconds by default when you turn it on; settable from 1 to 120).
       Turn it off entirely for a gate that waits as long as it takes. The timeout is your safety net
       for unattended installations and distracted audiences — the show never stalls forever.</li>
       <li><b>Prompt</b> — optional text the player shows the audience while the gate holds, such as
       "Tap to continue" or "Look at the doorway and pinch." Without a prompt the hold is silent,
-      which suits operator-run shows where the audience shouldn't know a cue point exists.</li>
+      which suits pieces where the audience shouldn't feel a pause point at all.</li>
     </ul>
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
@@ -68,8 +60,8 @@
       <li><p><b>Click the flag.</b> The source step is selected and the segment inspector opens the
       gate editor.</p></li>
       <li><p><b>Edit the gate.</b> The <b>Gate</b> toggle adds or removes a gate on the selected
-      step (new gates start as a Tap gate with a 30-second timeout). Below it, pick the type — Tap, Orchestrator, or Either —
-      enter an optional prompt, and enable the timeout if you want auto-advance.</p></li>
+      step (new gates hold for a tap and start with a 30-second timeout). Below it, enter an
+      optional prompt and enable the timeout if you want auto-advance.</p></li>
     </ol>
     <p>You can also reach the same editor by selecting any step in the segment inspector — the flag
     is just the fast path. Both Studio and Chapter Vision edit gates, and changes sync live between
@@ -87,15 +79,11 @@
 
     <h2>Putting gates to work</h2>
     <ul>
-      <li><b>Guided tours.</b> Gate the end of every stop with a Tap gate and a short prompt.
+      <li><b>Guided tours.</b> Gate the end of every stop with a short prompt.
       Visitors linger as long as they like; the tour never rushes ahead of them.</li>
-      <li><b>Theater beats.</b> Use Orchestrator gates at scene turns so a stage manager fires each
-      transition exactly on the live performance — the timeline handles everything between the
-      cues.</li>
       <li><b>Waiting for the audience.</b> Open a chapter with a gated first step ("Tap when you're
-      ready") so the experience starts on the viewer's breath, not the app launch. An Either gate
-      with a timeout gives you the resilient version: audience-paced, operator-overridable, and
-      never stuck.</li>
+      ready") so the experience starts on the viewer's breath, not the app launch. Add a timeout
+      for the resilient version: audience-paced, and never stuck.</li>
     </ul>
     <p>Gates pair naturally with <a href="/docs/presentation-modes.html">presentation-mode</a>
     changes — gating the step before a switch into full immersion lets the viewer choose the moment

@@ -24,7 +24,7 @@
         { id: "steps-and-actions", file: "steps-and-actions.html", title: "Steps & actions", desc: "Steps are timed beats inside a segment; actions are what happens — reveals, moves, audio, video, effects — at step start or scheduled mid-step.", keywords: "step action scheduled duration beat timing structure" },
         { id: "assets-and-folders", file: "assets-and-folders.html", title: "Assets & folders", desc: "Importing video, USDZ, images and audio, organizing with folders, duplicating, and the Scene vs Backdrops sections.", keywords: "asset import video usdz image audio folder organize sidebar library" },
         { id: "presentation-modes", file: "presentation-modes.html", title: "Presentation modes & backdrops", desc: "Immersive, Mixed and Windowed segments — and wrapping a scene in a 360°/180° video sphere or USDZ environment.", keywords: "immersive mixed windowed passthrough backdrop skybox 360 180 video sphere usdz environment presentation" },
-        { id: "gates", file: "gates.html", title: "Gates", desc: "Hold a step until the audience taps, an orchestrator signals, or a timeout fires — with optional prompts.", keywords: "gate tap orchestrator timeout prompt hold interaction pause wait" }
+        { id: "gates", file: "gates.html", title: "Gates", desc: "Hold a step until the audience taps or a timeout fires — with optional prompts.", keywords: "gate tap timeout prompt hold interaction pause wait" }
       ]
     },
     {

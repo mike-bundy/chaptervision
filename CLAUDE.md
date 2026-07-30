@@ -37,7 +37,9 @@ against it before documenting new features.**
 - Document model vocabulary: a **chapter** (the whole document) contains **segments**
   (timed scenes) → **steps** (timed beats) → **actions**. Segments also carry animation
   tracks, a presentation mode (Immersive/Mixed/Windowed), an optional backdrop; steps can
-  have **gates** (Tap / Orchestrator / Either).
+  have **gates**. On the site, gates are described as Tap + optional timeout ONLY — the
+  product's Orchestrator and Either gate types are not officially announced yet, so
+  "Orchestrator", "Either" gates, and operator/show-cue phrasing must not appear in copy.
 - Docs voice: second person, present tense, for creative authors not programmers. No
   Swift type names or source paths (live-sync + format pages may show HTTP/JSON).
 
