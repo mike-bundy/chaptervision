@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gates — Chapter Vision Handbook</title>
-<meta name="description" content="Hold a step until the audience taps or a timeout elapses — gates turn a fixed timeline into a self-paced experience.">
+<meta name="description" content="Hold a step until the audience acts — tap, look, approach, or grab — or a timeout elapses. Gates turn a fixed timeline into a self-paced experience.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   <article class="doc-article" data-page="gates">
     <h1>Gates</h1>
     <p class="doc-lede">
-      A gate holds a step at its end until someone says go — the viewer with a tap, or a timeout
-      that keeps the show moving.
+      A gate holds a step at its end until someone says go — a tap, a look, a step closer, a grab —
+      or a timeout that keeps the show moving.
     </p>
 
     <h2>What a gate does</h2>
@@ -29,10 +29,26 @@
     video keeps playing, ambience continues — but advancement waits for input. Gates are how you
     hand pacing to the audience: the timeline proposes, the gate disposes.</p>
 
-    <h2>How a gate releases</h2>
-    <p>A held step advances when the viewer <b>taps</b> — a pinch or a tap anywhere in the scene —
-    or when the gate's optional <b>timeout</b> fires. That makes gated experiences self-paced:
-    tours, stories, anything the audience drives at their own speed.</p>
+    <h2>Gate types</h2>
+    <p>Every gate has a type — the audience action that releases it. Whatever the type, the gate's
+    optional <b>timeout</b> is always a second way through, so a gated experience is self-paced but
+    never stuck.</p>
+    <ul>
+      <li><b>Tap</b> — a pinch or a tap anywhere in the scene. The universal gate: zero setup,
+      works everywhere, and the right default for "continue when ready."</li>
+      <li><b>Gaze at Entity</b> — the viewer looks at a specific entity and holds their gaze on it.
+      Pick the target from the gate editor's entity list. Perfect for attention beats: the story
+      continues when the audience has actually seen the thing.</li>
+      <li><b>Approach Entity</b> — the viewer physically walks toward a target entity. A
+      <b>trigger radius</b> (in meters, 1&nbsp;m by default) sets how close counts as arrived.
+      This is the gate for room-scale staging: scenes that unfold as the audience crosses the
+      space.</li>
+      <li><b>Grab Entity</b> — the viewer pinch-grabs the target entity. The most deliberate of
+      the four: the audience literally takes hold of the story to move it forward. Pair it with a
+      prompt so they know the object is the key.</li>
+    </ul>
+    <p>The three entity-watching types release on their target no matter where it came from — a
+    placed model, an imported asset, even a particle emitter.</p>
 
     <h2>Timeout and prompt</h2>
     <p>Two optional settings round out a gate:</p>
@@ -60,8 +76,10 @@
       <li><p><b>Click the flag.</b> The source step is selected and the segment inspector opens the
       gate editor.</p></li>
       <li><p><b>Edit the gate.</b> The <b>Gate</b> toggle adds or removes a gate on the selected
-      step (new gates hold for a tap and start with a 30-second timeout). Below it, enter an
-      optional prompt and enable the timeout if you want auto-advance.</p></li>
+      step (new gates hold for a tap and start with a 30-second timeout). Pick the <b>gate type</b>;
+      the entity-watching types add a <b>Target</b> picker listing the project's entities, and
+      Approach adds the <b>trigger radius</b>. Below those, enter an optional prompt and enable the
+      timeout if you want auto-advance.</p></li>
     </ol>
     <p>You can also reach the same editor by selecting any step in the segment inspector — the flag
     is just the fast path. Both Chapter Studio and Chapter Vision edit gates, and changes sync live between
@@ -84,6 +102,12 @@
       <li><b>Waiting for the audience.</b> Open a chapter with a gated first step ("Tap when you're
       ready") so the experience starts on the viewer's breath, not the app launch. Add a timeout
       for the resilient version: audience-paced, and never stuck.</li>
+      <li><b>Attention direction.</b> Gaze-gate the reveal: the narration about the artifact only
+      begins once the viewer is actually looking at it.</li>
+      <li><b>Room-scale staging.</b> Approach-gate a doorway or a far corner so the next scene
+      literally waits for the audience to arrive in it.</li>
+      <li><b>Held objects.</b> Grab-gate a key prop — the lantern, the letter, the handle — and the
+      story advances the moment it's in the viewer's hand.</li>
     </ul>
     <p>Gates pair naturally with <a href="/docs/presentation-modes.html">presentation-mode</a>
     changes — gating the step before a switch into full immersion lets the viewer choose the moment
