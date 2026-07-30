@@ -11,7 +11,7 @@
       section: "Start Here",
       pages: [
         { id: "index", file: "index.html", title: "Handbook home", desc: "The Chapter Vision handbook — every guide, tutorial and reference.", keywords: "home docs handbook help" },
-        { id: "what-is-chapter-vision", file: "what-is-chapter-vision.html", title: "What is Chapter Vision?", desc: "The suite at a glance: Studio on Mac, Chapter Vision on Vision Pro, the player, and the ChapterScript format.", keywords: "overview intro introduction studio spatial player chapterscript suite apps" },
+        { id: "what-is-chapter-vision", file: "what-is-chapter-vision.html", title: "What is Chapter Vision?", desc: "The suite at a glance: Chapter Studio on Mac, Chapter Vision on Vision Pro, the player, and the ChapterScript format.", keywords: "overview intro introduction studio spatial player chapterscript suite apps" },
         { id: "install-and-setup", file: "install-and-setup.html", title: "Install & set up", desc: "System requirements and first-launch setup for Chapter Studio on macOS and Chapter Vision on visionOS.", keywords: "install setup requirements macos visionos download launch" },
         { id: "your-first-chapter", file: "your-first-chapter.html", title: "Your first chapter", desc: "A start-to-finish tutorial: import assets, build a segment, add actions, animate, gate, and play it live on Vision Pro.", keywords: "tutorial first chapter getting started walkthrough beginner" },
         { id: "connecting-vision-pro", file: "connecting-vision-pro.html", title: "Connecting a Vision Pro", desc: "Pair the headset with your Mac over Bonjour and start live-iterating in under a second per save.", keywords: "connect pair bonjour wifi network headset live session tether" }

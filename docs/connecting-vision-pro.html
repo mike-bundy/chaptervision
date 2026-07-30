@@ -35,7 +35,7 @@
 
     <h2>Pair the headset</h2>
     <ol class="steps">
-      <li><p><b>Check the Live menu on the Mac.</b> With a project open, Studio's status bar shows
+      <li><p><b>Check the Live menu on the Mac.</b> With a project open, Chapter Studio's status bar shows
       a <b>Live</b> menu with a green dot when the built-in server is running. Click it to see the
       service name — <b>Chapter Vision on <i>&lt;your Mac's name&gt;</i></b> — along with the port
       and the current subscriber count. Green dot means you're discoverable.</p></li>
@@ -49,11 +49,11 @@
     <p>The first moments of a session do three things:</p>
     <ul>
       <li><b>Document fetch.</b> Chapter Vision downloads the current chapter document — the same
-      <code>chapter.json</code> Studio has open.</li>
+      <code>chapter.json</code> Chapter Studio has open.</li>
       <li><b>Asset prefetch.</b> The headset pulls the media the chapter references, using the
       chapter's checksummed asset manifest so it never re-downloads files it already has, and never
       keeps a stale copy of one that changed. Large videos stream on demand from the Mac.</li>
-      <li><b>Live subscription.</b> Chapter Vision opens a persistent update channel to Studio. From here
+      <li><b>Live subscription.</b> Chapter Vision opens a persistent update channel to Chapter Studio. From here
       on, every <kbd>⌘S</kbd> on the Mac pushes the new document to the headset in under a second,
       and playback re-applies in place — you keep standing exactly where you were in the scene while
       the content updates around you.</li>
@@ -62,8 +62,8 @@
     <h2>Edits flow both ways</h2>
     <p>A live session is not a one-way broadcast. Changes you make in Chapter Vision — nudging an entity,
     retiming a clip, setting a keyframe, importing a photo — are sent back to the Mac and applied to
-    the Studio document immediately, then rebroadcast to any other connected headset. Each batch of
-    remote edits lands as a <b>single undo entry</b> in Studio, so if a change from the headset
+    the Chapter Studio document immediately, then rebroadcast to any other connected headset. Each batch of
+    remote edits lands as a <b>single undo entry</b> in Chapter Studio, so if a change from the headset
     isn't right, one <kbd>⌘Z</kbd> at the Mac takes back the whole batch cleanly.</p>
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
@@ -83,7 +83,7 @@
     <ul>
       <li><b>Same network, really?</b> Check that both devices are on the same Wi-Fi name — a Mac on
       Ethernet and a headset on a guest network won't see each other on many routers.</li>
-      <li><b>Is the green dot on?</b> Studio's Live menu must show a running server; it starts when
+      <li><b>Is the green dot on?</b> Chapter Studio's Live menu must show a running server; it starts when
       a project is open.</li>
       <li><b>Local network permission.</b> On the Mac, check System Settings → Privacy &amp;
       Security → Local Network; on the headset, Settings → Privacy &amp; Security → Local Network.

@@ -23,11 +23,11 @@
       Here's exactly how the wire works.
     </p>
 
-    <h2>Discovery: a server inside Studio</h2>
+    <h2>Discovery: a server inside Chapter Studio</h2>
     <p>Chapter Studio embeds a small HTTP server that starts with the app and announces
     itself on your local network over Bonjour as <b>"Chapter Vision on
     &lt;hostname&gt;"</b>. Chapter Vision browses for that service continuously, so every Mac
-    running Studio on the same network simply appears in the headset's session list — no IP
+    running Chapter Studio on the same network simply appears in the headset's session list — no IP
     addresses, no pairing codes.</p>
     <p>The server is plain HTTP, which has a nice side effect: point any browser on the network at
     <code>http://&lt;mac&gt;:&lt;port&gt;/</code> and you get a human-readable status page showing
@@ -47,7 +47,7 @@
       <code>GET /events</code> connection — a standard Server-Sent Events stream — and holds it for
       the whole session.</p></li>
     </ol>
-    <p>From then on, every <kbd>⌘S</kbd> in Studio pushes a change event down that stream, and the
+    <p>From then on, every <kbd>⌘S</kbd> in Chapter Studio pushes a change event down that stream, and the
     headset refreshes the document and re-applies playback in place — typically in well under a
     second. You keep watching the same segment; only the changes move.</p>
 
@@ -63,7 +63,7 @@
     sends small, semantic <b>edit operations</b> ("retime this clip", "set this entity's
     transform", "upsert this animation track") batched into a <code>POST /ops</code> request. Each
     batch declares the document revision it was based on.</p>
-    <p>Studio is the arbiter. It applies a valid batch through the same mutation path as local
+    <p>Chapter Studio is the arbiter. It applies a valid batch through the same mutation path as local
     edits — so the entire batch lands as <b>one entry in the Mac's undo stack</b> — and rebroadcasts
     the applied ops over the event stream to every connected peer. The document revision bumps on
     every save and every applied batch.</p>
@@ -83,8 +83,8 @@
     <table>
       <thead><tr><th>Route</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr><td><code>POST /assets/&lt;name&gt;</code></td><td>Media uploaded from the headset. Studio writes the bytes into the project bundle's <code>assets/</code> folder and auto-registers the file. This is the receiving end of <a href="/docs/media-import.html">on-device import</a>'s background uploader.</td></tr>
-        <tr><td><code>POST /save</code></td><td>"Save on Mac" from the headset — asks Studio to write the current document to disk, exactly as if you'd pressed <kbd>⌘S</kbd> on the Mac.</td></tr>
+        <tr><td><code>POST /assets/&lt;name&gt;</code></td><td>Media uploaded from the headset. Chapter Studio writes the bytes into the project bundle's <code>assets/</code> folder and auto-registers the file. This is the receiving end of <a href="/docs/media-import.html">on-device import</a>'s background uploader.</td></tr>
+        <tr><td><code>POST /save</code></td><td>"Save on Mac" from the headset — asks Chapter Studio to write the current document to disk, exactly as if you'd pressed <kbd>⌘S</kbd> on the Mac.</td></tr>
       </tbody>
     </table>
 
