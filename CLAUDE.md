@@ -138,11 +138,11 @@ chapterscript-format, troubleshooting).
 
 ## Homepage videos (the repeatable pipeline)
 
-The homepage has six film slots, all currently placeholders: **film** (hero
-product film), **studio-timeline**, **spatial-editing**, **graph-editor**,
-**live-sync**, **particles** (footage specs live in the HTML comment inside each
-slot's `.film-frame` in index.html). The pipeline was proven end-to-end
-2026-07-30 with a test capture, then reverted while real footage is produced.
+The homepage has six film slots. Status: **film** (hero product film) filled
+2026-07-30 from `videos/herovid.mov` (AV1 4.0 MB, VMAF 95.7). Still
+placeholders: **studio-timeline**, **spatial-editing**, **graph-editor**,
+**live-sync**, **particles** (footage specs live in the HTML comment inside
+each slot's `.film-frame` in index.html).
 
 **To fill a slot:**
 

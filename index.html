@@ -81,25 +81,13 @@
 <section class="film-hero">
   <figure class="film reveal" aria-label="Product film placeholder">
     <div class="film-frame" data-scrub>
-      <!-- ▶▶ VIDEO PLACEHOLDER 1 · "film" ▶▶
-           Encode: scripts/encode-web-video.sh videos/<your-capture>.mp4 film
-           Then replace the <div class="vp">…</div> below with:
-             <video class="film-video" poster="/assets/video/film-poster.jpg"
-                    autoplay muted loop playsinline>
-               <source src="/assets/video/film.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
-               <source src="/assets/video/film.mp4" type="video/mp4">
-             </video>
-           Footage: 25–40s montage. Suggested beats: hands dragging a clip on the
-           Mac timeline → in-headset gaze+pinch moving an entity → ⌘S on the Mac →
-           the scene updating live in the room → a finished immersive moment
-           (particles + backdrop). 16:9, 1920×1080 or better, no audio needed. -->
-      <div class="vp" role="img" aria-label="Placeholder for the Chapter Vision product film">
-        <div class="vp-glow"></div>
-        <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6.2v11.6a.7.7 0 001.07.6l9.2-5.8a.7.7 0 000-1.2l-9.2-5.8A.7.7 0 009 6.2z"/></svg></div>
-        <span class="vp-badge">Video placeholder</span>
-        <p class="vp-what">The Chapter Vision film</p>
-        <p class="vp-spec">25–40s montage · Mac timeline edit → in-headset edit → save → live in the room · 16:9</p>
-      </div>
+      <!-- Encoded from videos/herovid.mov via scripts/encode-web-video.sh (slug: film) -->
+      <video class="film-video" poster="/assets/video/film-poster.jpg"
+             autoplay muted loop playsinline
+             aria-label="Chapter Vision product film">
+        <source src="/assets/video/film.av1.mp4" type='video/mp4; codecs="av01.0.08M.10"'>
+        <source src="/assets/video/film.mp4" type="video/mp4">
+      </video>
     </div>
   </figure>
 </section>

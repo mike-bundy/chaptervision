@@ -46,7 +46,7 @@ ffmpeg -y -v warning -i "$IN" -an -map_metadata -1 \
   "$OUTDIR/$SLUG.mp4"
 
 echo "→ Poster @ ${POSTER_AT}s…"
-ffmpeg -y -v warning -ss "$POSTER_AT" -i "$IN" -frames:v 1 \
+ffmpeg -y -v warning -ss "$POSTER_AT" -i "$IN" -frames:v 1 -update 1 \
   -vf "$SCALE" -q:v 4 \
   "$OUTDIR/$SLUG-poster.jpg"
 
