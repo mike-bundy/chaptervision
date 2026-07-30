@@ -23,22 +23,25 @@ against it before documenting new features.**
 
 | Public name (use on site) | Internal name (never on site) |
 |---|---|
-| Chapter Vision (the suite) | Maestro |
-| **Chapter Studio** (Mac app) | MaestroStudio |
-| **Chapter Vision** (Vision Pro app — yes, same name as the suite) | MaestroVision |
+| Chapter Vision (the suite) | (2026-07-30 rename: the codebase now matches — repo `chapterengine`, targets ChapterStudio/ChapterVision; old "Maestro" names survive only in git history) |
+| **Chapter Studio** (Mac app) | ChapterStudio target (formerly MaestroStudio) |
+| **Chapter Vision** (Vision Pro app — yes, same name as the suite) | ChapterVision target (formerly MaestroVision) |
 | the player | SharedVisions / ChapterPlayer |
 | the particle editor | Afterburn |
 | ChapterScript / `.chapterscript` bundle / `chapter.json` | (same — this one is public) |
 
-- Never let `Maestro`, `SharedVisions`, `Afterburn`, or `_maestro._tcp` appear in site copy.
+- Never let `Maestro`, `MaestroKit`, `SharedVisions`, `Afterburn`, `chapterengine`, target
+  names, or `_maestro._tcp` / `_chaptervision._tcp` appear in site copy.
 - Naming history: "Chapter Vision Studio" / "Chapter Vision Spatial" are **deprecated**
-  earlier names — if you see them anywhere, fix them.
+  earlier names — if you see them anywhere, fix them. "Maestro" was the pre-2026-07-30
+  internal codename.
 - Wordmark renders in **title case** ("Chapter Vision"), never all-caps.
 - Document model vocabulary: a **chapter** (the whole document) contains **segments**
   (timed scenes) → **steps** (timed beats) → **actions**. Segments also carry animation
   tracks, a presentation mode (Immersive/Mixed/Windowed), an optional backdrop; steps can
-  have **gates**. On the site, gates are described as Tap + optional timeout ONLY — the
-  product's Orchestrator and Either gate types are not officially announced yet, so
+  have **gates**. On the site, gates are **Tap / Gaze at Entity / Approach Entity / Grab
+  Entity** + optional timeout and prompt (documented on docs/gates.html as of 2026-07-30).
+  The product's Orchestrator and Either gate types are STILL not officially announced —
   "Orchestrator", "Either" gates, and operator/show-cue phrasing must not appear in copy.
 - Docs voice: second person, present tense, for creative authors not programmers. No
   Swift type names or source paths (live-sync + format pages may show HTTP/JSON).
@@ -46,7 +49,7 @@ against it before documenting new features.**
 ## Theme (derived from the real app icon — don't invent new colors)
 
 The palette was sampled from the app icon (an open storybook with a glowing portal),
-copied from `~/code/Maestro/MaestroStudio/Assets.xcassets/AppIcon.appiconset/` into
+copied from `~/code/Maestro/ChapterStudio/Assets.xcassets/AppIcon.appiconset/` into
 `assets/icon-256.png` and `assets/icon-512.png`. The icon is the brand mark everywhere
 (nav, footer, docs header, favicon, final CTA) — there is no SVG logo.
 
