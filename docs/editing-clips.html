@@ -19,8 +19,9 @@
   <article class="doc-article" data-page="editing-clips">
     <h1>Editing clips</h1>
     <p class="doc-lede">
-      Once actions are on the timeline, timing is a drag away. Slide clips, trim their
-      edges, stretch steps, and tune parameters inline, all with full undo.
+      Once actions are on the timeline, timing is a drag away. Slide clips on a
+      frame-accurate grid, trim their edges, copy and paste, stretch steps, and tune
+      parameters inline, all with full undo.
     </p>
 
     <h2>Moving and resizing clips</h2>
@@ -41,9 +42,9 @@
 
     <div class="callout note">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <div><p><b>Note.</b> On video clips, edge drags do a little more: the right edge also
-      sets the clip's source out-point. See
-      <a href="/docs/video-trimming.html">video trimming &amp; cropping</a>.</p></div>
+      <div><p><b>Note.</b> On video and audio clips, edge drags do a little more: the edges
+      can trim or slip the clip's source range. See
+      <a href="/docs/video-trimming.html">video trimming &amp; consolidating</a>.</p></div>
     </div>
 
     <h2>Crossing step boundaries</h2>
@@ -54,6 +55,39 @@
     underneath.</p>
     <p>Each completed drag records exactly <b>one undo entry</b>. A long, fiddly drag is
     still a single <kbd>⌘Z</kbd> away from being undone, never a stack of micro-steps.</p>
+
+    <h2>The frame grid and snapping</h2>
+    <p>Every drag lands on the frame grid, so two clips you meant to butt together actually
+    touch instead of sitting a fraction of a frame apart. On top of the grid, snapping
+    magnetizes a dragged edge to step boundaries, neighboring clips and the playhead.</p>
+    <p>The snap control in the timeline header says which state you're in, in words:
+    <b>Snap</b> or <b>Free</b>. Press <kbd>N</kbd> to toggle it, or hold <kbd>⌘</kbd> during
+    a drag to bypass snapping for just that one gesture. With snapping off you still move
+    frame by frame, never by fuzzy pixels.</p>
+    <p>Two details you'll feel more than see: a fade or modifier attached to a clip travels
+    with it when you drag the clip body (hold <kbd>⌥</kbd> to leave the attachments where
+    they were), and a video clip's right edge has a gentle detent at the end of its media,
+    so landing exactly on the last frame is easy and dragging past it is deliberate.</p>
+
+    <h2>Copy and paste</h2>
+    <p><kbd>⌘C</kbd> and <kbd>⌘V</kbd> work on the timeline the way they should. Copy one
+    clip or several; paste lands at the playhead, preserving the clips' relative spacing,
+    as one undo entry. Select keyframes on an animation lane instead and the same commands
+    copy poses, which you can paste onto a <em>different</em> object, even one that has
+    never been animated (its track is created for you). See
+    <a href="/docs/keyframes-and-autokey.html">keyframes &amp; auto-key</a>.</p>
+    <p>The status bar confirms what happened ("Copied 3 clips", "Pasted at 00:00:12:04"),
+    and with nothing selected on the timeline, <kbd>⌘C</kbd> still copies text in whatever
+    field you're editing. The timeline clipboard is internal to Chapter Studio; it doesn't
+    replace what you copied in another app.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> There's a transform clipboard too, separate on purpose:
+      <b>Edit ▸ Transform</b> offers Copy Transform and Paste Transform
+      (<kbd>⌘⌥C</kbd>/<kbd>⌘⌥V</kbd>), plus Copy Position, Copy Rotation and Copy Scale
+      individually, for lining scene objects up without touching the timeline.</p></div>
+    </div>
 
     <h2>The clip context menu</h2>
     <p>Right-click any clip for quick operations:</p>

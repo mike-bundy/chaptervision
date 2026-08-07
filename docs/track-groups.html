@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track groups — Chapter Vision Handbook</title>
+<meta name="description" content="Fold runs of related timeline tracks into named, collapsible rows that summarize their clips and never change timing.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="track-groups">
+    <h1>Track groups</h1>
+    <p class="doc-lede">
+      A segment with forty entities is forty stacked rows. Track groups fold a run of
+      related tracks into one named, collapsible row, so a big timeline reads like a
+      contents page instead of a wall.
+    </p>
+
+    <h2>What grouping is (and isn't)</h2>
+    <p>A track group is purely organizational. Grouping never changes timing, playback
+    order, or what plays: fold a group away and the segment is identical. Ungrouping deletes
+    nothing either; the member tracks simply return to their section. Think of groups as
+    labels and folding, not as a rig; a group has no transform of its own and no group-level
+    animation.</p>
+
+    <h2>Making and managing groups</h2>
+    <ol class="steps">
+      <li><p><b>Select the track headers you want.</b> <kbd>⌘</kbd>-click to gather several,
+      then right-click and choose <b>New Group from Tracks…</b> (or <b>New Group from
+      Track…</b> for one). Name it after the thing the tracks share: a character, a set
+      piece, a scene beat.</p></li>
+      <li><p><b>Grow or shrink it later.</b> A track header's context menu offers <b>Add to
+      Group</b> and <b>Remove from Group</b>. A track belongs to at most one group, and a
+      group holds tracks from one section only, so a Scene track never files under an Audio
+      group.</p></li>
+      <li><p><b>Manage from the group header.</b> Its context menu has Collapse and Expand
+      (including Collapse All and Expand All), <b>Rename Group…</b>, and <b>Ungroup</b>.
+      There is no Delete, because there's nothing to delete: a group whose members are all
+      gone removes itself.</p></li>
+    </ol>
+    <p>A group sits at the position of its first member, so grouping never reshuffles a
+    timeline whose shape you've already learned. Collapsed state is saved with the
+    project.</p>
+
+    <h2>Reading a folded group</h2>
+    <p>Collapsing hides rows, not information. A folded group draws a summary strip: every
+    member clip flattened onto one row at its real time, plus a count like
+    <code>3 tracks · 12 clips</code>. You can still see the shape of the section's timing
+    at a glance.</p>
+    <p>Selection keeps working while folded. Clicking a summary clip selects that clip
+    (<kbd>⌘</kbd>-click extends), and clicking the group header or the strip's background
+    selects every clip in the group, which makes folded groups a fast way to grab a whole
+    set for a <a href="/docs/editing-clips.html">copy or a nudge</a> after expanding. The
+    chevron is the only control that folds and unfolds.</p>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Nothing on a collapsed strip can be dragged, trimmed or bladed.
+      Expand the group to edit its clips; folding is for reading, selecting and staying
+      oriented.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Group by story function, not by asset type. "The lighthouse
+      keeper", "Storm build-up", "Finale fireworks" make a timeline navigable in a way
+      "Videos 1–6" never will.</p></div>
+    </div>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Track groups are a Chapter Studio view feature. The
+      <a href="/docs/spatial-timeline.html">spatial timeline</a> on Vision Pro shows the
+      same tracks ungrouped.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

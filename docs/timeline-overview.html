@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Timeline overview — Chapter Vision Handbook</title>
-<meta name="description" content="A tour of the multi-track timeline in Chapter Studio: segment tabs, the time ruler, asset-anchored track groups, derived clips, and playback scrubbing.">
+<meta name="description" content="A tour of the multi-track timeline in Chapter Studio: segment tabs, the time ruler, asset-anchored tracks, foldable track groups, derived clips, and playback scrubbing.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
     Pull the divider up when you're deep in timing work, or down when you want a bigger
     stage. The timeline always shows <em>one segment at a time</em>; a chapter is a set of
     segments, and each segment is a run of timed <a href="/docs/steps-and-actions.html">steps</a>.</p>
-    <p>From top to bottom, the timeline stacks four strips:</p>
+    <p>From top to bottom, the timeline stacks five strips:</p>
     <ol class="steps">
       <li><p><b>Segment tabs.</b> One tab per segment in the chapter, with a <b>+</b> button
       to add a new segment and zoom controls at the end of the strip. Click a tab to switch
@@ -39,10 +39,21 @@
       by category, with search and collapsible groups. See
       <a href="/docs/adding-actions.html">adding actions</a>.</p></li>
       <li><p><b>The time ruler.</b> Tick marks, step boundaries, and gate flags, plus
-      click-to-seek and drag-to-scrub.</p></li>
-      <li><p><b>The tracks.</b> Scene, Audio, and Effects sections holding one track group
-      per asset, channel, or effect.</p></li>
+      click-to-seek and drag-to-scrub. The ruler stays pinned while the lanes scroll, and
+      step-boundary handles live only here, so a clip drag can never resize a step by
+      accident.</p></li>
+      <li><p><b>The backdrop lane.</b> A pinned lane holding the segment's
+      <a href="/docs/presentation-modes.html">backdrop</a>, drawn as a cue bar you can
+      right-click or open in the <a href="/docs/source-previewer.html">Source
+      Previewer</a>.</p></li>
+      <li><p><b>The tracks.</b> Scene, Audio, and Effects sections holding one track per
+      asset, channel, or effect. Related tracks can fold into
+      <a href="/docs/track-groups.html">track groups</a>.</p></li>
     </ol>
+    <p>The timeline's own tools sit in its header: <b>Blade</b> <kbd>B</kbd>, <b>Hand</b>
+    <kbd>H</kbd> and <b>Zoom</b> <kbd>Z</kbd>, next to the snap control. Zooming keeps the
+    time under your pointer fixed, so you dive toward the thing you're looking at rather
+    than losing it off-screen.</p>
 
     <h2>The time ruler</h2>
     <p>The ruler shows second ticks, labeled every second when you're zoomed in and every five
@@ -55,16 +66,18 @@
     continuously. Interior step boundaries are themselves draggable handles; see
     <a href="/docs/editing-clips.html">editing clips</a> for retiming steps.</p>
 
-    <h2>Track groups: everything anchors to an asset</h2>
-    <p>Each track is a <b>group</b> anchored to one thing: a scene asset, an audio channel, or
-    an effect type. A group owns one or more <b>primary lanes</b> (the asset's own on-stage
-    ranges) plus shorter <b>attached lanes</b> nested directly beneath, holding the modifiers
+    <h2>Tracks: everything anchors to an asset</h2>
+    <p>Each track is anchored to one thing: a scene asset, an audio channel, or an effect
+    type. A track owns one or more <b>primary lanes</b> (the asset's own on-stage ranges)
+    plus shorter <b>attached lanes</b> nested directly beneath, holding the modifiers
     (fades, moves, scales, motion) that target that asset. Modifiers never live on a separate
     effects row somewhere else; they always sit under the thing they change, so a glance at a
-    group tells you the asset's whole story.</p>
+    track tells you the asset's whole story.</p>
     <p>When two clips on the same track overlap in time, they pack into stacked sub-lanes
-    instead of painting over each other. Groups appear in order of first use in the segment,
-    so the first asset to come on stage gets the top row.</p>
+    instead of painting over each other. Tracks appear in order of first use in the segment,
+    so the first asset to come on stage gets the top row. When a segment grows past a dozen
+    tracks, fold related ones into named
+    <a href="/docs/track-groups.html">track groups</a>.</p>
     <p>Three sections are always rendered, even when empty: <b>Scene</b>, <b>Audio</b>, and
     <b>Effects</b>. An empty section shows a dashed dropzone so you can drag an action into a
     brand-new segment without anything existing there first.</p>
@@ -90,7 +103,7 @@
     </div>
 
     <h2>Keyframe lanes</h2>
-    <p>An asset that carries segment-level animation gets one more lane in its group: a
+    <p>An asset that carries segment-level animation gets one more lane in its track: a
     <b>keyframe lane</b> showing diamond markers at every keyed time, spanned by a soft band
     across the animated range, with a badge for the animated channels. Drag diamonds to move
     keys; double-click one to delete it. For the full animation workflow, see the

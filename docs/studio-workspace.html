@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Studio workspace — Chapter Vision Handbook</title>
+<meta name="description" content="Chapter Studio's editing window: the source and program monitors, left panel, inspector, timeline, tools, viewer navigation and immersive guides.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="studio-workspace">
+    <h1>The Studio workspace</h1>
+    <p class="doc-lede">
+      Chapter Studio borrows the layout every film editor already knows, a source monitor
+      and a program monitor over a timeline, and applies it to spatial authoring. This page
+      is the tour: what each region does and how to move around the 3D viewer.
+    </p>
+
+    <h2>The Welcome window</h2>
+    <p>Chapter Studio opens to a Welcome window: <b>New Project</b>, <b>Open Project…</b>,
+    and your most recent chapters, each with its segment count and when you last touched it.
+    Click a recent to open it. A project you've moved or deleted says so plainly and offers
+    to remove itself from the list, and every recent's context menu has Open, Show in
+    Finder, and Remove from Recents.</p>
+    <p>You can return to it any time from the Help menu, and if you'd rather skip it,
+    <b>Settings ▸ General ▸ Reopen the last chapter</b> takes you straight into your work
+    at launch.</p>
+
+    <h2>Five regions</h2>
+    <p>The editor is one window with five regions. Each keeps a visible title, can be hidden
+    and restored without losing its state, and remembers its size as an app preference,
+    never inside your project file.</p>
+    <table>
+      <thead><tr><th>Region</th><th>What it's for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Left panel</b> <kbd>⌘1</kbd></td>
+            <td>Three modes: <b>Scene</b> (the objects in the current segment),
+            <b>Library</b> (your chapter's media and bins), <b>Actions</b> (behaviors you
+            can schedule). See <a href="/docs/assets-and-folders.html">assets &amp;
+            folders</a>.</td></tr>
+        <tr><td><b>Viewer</b></td>
+            <td>The live 3D program view: camera navigation, gizmos, overlays and the
+            transport bar. The one region you can't hide.</td></tr>
+        <tr><td><b>Source Previewer</b></td>
+            <td>The source monitor, sharing the monitor region with the viewer. Mark In and
+            Out before placing; see <a href="/docs/source-previewer.html">the Source
+            Previewer</a>.</td></tr>
+        <tr><td><b>Inspector</b> <kbd>⌘3</kbd></td>
+            <td>Properties for whatever's selected, with a tracking-mode picker in its
+            header (below).</td></tr>
+        <tr><td><b>Timeline</b> <kbd>⌘⌥T</kbd></td>
+            <td>The multi-track editing surface. See the
+            <a href="/docs/timeline-overview.html">timeline overview</a>.</td></tr>
+      </tbody>
+    </table>
+    <p>The toolbar carries one toggle per hideable region, plus Add, Import and Save, and
+    the Live control for a connected Vision Pro.</p>
+
+    <h2>The inspector follows you, or doesn't</h2>
+    <p>A picker in the inspector header sets its tracking mode. <b>Selection</b>, the
+    default, follows whatever you click, showing the active segment when nothing is
+    selected. <b>Segment</b> pins it to the segment's settings even while you select clips
+    and entities, which is the mode you want while tuning a backdrop or
+    <a href="/docs/presentation-modes.html">presentation mode</a>. <b>Media Info</b> appears
+    when you're browsing a file and shows its technical details.</p>
+
+    <h2>Tools</h2>
+    <p>One tool is active at a time, and the buttons live with the surface they drive: the
+    viewer's header holds <b>Select</b> <kbd>V</kbd>, <b>Move</b> <kbd>W</kbd>,
+    <b>Rotate</b> <kbd>E</kbd> and <b>Scale</b> <kbd>R</kbd>; the timeline's header holds
+    <b>Blade</b> <kbd>B</kbd>, <b>Hand</b> <kbd>H</kbd> and <b>Zoom</b> <kbd>Z</kbd>. A
+    one-line hint in the viewer always says what the active tool does.</p>
+
+    <h2>Moving the camera</h2>
+    <p>Camera navigation is modeless: it works under every tool and never changes your
+    document.</p>
+    <table>
+      <thead><tr><th>Gesture</th><th>Does</th></tr></thead>
+      <tbody>
+        <tr><td>Right-drag</td><td>Orbit</td></tr>
+        <tr><td>Middle-drag</td><td>Pan</td></tr>
+        <tr><td>Scroll or trackpad pinch</td><td>Dolly in and out</td></tr>
+      </tbody>
+    </table>
+    <p>The pivot control in the viewer's corner decides what a drag orbits.
+    <b>Viewer Origin</b>, the default, orbits the point your eventual audience faces.
+    <b>Selection</b> orbits whatever you have selected. <b>Look Around</b> pans and tilts
+    from a fixed eye point like a tripod head; park the camera at the origin with Home View
+    first and you are looking around from exactly where the wearer's head will be, which is
+    the honest way to judge an immersive composition.</p>
+    <p><b>Home View</b> <kbd>⌃H</kbd> is a button right in the viewer for when you're lost.
+    <b>Frame Selection</b> <kbd>F</kbd> and <b>Frame Scene</b> <kbd>⌘⇧F</kbd> fly to what
+    matters. The axis indicator in the top corner (X red, Y green, Z blue) is also a
+    control: click it for standard views, Front through Isometric. Front is the pose your
+    audience has.</p>
+
+    <h2>Immersive guides</h2>
+    <p>The Overlays menu draws the things a flat monitor can't tell you about a scene
+    someone will stand inside, each guide individually switchable: a floor grid, an
+    eye-level grid, distance rings, the comfort zone, the field of view, the 180° boundary,
+    and a forward-axis marker, with optional labels. A viewer-height preset (Seated 1.20 m,
+    Average 1.50 m, Tall 1.75 m) moves eye level to match your audience.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Before a review, switch to Look Around at the viewer origin with
+      the comfort zone and eye-level grid on. Two minutes of that catches most "why is this
+      giant/tiny/behind me" surprises before anyone puts on a headset.</p></div>
+    </div>
+
+    <p>Other overlays include the grid and world axes (on by default), wireframe, selection
+    bounds, motion trails, a backdrop preview, and a frame-rate readout for diagnosing a
+    heavy scene (off by default; leave it off when you're not using it).</p>
+
+    <h2>Snapping, in 3D and in time</h2>
+    <p>Two independent snap systems. <b>Transform Snap</b> quantizes viewer edits, with
+    configurable position, rotation and scale steps. <b>Timeline snapping</b>
+    <kbd>N</kbd> magnetizes clip edges to steps, other clips and the playhead; its control
+    reads <b>Snap</b> or <b>Free</b> in words, and holding <kbd>⌘</kbd> bypasses it for a
+    single drag. See <a href="/docs/editing-clips.html">editing clips</a>.</p>
+
+    <h2>Editor volume</h2>
+    <p>A speaker button and slider in the viewer's transport bar are the editor's master
+    volume: one gain and one mute covering video previews, scheduled audio and the
+    backdrop's soundtrack together. It's editor-only state, so turning your Mac's preview
+    down never changes what the chapter plays on a headset. See
+    <a href="/docs/audio-channels.html">audio channels</a>.</p>
+
+    <h2>Shortcuts worth memorizing</h2>
+    <table>
+      <thead><tr><th>Do</th><th>Press</th></tr></thead>
+      <tbody>
+        <tr><td>New / Open / Save chapter</td><td><kbd>⌘N</kbd> / <kbd>⌘O</kbd> / <kbd>⌘S</kbd></td></tr>
+        <tr><td>Import files / from Photos</td><td><kbd>⌘I</kbd> / <kbd>⌘⇧I</kbd></td></tr>
+        <tr><td>Toggle left panel / inspector / timeline</td><td><kbd>⌘1</kbd> / <kbd>⌘3</kbd> / <kbd>⌘⌥T</kbd></td></tr>
+        <tr><td>Tools</td><td><kbd>V</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd> · <kbd>B</kbd> <kbd>H</kbd> <kbd>Z</kbd></td></tr>
+        <tr><td>Play / pause · play from beginning</td><td><kbd>Space</kbd> · <kbd>⇧Return</kbd></td></tr>
+        <tr><td>Step frames · step steps</td><td><kbd>←</kbd>/<kbd>→</kbd> · <kbd>⌘←</kbd>/<kbd>⌘→</kbd></td></tr>
+        <tr><td>Set key at playhead</td><td><kbd>⌥K</kbd></td></tr>
+        <tr><td>Home view · frame selection · frame scene</td><td><kbd>⌃H</kbd> · <kbd>F</kbd> · <kbd>⌘⇧F</kbd></td></tr>
+        <tr><td>Timeline snapping on/off</td><td><kbd>N</kbd></td></tr>
+        <tr><td>Mark In / Out (Source Previewer)</td><td><kbd>I</kbd> / <kbd>O</kbd></td></tr>
+      </tbody>
+    </table>
+
+    <p>From here, the natural next stops are the
+    <a href="/docs/timeline-overview.html">timeline overview</a> and
+    <a href="/docs/your-first-chapter.html">your first chapter</a>.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

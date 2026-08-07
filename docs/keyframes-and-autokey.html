@@ -24,9 +24,13 @@
     </p>
 
     <h2>Set Key: capture the whole pose</h2>
-    <p><b>Set Key</b> writes the selected entity's full pose (all ten channels: position,
-    rotation, scale, and opacity) as keys at the playhead's current time. It doesn't matter
-    whether the entity already has a track; Set Key creates one on the first press.</p>
+    <p><b>Set Key</b> (<kbd>⌥K</kbd> in Chapter Studio) writes the selected entity's full
+    pose (all ten channels: position, rotation, scale, and opacity) as keys at the playhead's
+    current time. It doesn't matter whether the entity already has a track; Set Key creates
+    one on the first press.</p>
+    <p>Set Key follows your <em>whole</em> selection. Select six objects (or the clips of
+    six objects on the timeline) and one press keys all six, as a single batch and a single
+    undo entry. Audio is never keyed this way; a channel has no pose.</p>
     <ol class="steps">
       <li><p><b>Park the playhead</b> where you want the pose to land. Scrub the timeline ruler or the graph editor's ruler band to get there.</p></li>
       <li><p><b>Pose the entity</b> using the inspector's transform fields in Chapter Studio, or by grabbing it with <a href="/docs/spatial-gizmo.html">the gizmo</a> in Chapter Vision.</p></li>
@@ -68,12 +72,21 @@
     <table>
       <thead><tr><th>Where</th><th>What you can do</th></tr></thead>
       <tbody>
-        <tr><td>Keyframe lane (timeline)</td><td>Drag a diamond to retime a whole pose: every channel keyed at that time slides together. Double-click a diamond in Chapter Studio to delete the pose.</td></tr>
+        <tr><td>Keyframe lane (timeline)</td><td>Drag a diamond to move a whole pose: every channel keyed at that time slides together. <kbd>⌘</kbd>-click diamonds to build a selection. Double-click a diamond in Chapter Studio to delete the pose.</td></tr>
         <tr><td><a href="/docs/graph-editor.html">Graph editor</a></td><td>Drag individual keys per channel in time and value, multi-select groups, insert keys on a curve, and delete the current selection.</td></tr>
       </tbody>
     </table>
     <p>The lane is your dope sheet for fast, pose-level timing. The graph editor is your fine
     brush for per-channel value and curve shaping.</p>
+
+    <h2>Copying poses between objects</h2>
+    <p>Selected keyframes respond to <kbd>⌘C</kbd> and <kbd>⌘V</kbd> like clips do, with one
+    powerful twist: a copied pose can be pasted onto a <em>different</em> object. Copy the
+    keys of a settle-into-place move from one prop, select another, paste at the playhead,
+    and the second prop inherits the same performance. Pasting onto an entity that has never
+    been animated creates its track for you. See
+    <a href="/docs/editing-clips.html">editing clips</a> for how the timeline clipboard
+    behaves.</p>
 
     <h2>Keying from the gizmo on Vision Pro</h2>
     <p>In Chapter Vision, the gizmo is auto-key aware. With record on, finish a move, rotate,

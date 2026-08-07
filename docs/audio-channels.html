@@ -60,6 +60,30 @@
     the <a href="/docs/editing-clips.html">clip inspector</a> for an inline slider and
     toggle.</p>
 
+    <h2>Hearing your mix in the editor</h2>
+    <p>Audio in Chapter Studio is audible, and auditioning is built for editing. Playback
+    runs the mix at natural rate; scrubbing plays the moment under the playhead and holds,
+    so you can drag through a segment and hear exactly where the narration lands without
+    starting playback. Two channels can play the same file at once as independent voices,
+    which is how overlapping ambience beds behave on device too.</p>
+    <p>Audio clips trim like video: drag their edges, or mark a range in the
+    <a href="/docs/source-previewer.html">Source Previewer</a> before placing, and the clip
+    plays just that slice of the file. See
+    <a href="/docs/video-trimming.html">trimming</a> for the edge model.</p>
+    <p>The speaker button and slider in the viewer's transport bar are the editor's master
+    volume: one gain and one mute across scheduled audio, video previews and the backdrop's
+    soundtrack. It's your monitoring level, not a mix decision: it persists on your Mac and
+    never changes what the chapter plays on a headset.</p>
+
+    <h2>Volume rides: keyframed automation</h2>
+    <p>Beyond Fade Audio's one-shot ramps, each channel has an <b>automation lane</b> where
+    volume is keyframed over time, plus a <b>Master</b> row for the whole mix. Park the
+    playhead, choose <b>Timeline ▸ Set Audio Volume Key at Playhead</b> and pick the
+    channel, and a diamond lands on the lane; drag diamonds to move them, double-click to
+    delete. The player samples the ride on device, and a <a href="/docs/gates.html">gate</a>
+    holds a volume ride exactly where it holds an animation curve, so your duck under the
+    narration waits with the story.</p>
+
     <h2>Creating channels by dropping</h2>
     <p>The quickest way to add a channel is not to create one at all. Drag an audio chip from
     the action library onto the Audio section's empty rail and Chapter Studio auto-creates a fresh

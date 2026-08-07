@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Source Previewer — Chapter Vision Handbook</title>
+<meta name="description" content="Mark In and Out on a master or a placed clip in Chapter Studio's source monitor, then place takes that land on the timeline already trimmed.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="source-previewer">
+    <h1>The Source Previewer</h1>
+    <p class="doc-lede">
+      Chapter Studio uses the classic cutting-room layout: a source monitor beside the
+      program view. Open a take in the Source Previewer, mark In and Out, and place it on
+      the timeline already trimmed to your selection.
+    </p>
+
+    <h2>Two monitors, one window</h2>
+    <p>The Source Previewer shares the monitor region with the viewer: Source on the left
+    (the master you're marking), the 3D program view on the right (your sequence). It's a
+    panel in the main window, so opening it never covers your timeline or squeezes the
+    library and inspector; Source and program split only the space between the side panels.
+    Drag the divider between them to rebalance, or double-click it to reset to an even
+    split.</p>
+    <p>Show and hide the panel with its toggle in the toolbar's panel group. Reopening it
+    restores whatever it last held, so the toggle is a panel switch, not a way to lose your
+    place.</p>
+
+    <h2>Opening media in it</h2>
+    <ul>
+      <li><b>Double-click</b> a library row or grid cell, a scene-list row, or a clip on the
+      timeline.</li>
+      <li><b>Right-click</b> a clip or a library row and choose <b>Open in Source
+      Previewer</b>; the command also lives in the <b>Clip</b> menu and on a button in the
+      clip inspector.</li>
+    </ul>
+    <p>Double-clicking a USDZ deliberately does nothing. There's no footage to mark, so you
+    never get an empty monitor.</p>
+
+    <h2>Source mode and Clip mode</h2>
+    <p>A badge in the panel header tells you which of two modes you're in, and the
+    difference matters:</p>
+    <table>
+      <thead><tr><th>Badge</th><th>What you opened</th><th>What marks do</th></tr></thead>
+      <tbody>
+        <tr><td><b>SOURCE</b></td><td>A master from the library</td>
+            <td>Held as pending, consumed when you place the file on the timeline</td></tr>
+        <tr><td><b>CLIP</b></td><td>A clip already on the timeline</td>
+            <td>Written to that clip immediately, one undo each</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Marking a take</h2>
+    <ol class="steps">
+      <li><p><b>Play or scrub to the moment.</b> <kbd>Space</kbd> plays and pauses,
+      <kbd>←</kbd>/<kbd>→</kbd> step frames, and the scrubber's playhead drags freely.
+      Playback auditions stop at the Out point.</p></li>
+      <li><p><b>Press <kbd>I</kbd> for In, <kbd>O</kbd> for Out.</b> The Mark In and Mark Out
+      buttons are spelled out in the transport with their shortcuts. The scrubber fills the
+      selected range between two handles, and timecode cards read out In, Out, Selected,
+      Position and Duration.</p></li>
+      <li><p><b>Adjust or clear.</b> Drag the In/Out handles directly, or use the Clear menu
+      to drop the In, the Out, or the whole range.</p></li>
+    </ol>
+
+    <h2>Mark, then place</h2>
+    <p>This is the workflow the panel exists for. Open a master, mark In and Out, then drag
+    the file from the library onto the timeline: the clip lands already carrying your range
+    as a non-destructive <a href="/docs/video-trimming.html">source window</a>. Pending marks
+    apply whichever way the file gets placed, and they're consumed by the placement, so
+    dragging the same file again gives you the whole clip rather than a silent repeat of the
+    old selection.</p>
+    <p>Placing without visiting the Previewer works exactly as before; marking first is an
+    option, not a gate.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Open a clip that's already placed (Clip mode) to fine-tune its
+      range with frame steps and fresh marks instead of dragging tiny clip edges on the
+      timeline. Each mark is one undo.</p></div>
+    </div>
+
+    <h2>Audio in the Previewer</h2>
+    <p>Audio masters open in the Previewer too, with the same transport, marks and timecode.
+    There's no waveform display yet; you audition by ear, which the stop-at-Out behavior
+    makes quick.</p>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> The Source Previewer is a Chapter Studio feature. On Chapter
+      Vision you edit source ranges from the clip's trim card on the
+      <a href="/docs/spatial-timeline.html">spatial timeline</a> instead.</p></div>
+    </div>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

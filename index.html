@@ -95,8 +95,8 @@
 <!-- ============================== MARQUEE ============================== -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Multi-track timeline <i>✦</i> Spatial gizmos <i>✦</i> Keyframe animation <i>✦</i> Live sync <i>✦</i> Particle systems <i>✦</i> Immersive backdrops <i>✦</i> Gaze &amp; pinch editing <i>✦</i> Open format <i>✦</i></span>
-    <span>Multi-track timeline <i>✦</i> Spatial gizmos <i>✦</i> Keyframe animation <i>✦</i> Live sync <i>✦</i> Particle systems <i>✦</i> Immersive backdrops <i>✦</i> Gaze &amp; pinch editing <i>✦</i> Open format <i>✦</i></span>
+    <span>Multi-track timeline <i>✦</i> Source monitor <i>✦</i> Spatial gizmos <i>✦</i> Keyframe animation <i>✦</i> Placeholders <i>✦</i> Live sync <i>✦</i> Particle systems <i>✦</i> Immersive backdrops <i>✦</i> Gaze &amp; pinch editing <i>✦</i> Open format <i>✦</i></span>
+    <span>Multi-track timeline <i>✦</i> Source monitor <i>✦</i> Spatial gizmos <i>✦</i> Keyframe animation <i>✦</i> Placeholders <i>✦</i> Live sync <i>✦</i> Particle systems <i>✦</i> Immersive backdrops <i>✦</i> Gaze &amp; pinch editing <i>✦</i> Open format <i>✦</i></span>
   </div>
 </div>
 
@@ -106,9 +106,10 @@
     <div class="kicker reveal">Chapter 01 · Chapter Studio</div>
     <h2 data-words>Cut spatial stories like a <em>film editor</em>.</h2>
     <p class="block-lede reveal d1">
-      On the Mac, Chapter Studio lays time itself out on a full-width, multi-track timeline.
-      Every reveal, move, fade, video and sound in your scene is a clip you can drag, trim
-      and retime.
+      On the Mac, Chapter Studio works the way a cutting room does: a source monitor and a
+      live 3D program view side by side, above a full-width, multi-track timeline. Every
+      reveal, move, fade, video and sound in your scene is a clip you can drag, trim and
+      rearrange, frame by frame.
     </p>
 
     <figure class="film reveal d1" aria-label="Timeline capture placeholder">
@@ -122,9 +123,10 @@
                  <source src="/assets/video/studio-timeline.mp4" type="video/mp4">
                </video>
              Footage: 15–25s Chapter Studio screen recording. Suggested beats:
-             drag a clip to retime it → trim a video clip edge → drag an action
-             chip from the library onto a track → scrub the playhead and watch
-             the viewport follow. 16:9 screen capture at Retina resolution. -->
+             mark In/Out on a take in the Source Previewer → drag it to the
+             timeline (clip lands pre-trimmed) → drag a clip to move it → drag
+             an action chip from the library onto a track → scrub the playhead
+             and watch the viewport follow. 16:9 capture at Retina resolution. -->
         <div class="vp" role="img" aria-label="Placeholder for a Chapter Studio timeline screen recording">
           <div class="vp-glow"></div>
           <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 6.2v11.6a.7.7 0 001.07.6l9.2-5.8a.7.7 0 000-1.2l-9.2-5.8A.7.7 0 009 6.2z"/></svg></div>
@@ -140,10 +142,18 @@
         <span><b>Derived clips, not busywork.</b> Clips are a live projection of your actions: reveal to hide, play to stop. Drag a clip and the underlying actions retime with it.</span></li>
       <li class="reveal d1"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
         <span><b>Drag-to-add action library.</b> Eighteen categorized action chips, from Show and Fade to Play Video and Spark Burst. Drop one on a track and it snaps to the step boundary.</span></li>
-      <li class="reveal d2"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
-        <span><b>Non-destructive video trims.</b> Slip in-points, set out-points, or consolidate to clip length. Masters are never re-encoded until you say so.</span></li>
-      <li class="reveal d3"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V6l10 6-10 6z"/><path d="M4 6v12"/></svg>
-        <span><b>Scrub like a pro.</b> Click any step and the viewport shows exactly what's on stage at that moment, playback running or not.</span></li>
+      <li class="reveal d2"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="9" height="12" rx="1.5"/><rect x="13" y="6" width="9" height="12" rx="1.5"/><path d="M5.5 10.5l2 1.5-2 1.5z"/></svg>
+        <span><b>A real source monitor.</b> Open any take in the Source Previewer, mark In and Out with <kbd>I</kbd> and <kbd>O</kbd>, then drag it to the timeline and the clip lands already trimmed to your selection.</span></li>
+      <li class="reveal d3"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+        <span><b>Non-destructive by default.</b> Trim changes a clip's length; slip changes which frames it shows. Both are just timing data, and the master file is never touched until you consolidate on purpose.</span></li>
+      <li class="reveal"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M7 8v8M12 6v12M17 9v6"/></svg>
+        <span><b>Frame-accurate, snap-aware.</b> Every drag lands on the frame grid, edges magnetize to steps, clips and the playhead, and one glance at the Snap control tells you whether the magnet is on.</span></li>
+      <li class="reveal d1"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/></svg>
+        <span><b>Copy and paste that gets it.</b> Clips paste at the playhead with their spacing intact. Keyframes paste onto other objects. Transforms copy whole, or just position, rotation or scale.</span></li>
+      <li class="reveal d2"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="11" rx="1.5" stroke-dasharray="3 2.4"/><path d="M9 20h6"/></svg>
+        <span><b>Block before the footage exists.</b> Placeholders stand in for videos and models at real size and length. Animate them, gate them, time them, then drop in the finished file and everything carries over.</span></li>
+      <li class="reveal d3"><svg class="fl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="2.6"/><path d="M12 9.6V15M12 15l-3.5 5M12 15l3.5 5M4 20a15 15 0 0116 0"/></svg>
+        <span><b>Compose for a person, not a screen.</b> Immersive guides draw the floor, eye level, comfort zone, distance rings and field of view in the viewer, at seated or standing height.</span></li>
     </ul>
   </div>
 </section>
@@ -365,6 +375,12 @@
         <h3>Steps that hold curves</h3><p>Playback gates pause the animation clock, not the story. Curves hold their pose and resume exactly where they left off.</p></div>
       <div class="gcard reveal d2"><svg class="gc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
         <h3>Typed forms + raw JSON</h3><p>Every action has a typed parameter form, plus a raw JSON escape hatch when you want to hand-tune the long tail.</p></div>
+      <div class="gcard reveal"><svg class="gc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h7l2 2h7v10H4z"/><path d="M4 7V5h6l2 2"/></svg>
+        <h3>Track groups</h3><p>Fold a run of related tracks into one named, collapsible row. A folded group still shows every clip in miniature, and grouping never changes timing.</p></div>
+      <div class="gcard reveal d1"><svg class="gc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v5M12 13h.01M8 21h8"/></svg>
+        <h3>A library with bins</h3><p>File media into bins that are labels, never storage. Browse folders on your Mac without leaving the app, and an import sheet asks what each video should become.</p></div>
+      <div class="gcard reveal d2"><svg class="gc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15 9a4.5 4.5 0 010 6M18 6.5a8 8 0 010 11"/></svg>
+        <h3>Audio you can hear</h3><p>Auditioning is real: playback is audible, scrubbing plays the moment under the playhead, and volume rides are keyframed per channel. The editor's master volume never ships.</p></div>
     </div>
   </div>
 </section>

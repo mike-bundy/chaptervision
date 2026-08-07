@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placeholders &amp; blocking — Chapter Vision Handbook</title>
+<meta name="description" content="Block out a chapter before the footage exists: grey stand-ins for videos and models that keep timing, animation and gates when you swap in the real file.">
+<link rel="icon" type="image/png" href="/assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/docs/assets/docs.css">
+</head>
+<body class="docs">
+<div id="docs-shell"></div>
+
+<main class="doc-main">
+  <article class="doc-article" data-page="placeholders">
+    <h1>Placeholders &amp; blocking</h1>
+    <p class="doc-lede">
+      A placeholder is a scene object with no media file behind it yet. It lets you author
+      the whole chapter before a single frame is shot: where the panel hangs, how big it is,
+      how long the shot runs, what the viewer must look at to advance.
+    </p>
+
+    <h2>Why block?</h2>
+    <p>Real productions rarely have the footage first. With placeholders you build the story
+    now: a grey stand-in occupies the exact space and time the finished media will, so you can
+    position it, animate it, put a <a href="/docs/gates.html">gate</a> on it and walk the whole
+    chapter on a timeline that already has its final shape. When the shoot wraps, you drop the
+    real file onto the stand-in and keep everything you authored.</p>
+
+    <h2>Three kinds of placeholder</h2>
+    <table>
+      <thead><tr><th>Placeholder</th><th>Stands in for</th><th>You set</th></tr></thead>
+      <tbody>
+        <tr><td><b>Video Panel</b></td><td>A video file played on a panel</td>
+            <td>Panel width and height, intended length</td></tr>
+        <tr><td><b>Immersive Video</b></td><td>A 180° or 360° video</td>
+            <td>Projection, intended length</td></tr>
+        <tr><td><b>3D Entity</b></td><td>A USDZ model</td>
+            <td>Bounding box width, height and depth</td></tr>
+      </tbody>
+    </table>
+    <p>The intended length is a planning note for the shoot, not an enforced limit. Nothing
+    checks the finished footage against it, so treat it as the brief you're writing for
+    future you.</p>
+
+    <h2>Creating one</h2>
+    <ol class="steps">
+      <li><p><b>Add it like any other object.</b> Placeholders live in the same <b>Add</b>
+      menu as real entities, in the toolbar and in the <b>Insert</b> menu. For an immersive
+      shot, use the segment inspector's backdrop picker instead, which gives the plate a
+      start time and duration on the timeline.</p></li>
+      <li><p><b>Name the shot.</b> The name you give it is what floats on the grey proxy in
+      the viewer and labels its clip on the timeline. A placeholder has no filename, so the
+      name is how everyone knows what goes there.</p></li>
+      <li><p><b>Size and time it.</b> Set the panel size or bounding box, and the intended
+      length for time-based shots. The proxy renders at the authored size, so a three-meter
+      panel occupies three meters of your composition right now.</p></li>
+      <li><p><b>Author on top of it.</b> Reveal it, move it, key it, gate it. It behaves like
+      any other object in the scene list, the library and the timeline, where its clip carries
+      a dashed outline icon.</p></li>
+    </ol>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> The proxy is deliberately flat, unlit grey. It doesn't read as a
+      failed video (black) or as finished art; it reads as a hole with a name, which is
+      exactly what it is.</p></div>
+    </div>
+
+    <h2>Filling one</h2>
+    <p>Drag the real file onto the placeholder from the library, from a scene-list row, onto
+    its clip on the timeline, or straight onto the grey proxy in the viewer. The target shows
+    a dashed accent outline while the file is over it. Or, in the inspector's Placeholder
+    section, use <b>Replace Asset…</b> to pick a file from disk or <b>From Chapter</b> to pick
+    media already imported.</p>
+    <p>Everything you authored carries over: timing, position, rotation, scale, keyframes,
+    fades, gates and interactions. Because a placeholder can't play, the swap also authors the
+    playback for you, adding a play at the start of each span the stand-in held and a stop at
+    the end. The whole replacement is one undo step.</p>
+
+    <div class="callout tip">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
+      <div><p><b>Tip.</b> Type rules are enforced: a video only lands on a Video Panel or
+      Immersive placeholder, and a USDZ only on a 3D Entity. A wrong drop is refused with a
+      message naming the file, so nothing silently becomes the wrong kind of thing.</p></div>
+    </div>
+
+    <h2>Reverting one</h2>
+    <p>Content and placeholder are two states of the same object, so the swap has an exact
+    inverse: <b>Revert to Placeholder</b>, in the scene list's context menu and the
+    inspector's Placeholder section. Same transform, same animation, same gates; only the
+    auto-authored play and stop pair is removed. The intended length is re-seeded from how
+    long the clip actually ran, and the media file stays in your library. Reverting reopens
+    the slot; it never deletes footage.</p>
+
+    <h2>Placeholders never reach your audience</h2>
+    <p>Blocking is an authoring concept. In the finished experience a placeholder deliberately
+    renders nothing: an unfinished shot simply doesn't appear, and actions that target it do
+    nothing. A grey box shipping to an audience would be indistinguishable from a bug, so the
+    player refuses to show one.</p>
+
+    <div class="callout note">
+      <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <div><p><b>Note.</b> Placeholders sync to a connected Vision Pro like any other edit,
+      so your blocking is visible in the headset session. Creating and filling them is done
+      in Chapter Studio on the Mac.</p></div>
+    </div>
+
+    <h2>Details worth knowing</h2>
+    <ul>
+      <li><b>Names are identity.</b> Placeholder names must be unique; duplicates get a
+      number appended, and renaming rewrites every reference in the document.</li>
+      <li><b>Changing the role resets size and projection</b> to sensible defaults for the
+      new kind. Your name and production notes always survive.</li>
+      <li><b>Deleting is two different things.</b> Deleting the clip on the timeline removes
+      that use; deleting the object in the scene list removes it everywhere, and the
+      confirmation tells you how many step gates it also cleared.</li>
+      <li><b>Lights, primitives and text can't revert.</b> They never stood in for an asset,
+      so Revert to Placeholder is refused for them.</li>
+    </ul>
+
+    <p>Placeholders pair naturally with <a href="/docs/your-first-chapter.html">your first
+    chapter</a>'s workflow: block the beats, review the pacing on device, then replace
+    stand-ins as media arrives from the shoot.</p>
+  </article>
+</main>
+
+<script src="/docs/assets/docs.js"></script>
+</body>
+</html>

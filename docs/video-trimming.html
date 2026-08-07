@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video trimming &amp; cropping — Chapter Vision Handbook</title>
-<meta name="description" content="Non-destructive video source windows in Chapter Vision, plus the destructive Crop to Clip Length tool that shrinks masters without re-encoding.">
+<title>Video trimming &amp; consolidating — Chapter Vision Handbook</title>
+<meta name="description" content="Non-destructive source windows in Chapter Vision: trim and slip clip edges, loop or hold past the end of the media, and consolidate masters without re-encoding.">
 <link rel="icon" type="image/png" href="/assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,47 +17,64 @@
 
 <main class="doc-main">
   <article class="doc-article" data-page="video-trimming">
-    <h1>Video trimming &amp; cropping</h1>
+    <h1>Video trimming &amp; consolidating</h1>
     <p class="doc-lede">
       Play just the part of a video you want. Trims are non-destructive source windows by
-      default, with a one-way crop tool for when you're ready to shrink the master itself.
+      default, with a one-way consolidate tool for when you're ready to shrink the master
+      itself.
     </p>
 
     <h2>Source windows: trims without touching the file</h2>
-    <p>Every video clip can carry a <b>source window</b>: an in-point and an out-point into
-    the master file. The clip plays only that slice: playback cues up at the in-point and
-    stops at the out-point. The master video on disk is never modified and never re-encoded;
-    the window is just timing data stored with the action, so you can widen, narrow, or clear
-    it at any time with zero quality cost.</p>
+    <p>Every video and audio clip can carry a <b>source window</b>: an in-point and an
+    out-point into the master file. The clip plays only that slice: playback cues up at the
+    in-point and stops at the out-point. The master file on disk is never modified and never
+    re-encoded; the window is just timing data stored with the action, so you can widen,
+    narrow, or clear it at any time with zero quality cost.</p>
     <p>Both the Chapter Studio preview and the player on Vision Pro honor the window, so what you
     scrub on the Mac is exactly what plays on the headset, down to the frame where the clip
     cues in and where it ends.</p>
+    <p>The fastest way to set a window is before the clip exists: mark In and Out in the
+    <a href="/docs/source-previewer.html">Source Previewer</a> and place the take with its
+    range already carried. The edges below are for refining a clip that's already down.</p>
 
-    <h2>Trimming on the timeline</h2>
-    <p>Trims live on the video clip's edges in Chapter Studio:</p>
+    <h2>Trim or slip: the edge model</h2>
+    <p>A media clip's edges do one of two jobs, and the words matter:</p>
     <ul>
-      <li><b>Right edge.</b> Drag the clip's right edge (plain or with <kbd>⌥</kbd> held) to
-      set the <b>out-point</b>: the moment in the source where playback stops.</li>
-      <li><b><kbd>⌥</kbd> + left edge.</b> Hold Option and drag the left edge to <b>slip the
-      in-point</b>: the clip stays where it is on the timeline, but starts from a later
-      moment in the source. It's the classic film-editing slip — reframe the content without
-      moving the beat.</li>
+      <li><b>Trim</b> changes the clip's <em>length</em>: the left edge moves when playback
+      starts and slips the in-point with it; the right edge sets the out-point where
+      playback stops.</li>
+      <li><b>Slip</b> changes <em>which frames the clip shows</em> without moving either
+      edge: the beat stays where it is on the timeline while the content reframes under
+      it — the classic film-editing slip.</li>
     </ul>
-    <p>A plain left-edge drag still retimes when the clip <em>starts</em> in the segment, as
-    with any clip; see <a href="/docs/editing-clips.html">editing clips</a>. Think of it as:
-    plain drags edit <em>when</em>, Option drags edit <em>what</em>.</p>
+    <p>Pick the edge mode in the clip's <b>Video Properties…</b> sheet (the <b>Edge Edit:
+    Trim | Slip</b> control), and hold <kbd>⌥</kbd> during any edge drag to momentarily use
+    the other mode. The <b>Clip</b> menu also offers <b>Slip Source Back</b> and <b>Slip
+    Source Forward</b> in one-second nudges. Plain body drags still just move the clip in
+    time; see <a href="/docs/editing-clips.html">editing clips</a>.</p>
+
+    <h2>Longer than the media: loop or hold</h2>
+    <p>Stretch a clip past the end of its source and Chapter Studio asks a fair question:
+    what should the extra time show? The <b>Clip ▸ Past End of Source</b> submenu gives two
+    answers. <b>Loop Selected Range</b> repeats the windowed slice, and the bar draws dashed
+    divisions at each repeat. <b>Hold Last Frame</b> freezes the final frame, and the bar
+    draws a hatched tail with a bright line at the exact moment the content ran out. Either
+    way, the timeline tells you the truth about what's playing, and the clip's right edge
+    keeps a gentle detent at the true end of the media so "exactly as long as the file" is
+    always easy to hit.</p>
 
     <div class="callout tip">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.7.6 1.5 1.6 1.5 2.6v.5h4v-.5c0-1 .8-2 1.5-2.6A6 6 0 0012 3z"/></svg>
       <div><p><b>Tip.</b> On Chapter Vision, select a video clip and switch its mode
       chip to <b>Trim</b>. The left handle becomes the slip and the right handle the
-      out-point, mirroring the Mac's Option-drag behavior.</p></div>
+      out-point, mirroring the Mac's edge modes.</p></div>
     </div>
 
-    <h2>Crop to Clip Length: shrinking the master</h2>
+    <h2>Consolidating: shrinking the master</h2>
     <p>Source windows are perfect while you're iterating, but a two-minute master trimmed
     down to a ten-second window still ships two minutes of video in your chapter bundle.
-    When the edit has settled, <b>Crop to Clip Length…</b> makes the trim physical:</p>
+    When the edit has settled, <b>Consolidate — Overwrite Master File…</b> makes the trim
+    physical:</p>
     <ol class="steps">
       <li><p><b>The windows are rebased.</b> Every clip in the chapter that plays the same
       master, across all segments, has its source window recalculated against the new,
@@ -72,12 +89,13 @@
       stale frames from a cached copy of the old master.</p></li>
     </ol>
     <p>You'll find the command in two places in Chapter Studio (the video clip's right-click menu
-    and the clip inspector), and on Chapter Vision in the selected clip's trim card
-    or by long-pressing the clip.</p>
+    and the clip inspector), and on Chapter Vision in the selected clip's trim card or by
+    long-pressing the clip, where it appears as <b>Crop to Clip Length…</b>. Either way it's
+    only offered when the clip actually has a source window to make physical.</p>
 
     <div class="callout warn">
       <svg class="co-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
-      <div><p><b>Watch out.</b> Crop to Clip Length is <b>destructive</b>: the media outside
+      <div><p><b>Watch out.</b> Consolidating is <b>destructive</b>: the media outside
       the window is permanently discarded from the master file, and every clip sharing that
       file is affected. If you might want the discarded footage later, keep a copy of the
       original video outside the project before cropping.</p></div>
@@ -85,7 +103,7 @@
 
     <h2>Choosing between the two</h2>
     <table>
-      <thead><tr><th></th><th>Source window (edge trim)</th><th>Crop to Clip Length</th></tr></thead>
+      <thead><tr><th></th><th>Source window (edge trim)</th><th>Consolidate</th></tr></thead>
       <tbody>
         <tr><td><b>Reversible</b></td><td>Yes, adjust or clear any time</td>
             <td>No, discarded media is gone</td></tr>
@@ -96,9 +114,10 @@
             <td>Final cleanup before sharing or shipping a chapter</td></tr>
       </tbody>
     </table>
-    <p>A good rhythm: trim non-destructively while the story is still moving, then crop the
-    masters as a last pass. Your <code>.chapterscript</code> bundle gets lighter, loads
-    faster over <a href="/docs/live-sync.html">live sync</a>, and plays identically.</p>
+    <p>A good rhythm: trim non-destructively while the story is still moving, then
+    consolidate the masters as a last pass. Your <code>.chapterscript</code> bundle gets
+    lighter, loads faster over <a href="/docs/live-sync.html">live sync</a>, and plays
+    identically.</p>
   </article>
 </main>
 
